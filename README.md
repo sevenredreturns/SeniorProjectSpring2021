@@ -1,2 +1,2 @@
-# SeniorProjectSpring2021
+# Senior Project Spring 2021
 Our project’s goal is to provide a website for those who are passionate about hunting and collecting achievements in games, and giving them a way to compete and compare against each other. Users will be able to link their gaming profiles to our website, where our website will collect their achievement data from all games the user selects. Our website will display leaderboards for overall achievement ranks along with individual achievements for games and genres of games.
