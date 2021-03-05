@@ -1,0 +1,15 @@
+{
+  "messageParticipents": ["userOne","userTwo"],
+  "messageContents": [
+    {
+      "messageID": "1",
+      "userName": "userOne",
+      "messageContents": "hello"
+    },
+    {
+      "messageID": "2",
+      "userName": "userTwo",
+      "messageContents": "Go Away"
+    }
+  ]
+}
