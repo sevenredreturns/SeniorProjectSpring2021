@@ -1,4 +1,5 @@
 const {MongoClient} = require('mongodb');
+const si = require('search-index');
 const uri = 'mongodb://localhost:27017';
 const dbname = 'achievement-arena';
 
@@ -89,7 +90,7 @@ async function getUserByName(uname) {
         const db = client.db(dbname);
         const users = db.collection('users');
 
-        const cursor = users.find({username: uname});
+        const cursor = users.find({_id: uname.toUpperCase()});
         console.log("async");
         for await (const doc of cursor) {
             console.log(doc);
@@ -108,7 +109,7 @@ async function getGamesByName(gname) {
         const db = client.db(dbname);
         const games = db.collection('games');
 
-        const cursor = games.find({name: gname});
+        const cursor = games.find({_id: gname.toUpperCase()});
         console.log("async");
         for await (const doc of cursor) {
             console.log(doc);
@@ -138,36 +139,60 @@ async function getAchievementsByGame(gname) {
     }
 }
 
-//Addition Functions
+//Completely new record Functions
 async function addUser(uname, pword) {
     const newUser = {
-        $_id : uname.toUpperCase(),
+        _id: uname.toUpperCase(),
         username: uname,
         password: pword
     };
+
     try {
         await client.connect();
 
         const db = client.db(dbname);
         const users = db.collection('users');
-        const result = users.insertOne(newUser);
+        await users.insertOne(newUser, function (err, result) {
 
-        console.log(
-            `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`,
-        );
+            console.log(result)
+        });
     } finally {
         await client.close();
     }
 
 }
 
-getAllUsers().catch(console.dir);
+async function addGame(gname, system){
+    const newGame = {
+        _id: gname.toUpperCase() + system.toUpperCase(),
+        name: gname,
+        system: system
+    };
+
+    try {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const games = db.collection('games');
+        await games.insertOne(newGame, function (err, result) {
+
+            console.log(result)
+        });
+    } finally {
+        await client.close();
+    }
+}
+
+//Testing The Functions here.  Will delete.
+
+//getAllUsers().catch(console.dir);
+//getAllGames().catch(console.dir);
+//getAllAchievements().catch(console.dir);
+//getAllMessages().catch(console.dir);
+//getUserByName('melodyrose').catch(console.dir);
+//getGamesByName('Test Game').catch(console.dir);
+//getAchievementsByGame('World of Goo').catch(console.dir);
+//addUser('newerUser', 'newerunsecure').catch(console.dir);
+//getAllUsers().catch(console.dir);
+addGame('Monster Hunter World', 'PS4').catch(console.dir);
 getAllGames().catch(console.dir);
-getAllAchievements().catch(console.dir);
-getAllMessages().catch(console.dir);
-getUserByName('melodyrose').catch(console.dir);
-getGamesByName('Test Game').catch(console.dir);
-getAchievementsByGame('World of Goo').catch(console.dir);
-addUser('newUser', 'unsecure').catch(console.dir);
-
-

@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "mongodb": "^3.6.4"
+    "mongodb": "^3.6.4",
+    "search-index": "^2.2.0"
   }
 }
