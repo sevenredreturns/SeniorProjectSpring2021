@@ -1,60 +1,83 @@
-let MongoClient = require('mongodb').MongoClient;
-let url = 'mongodb://localhost:27017';
+const {MongoClient} = require('mongodb');
+const uri = 'mongodb://localhost:27017';
+const dbname = 'achievement-arena';
 
-function getAllGames() {
-    MongoClient.connect(url, function (err, db) {
-        if (err) throw err;
-        let dbo = db.db('achievement-arena');
+const client = new MongoClient(uri);
 
-        dbo.collection('games').find({}).toArray(function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            db.close();
-        });
-    });
+async function getAllGames() {
+
+    try {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const games = db.collection('games');
+
+        const cursor = games.find({});
+        console.log("async");
+        for await (const doc of cursor) {
+            console.log(doc);
+        }
+    } finally {
+        await client.close();
+    }
 }
 
-function getAllUsers(){
-    MongoClient.connect(url, function (err, db) {
-        if (err) throw err;
-        let dbo = db.db('achievement-arena');
+async function getAllUsers() {
 
-        dbo.collection('users').find({}).toArray(function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            db.close();
-        });
-    });
+    try {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const users = db.collection('users');
+
+        const cursor = users.find({});
+        console.log("async");
+        for await (const doc of cursor) {
+            console.log(doc);
+        }
+    } finally {
+        await client.close();
+    }
 }
 
-function getAllAchievements(){
-    MongoClient.connect(url, function (err, db) {
-        if (err) throw err;
-        let dbo = db.db('achievement-arena');
+async function getAllAchievements() {
 
-        dbo.collection('achievements').find({}).toArray(function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            db.close();
-        });
-    });
+    try {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const achievements = db.collection('achievements');
+
+        const cursor = achievements.find({});
+        console.log("async");
+        for await (const doc of cursor) {
+            console.log(doc);
+        }
+    } finally {
+        await client.close();
+    }
 }
 
-function getAllMessages(){
-    MongoClient.connect(url, function (err, db) {
-        if (err) throw err;
-        let dbo = db.db('achievement-arena');
+async function getAllMessages() {
 
-        dbo.collection('messages').find({}).toArray(function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            db.close();
-        });
-    });
+    try {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const messages = db.collection('messages');
+
+        const cursor = messages.find({});
+        console.log("async");
+        for await (const doc of cursor) {
+            console.log(doc);
+        }
+    } finally {
+        await client.close();
+    }
 }
 
-getAllUsers();
-getAllGames();
-getAllAchievements();
-getAllMessages();
+getAllUsers().catch(console.dir);
+getAllGames().catch(console.dir);
+getAllAchievements().catch(console.dir);
+getAllMessages().catch(console.dir);
 
