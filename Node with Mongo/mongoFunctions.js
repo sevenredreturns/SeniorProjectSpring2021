@@ -82,6 +82,25 @@ async function getAllMessages() {
     }
 }
 
+async function getAllLeaderboards() {
+
+    try {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const leaderboards = db.collection('leaderboards');
+
+        const cursor = leaderboards.find({});
+        console.log("async");
+        for await (const doc of cursor) {
+            console.log(doc);
+        }
+        await cursor.close();
+    } finally {
+        await client.close();
+    }
+}
+
 //Search Functions
 async function getUserByName(uname) {
     try {
@@ -162,7 +181,7 @@ async function addUser(uname, pword) {
 
 }
 
-async function addGame(gname, system){
+async function addGame(gname, system) {
     const newGame = {
         _id: gname.toUpperCase() + system.toUpperCase(),
         name: gname,
@@ -183,10 +202,27 @@ async function addGame(gname, system){
     }
 }
 
-async function addAchievement(gname, achname, achdesc, points)
-{
+//Second parameter is an array.
+async function addAchievement(gname, cheevos) {
+    const newAchievement = {
+        game: gname,
+        steamAchievements: cheevos
+    };
 
+    try {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const achievements = db.collection('achievements');
+        await achievements.insertOne(newAchievement, function (err, result) {
+
+            console.log(result)
+        });
+    } finally {
+        await client.close();
+    }
 }
+
 
 //Testing The Functions here.  Will delete.
 
@@ -199,5 +235,11 @@ async function addAchievement(gname, achname, achdesc, points)
 //getAchievementsByGame('World of Goo').catch(console.dir);
 //addUser('newerUser', 'newerunsecure').catch(console.dir);
 //getAllUsers().catch(console.dir);
-addGame('Monster Hunter World', 'PS4').catch(console.dir);
-getAllGames().catch(console.dir);
+//addGame('Monster Hunter World', 'PS4').catch(console.dir);
+//getAllGames().catch(console.dir);
+//addAchievement('Monster Hunter World', [{
+//    humanID: "1",
+//    title: "Sapphire Star",
+//    description: "Beat the game"
+//}, {humanID: "2", title: "Test Cheevo", description: "Seriously just testing"}]).catch(console.dir);
+//getAllAchievements().catch(console.dir);
