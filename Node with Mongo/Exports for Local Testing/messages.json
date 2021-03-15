@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "604231511ac09929960686da"
+  },
+  "messageParticipents": [
+    "userOne",
+    "userTwo"
+  ],
+  "messageContents": [
+    {
+      "messageID": "1",
+      "userName": "userOne",
+      "messageContents": "hello"
+    },
+    {
+      "messageID": "2",
+      "userName": "userTwo",
+      "messageContents": "Go Away"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "604241141ac09929960686e1"
+  },
+  "messageParticipents": [
+    "userThree",
+    "userFour"
+  ],
+  "messageContents": [
+    {
+      "messageID": "3",
+      "userName": "userThree",
+      "messageContents": "I am not awake enough for this"
+    },
+    {
+      "messageID": "4",
+      "userName": "userFour",
+      "messageContents": "Can I go to bed now?"
+    }
+  ]
+}]
