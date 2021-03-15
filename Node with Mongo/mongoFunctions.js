@@ -4,6 +4,7 @@ const dbname = 'achievement-arena';
 
 const client = new MongoClient(uri);
 
+//General Mass Retrieval Functions
 async function getAllGames() {
 
     try {
@@ -80,6 +81,7 @@ async function getAllMessages() {
     }
 }
 
+//Search Functions
 async function getUserByName(uname){
     try {
         await client.connect();
@@ -117,9 +119,12 @@ async function getGamesByName(gname){
 
 }
 
+//Addition Functions
+
 //getAllUsers().catch(console.dir);
 //getAllGames().catch(console.dir);
 //getAllAchievements().catch(console.dir);
 //getAllMessages().catch(console.dir);
 getUserByName('melodyrose').catch(console.dir);
 getGamesByName('Test Game').catch(console.dir);
+
