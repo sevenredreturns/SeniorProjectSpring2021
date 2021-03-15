@@ -139,6 +139,27 @@ async function getAchievementsByGame(gname) {
 }
 
 //Addition Functions
+async function addUser(uname, pword) {
+    const newUser = {
+        $_id : uname.toUpperCase(),
+        username: uname,
+        password: pword
+    };
+    try {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const users = db.collection('users');
+        const result = users.insertOne(newUser);
+
+        console.log(
+            `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`,
+        );
+    } finally {
+        await client.close();
+    }
+
+}
 
 getAllUsers().catch(console.dir);
 getAllGames().catch(console.dir);
@@ -147,5 +168,6 @@ getAllMessages().catch(console.dir);
 getUserByName('melodyrose').catch(console.dir);
 getGamesByName('Test Game').catch(console.dir);
 getAchievementsByGame('World of Goo').catch(console.dir);
+addUser('newUser', 'unsecure').catch(console.dir);
 
 
