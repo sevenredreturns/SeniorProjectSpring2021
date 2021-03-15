@@ -17,6 +17,7 @@ async function getAllGames() {
         for await (const doc of cursor) {
             console.log(doc);
         }
+        await cursor.close();
     } finally {
         await client.close();
     }
@@ -35,6 +36,7 @@ async function getAllUsers() {
         for await (const doc of cursor) {
             console.log(doc);
         }
+        await cursor.close();
     } finally {
         await client.close();
     }
@@ -53,6 +55,7 @@ async function getAllAchievements() {
         for await (const doc of cursor) {
             console.log(doc);
         }
+        await cursor.close();
     } finally {
         await client.close();
     }
@@ -71,13 +74,52 @@ async function getAllMessages() {
         for await (const doc of cursor) {
             console.log(doc);
         }
+        await cursor.close();
     } finally {
         await client.close();
     }
 }
 
-getAllUsers().catch(console.dir);
-getAllGames().catch(console.dir);
-getAllAchievements().catch(console.dir);
-getAllMessages().catch(console.dir);
+async function getUserByName(uname){
+    try {
+        await client.connect();
 
+        const db = client.db(dbname);
+        const users = db.collection('users');
+
+        const cursor = users.find({ username: uname});
+        console.log("async");
+        for await (const doc of cursor) {
+            console.log(doc);
+        }
+        await cursor.close();
+    } finally {
+        await client.close();
+    }
+
+}
+async function getGamesByName(gname){
+    try {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const games = db.collection('games');
+
+        const cursor = games.find({ name: gname});
+        console.log("async");
+        for await (const doc of cursor) {
+            console.log(doc);
+        }
+        await cursor.close();
+    } finally {
+        await client.close();
+    }
+
+}
+
+//getAllUsers().catch(console.dir);
+//getAllGames().catch(console.dir);
+//getAllAchievements().catch(console.dir);
+//getAllMessages().catch(console.dir);
+getUserByName('melodyrose').catch(console.dir);
+getGamesByName('Test Game').catch(console.dir);
