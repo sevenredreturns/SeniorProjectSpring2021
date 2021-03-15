@@ -82,14 +82,14 @@ async function getAllMessages() {
 }
 
 //Search Functions
-async function getUserByName(uname){
+async function getUserByName(uname) {
     try {
         await client.connect();
 
         const db = client.db(dbname);
         const users = db.collection('users');
 
-        const cursor = users.find({ username: uname});
+        const cursor = users.find({username: uname});
         console.log("async");
         for await (const doc of cursor) {
             console.log(doc);
@@ -100,14 +100,15 @@ async function getUserByName(uname){
     }
 
 }
-async function getGamesByName(gname){
+
+async function getGamesByName(gname) {
     try {
         await client.connect();
 
         const db = client.db(dbname);
         const games = db.collection('games');
 
-        const cursor = games.find({ name: gname});
+        const cursor = games.find({name: gname});
         console.log("async");
         for await (const doc of cursor) {
             console.log(doc);
@@ -117,6 +118,24 @@ async function getGamesByName(gname){
         await client.close();
     }
 
+}
+
+async function getAchievementsByGame(gname) {
+    try {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const achievements = db.collection('achievements');
+
+        const cursor = achievements.find({game: gname});
+        console.log("async");
+        for await (const doc of cursor) {
+            console.log(doc);
+        }
+        await cursor.close();
+    } finally {
+        await client.close();
+    }
 }
 
 //Addition Functions
@@ -127,4 +146,5 @@ async function getGamesByName(gname){
 //getAllMessages().catch(console.dir);
 getUserByName('melodyrose').catch(console.dir);
 getGamesByName('Test Game').catch(console.dir);
+getAchievementsByGame('World of Goo');
 
