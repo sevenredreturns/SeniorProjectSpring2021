@@ -183,6 +183,11 @@ async function addGame(gname, system){
     }
 }
 
+async function addAchievement(gname, achname, achdesc, points)
+{
+
+}
+
 //Testing The Functions here.  Will delete.
 
 //getAllUsers().catch(console.dir);
