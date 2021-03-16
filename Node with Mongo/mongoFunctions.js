@@ -6,9 +6,11 @@ const dbname = 'achievement-arena';
 const client = new MongoClient(uri);
 
 //General Mass Retrieval Functions
-async function getAllGames() {
+async function getAllGames()
+{
 
-    try {
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
@@ -16,18 +18,22 @@ async function getAllGames() {
 
         const cursor = games.find({});
         console.log("async");
-        for await (const doc of cursor) {
+        for await (const doc of cursor)
+        {
             console.log(doc);
         }
         await cursor.close();
-    } finally {
+    } finally
+    {
         await client.close();
     }
 }
 
-async function getAllUsers() {
+async function getAllUsers()
+{
 
-    try {
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
@@ -35,18 +41,22 @@ async function getAllUsers() {
 
         const cursor = users.find({});
         console.log("async");
-        for await (const doc of cursor) {
+        for await (const doc of cursor)
+        {
             console.log(doc);
         }
         await cursor.close();
-    } finally {
+    } finally
+    {
         await client.close();
     }
 }
 
-async function getAllAchievements() {
+async function getAllAchievements()
+{
 
-    try {
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
@@ -54,18 +64,22 @@ async function getAllAchievements() {
 
         const cursor = achievements.find({});
         console.log("async");
-        for await (const doc of cursor) {
+        for await (const doc of cursor)
+        {
             console.log(doc);
         }
         await cursor.close();
-    } finally {
+    } finally
+    {
         await client.close();
     }
 }
 
-async function getAllMessages() {
+async function getAllMessages()
+{
 
-    try {
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
@@ -73,18 +87,22 @@ async function getAllMessages() {
 
         const cursor = messages.find({});
         console.log("async");
-        for await (const doc of cursor) {
+        for await (const doc of cursor)
+        {
             console.log(doc);
         }
         await cursor.close();
-    } finally {
+    } finally
+    {
         await client.close();
     }
 }
 
-async function getAllLeaderboards() {
+async function getAllLeaderboards()
+{
 
-    try {
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
@@ -92,18 +110,22 @@ async function getAllLeaderboards() {
 
         const cursor = leaderboards.find({});
         console.log("async");
-        for await (const doc of cursor) {
+        for await (const doc of cursor)
+        {
             console.log(doc);
         }
         await cursor.close();
-    } finally {
+    } finally
+    {
         await client.close();
     }
 }
 
 //Search Functions
-async function getUserByName(uname) {
-    try {
+async function getUserByName(uname)
+{
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
@@ -111,18 +133,22 @@ async function getUserByName(uname) {
 
         const cursor = users.find({_id: uname.toUpperCase()});
         console.log("async");
-        for await (const doc of cursor) {
+        for await (const doc of cursor)
+        {
             console.log(doc);
         }
         await cursor.close();
-    } finally {
+    } finally
+    {
         await client.close();
     }
 
 }
 
-async function getGamesByName(gname) {
-    try {
+async function getGamesByName(gname)
+{
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
@@ -130,18 +156,22 @@ async function getGamesByName(gname) {
 
         const cursor = games.find({_id: gname.toUpperCase()});
         console.log("async");
-        for await (const doc of cursor) {
+        for await (const doc of cursor)
+        {
             console.log(doc);
         }
         await cursor.close();
-    } finally {
+    } finally
+    {
         await client.close();
     }
 
 }
 
-async function getAchievementsByGame(gname) {
-    try {
+async function getAchievementsByGame(gname)
+{
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
@@ -149,81 +179,124 @@ async function getAchievementsByGame(gname) {
 
         const cursor = achievements.find({game: gname});
         console.log("async");
-        for await (const doc of cursor) {
+        for await (const doc of cursor)
+        {
             console.log(doc);
         }
         await cursor.close();
-    } finally {
+    } finally
+    {
         await client.close();
     }
 }
 
 //Completely new record Functions
-async function addUser(uname, pword) {
+async function addUser(uname, pword)
+{
     const newUser = {
         _id: uname.toUpperCase(),
         username: uname,
         password: pword
     };
 
-    try {
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
         const users = db.collection('users');
-        await users.insertOne(newUser, function (err, result) {
+        await users.insertOne(newUser, function (err, result)
+        {
 
             console.log(result)
         });
-    } finally {
+    } finally
+    {
         await client.close();
     }
 
 }
 
-async function addGame(gname, system) {
+async function addGame(gname, system)
+{
     const newGame = {
         _id: gname.toUpperCase() + system.toUpperCase(),
         name: gname,
         system: system
     };
 
-    try {
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
         const games = db.collection('games');
-        await games.insertOne(newGame, function (err, result) {
+        await games.insertOne(newGame, function (err, result)
+        {
 
             console.log(result)
         });
-    } finally {
+    } finally
+    {
         await client.close();
     }
 }
 
 //Second parameter is an array.
-async function addAchievement(gname, cheevos) {
+async function addAchievement(gname, cheevos)
+{
     const newAchievement = {
         game: gname,
         steamAchievements: cheevos
     };
 
-    try {
+    try
+    {
         await client.connect();
 
         const db = client.db(dbname);
         const achievements = db.collection('achievements');
-        await achievements.insertOne(newAchievement, function (err, result) {
+        await achievements.insertOne(newAchievement, function (err, result)
+        {
 
             console.log(result)
         });
-    } finally {
+    } finally
+    {
         await client.close();
     }
 }
 
+async function addLeaderboard(game)
+{
+    const newLeaderboard = {
+        game: game,
+        rankings: []
+    }
 
+    try
+    {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const leaderboards = db.collection('leaderboards');
+        await leaderboards.insertOne(newLeaderboard, function (err, result)
+        {
+
+            console.log(result)
+        });
+    } finally
+    {
+        await client.close();
+    }
+}
+
+//Edit Profile Functions
+
+async function editFName(uname, fname)
+{
+
+}
 //Testing The Functions here.  Will delete.
 
 //getAllUsers().catch(console.dir);
