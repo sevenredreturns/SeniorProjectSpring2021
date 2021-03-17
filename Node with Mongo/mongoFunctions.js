@@ -329,6 +329,40 @@ async function editLName(uname, lname)
     }
 }
 
+async function editPassword(uname, newpass)
+{
+    const query = {_id: uname.toUpperCase()}
+    const update = {$set: {password: newpass}};
+    const options = {};
+    try
+    {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const users = db.collection('users');
+        await users.updateOne(query, update, options);
+    } finally
+    {
+        await client.close();
+    }
+}
+
+module.exports = {
+    getAllUsers,
+    getAllGames,
+    getAllAchievements,
+    getAllMessages,
+    getUserByName,
+    getGamesByName,
+    getAchievementsByGame,
+    addUser,
+    addGame,
+    addAchievement,
+    editFName,
+    editLName,
+    editPassword
+};
+
 //Testing The Functions here.  Will delete.
 
 //getAllUsers().catch(console.dir);
