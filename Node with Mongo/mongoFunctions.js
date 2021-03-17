@@ -347,6 +347,46 @@ async function editPassword(uname, newpass)
     }
 }
 
+async function addFriend(uname,frienduname)
+{
+    const query = {_id: uname.toUpperCase()}
+    const update = {$push: {friends: frienduname}};
+    const options = {};
+    try
+    {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const users = db.collection('users');
+        await users.updateOne(query, update, options);
+    } finally
+    {
+        await client.close();
+    }
+}
+
+async function addOwnedGame(uname,game)
+{
+    const query = {_id: uname.toUpperCase()}
+    const update = {$push: {ownedGames: game}};
+    const options = {};
+    try
+    {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const users = db.collection('users');
+        await users.updateOne(query, update, options);
+    } finally
+    {
+        await client.close();
+    }
+}
+async function addUserAchievement(uname, game, achievement)
+{
+
+}
+
 module.exports = {
     getAllUsers,
     getAllGames,
@@ -360,7 +400,8 @@ module.exports = {
     addAchievement,
     editFName,
     editLName,
-    editPassword
+    editPassword,
+    addFriend
 };
 
 //Testing The Functions here.  Will delete.
@@ -383,3 +424,4 @@ module.exports = {
 //}, {humanID: "2", title: "Test Cheevo", description: "Seriously just testing"}]).catch(console.dir);
 //getAllAchievements().catch(console.dir);
 //editFName("newuser", "Test").catch(console.dir);
+//addFriend("newuser","melodyrose").catch(console.dir);
