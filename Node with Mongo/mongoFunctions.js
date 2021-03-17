@@ -295,8 +295,40 @@ async function addLeaderboard(game)
 
 async function editFName(uname, fname)
 {
+    const query = {_id: uname.toUpperCase()}
+    const update = {$set: {firstName: fname}};
+    const options = {};
+    try
+    {
+        await client.connect();
 
+        const db = client.db(dbname);
+        const users = db.collection('users');
+        await users.updateOne(query, update, options);
+    } finally
+    {
+        await client.close();
+    }
 }
+
+async function editLName(uname, lname)
+{
+    const query = {_id: uname.toUpperCase()}
+    const update = {$set: {lastName: lname}};
+    const options = {};
+    try
+    {
+        await client.connect();
+
+        const db = client.db(dbname);
+        const users = db.collection('users');
+        await users.updateOne(query, update, options);
+    } finally
+    {
+        await client.close();
+    }
+}
+
 //Testing The Functions here.  Will delete.
 
 //getAllUsers().catch(console.dir);
@@ -316,3 +348,4 @@ async function editFName(uname, fname)
 //    description: "Beat the game"
 //}, {humanID: "2", title: "Test Cheevo", description: "Seriously just testing"}]).catch(console.dir);
 //getAllAchievements().catch(console.dir);
+//editFName("newuser", "Test").catch(console.dir);
