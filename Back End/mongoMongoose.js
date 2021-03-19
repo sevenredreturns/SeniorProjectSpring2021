@@ -25,5 +25,5 @@ const leaderboardSchema = new mongoose.Schema({
 });
 
 const messageSchema = new mongoose.Schema({
-
+    
 });
