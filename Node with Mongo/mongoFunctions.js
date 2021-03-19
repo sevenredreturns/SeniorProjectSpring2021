@@ -403,7 +403,8 @@ module.exports = {
     editPassword,
     addFriend,
     addOwnedGame,
-    addUserAchievement
+    addUserAchievement,
+    getAllLeaderboards
 };
 
 //Testing The Functions here.  Will delete.
