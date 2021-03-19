@@ -401,7 +401,9 @@ module.exports = {
     editFName,
     editLName,
     editPassword,
-    addFriend
+    addFriend,
+    addOwnedGame,
+    addUserAchievement
 };
 
 //Testing The Functions here.  Will delete.
