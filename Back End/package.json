@@ -2,6 +2,7 @@
   "dependencies": {
     "mongodb": "^3.6.4",
     "mongoose": "^5.12.0",
+    "mongoose-autopopulate": "^0.12.3",
     "search-index": "^2.2.0"
   }
 }
