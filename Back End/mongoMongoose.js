@@ -47,6 +47,12 @@ db.once('open', function ()
 
     });
     console.log("Connected!")
+
+    const user = mongoose.model('user', userSchema);
+    const game = mongoose.model('game', gameSchema);
+    const achievements = mongoose.model('achievements', achievementSchema);
+    const leaderboard = mongoose.model('leaderboard', leaderboardSchema);
+    const message = mongoose.model('message', messageSchema);
 });
 
 
