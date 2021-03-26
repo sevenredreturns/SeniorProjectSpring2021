@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost/achievement-arena', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -46,13 +46,19 @@ db.once('open', function ()
     const messageSchema = new mongoose.Schema({
 
     });
-    console.log("Connected!")
 
+    console.log("Connected!");
     const user = mongoose.model('user', userSchema);
+    console.log("User Schema Made");
     const game = mongoose.model('game', gameSchema);
+    console.log("Game Schema Made");
     const achievements = mongoose.model('achievements', achievementSchema);
+    console.log("Achievement Schema Made");
     const leaderboard = mongoose.model('leaderboard', leaderboardSchema);
+    console.log("Leaderboard Schema Made");
     const message = mongoose.model('message', messageSchema);
-});
+    console.log("Message Schema Made");
 
+
+});
 
