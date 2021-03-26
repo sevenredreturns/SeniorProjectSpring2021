@@ -1,7 +1,5 @@
 [{
-  "_id": {
-    "$oid": "604197b279b96d7993eb6b4e"
-  },
+  "_id": "MELODYROSE",
   "otherProfiles": {
     "steam": "76561198006215063",
     "gog": "sevenredreturns",
@@ -47,4 +45,16 @@
   ],
   "firstName": "Theresa",
   "lastName": "Morris"
+},{
+  "_id": "NEWUSER",
+  "username": "newUser",
+  "password": "unsecure",
+  "firstName": "Test",
+  "friends": [
+    "melodyrose"
+  ]
+},{
+  "_id": "NEWERUSER",
+  "username": "newerUser",
+  "password": "newerunsecure"
 }]
