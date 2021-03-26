@@ -10,8 +10,10 @@ const TrophyRoom = () => {
   );
 }
 
+
 const Profile = () => {
   const { url, path } = useRouteMatch();
+  const info = "hello";
 
   return (
     <div>
@@ -23,7 +25,7 @@ const Profile = () => {
         <p>Info 2</p>
       </div>
       <div class = "container">
-        <p>Info 3</p>
+        <p>Info 3 TEST {info}</p>
       </div>
       <div>
         <li>
