@@ -18,10 +18,6 @@ For Issues relating directly to this SteamAuthentication Library feel free to cr
 **For any general PHP or SQL problems please use [stackoverflow](http://stackoverflow.com/) or similar,
 else we will generally close these straight away if created here, thanks!**
 
-## Download
-
-Please note the main repository is constantly being updated so may contain bugs and other bleeding edge risks. For a stable download please visit the releases page: https://github.com/SmItH197/SteamAuthentication/releases
-
 ## Foreword
 
 Thanks goes to:
