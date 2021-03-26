@@ -45,4 +45,21 @@
       "description": "There is a secret"
     }
   ]
+},{
+  "_id": {
+    "$oid": "604fc90c469cdf1690679694"
+  },
+  "game": "Monster Hunter World",
+  "steamAchievements": [
+    {
+      "humanID": "1",
+      "title": "Sapphire Star",
+      "description": "Beat the game"
+    },
+    {
+      "humanID": "2",
+      "title": "Test Cheevo",
+      "description": "Seriously just testing"
+    }
+  ]
 }]
