@@ -428,3 +428,4 @@ module.exports = {
 //getAllAchievements().catch(console.dir);
 //editFName("newuser", "Test").catch(console.dir);
 //addFriend("newuser","melodyrose").catch(console.dir);
+getUserByName('melodyrose');
