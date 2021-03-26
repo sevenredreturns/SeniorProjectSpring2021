@@ -1,9 +1,8 @@
-const {MongoClient} = require('mongodb');
-const si = require('search-index');
+const MongoClient = require('mongodb').MongoClient;
 const uri = 'mongodb://localhost:27017';
 const dbname = 'achievement-arena';
 
-const client = new MongoClient(uri);
+const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //General Mass Retrieval Functions
 async function getAllGames()
@@ -21,6 +20,7 @@ async function getAllGames()
         for await (const doc of cursor)
         {
             console.log(doc);
+            return doc;
         }
         await cursor.close();
     } finally
@@ -131,19 +131,43 @@ async function getUserByName(uname)
         const db = client.db(dbname);
         const users = db.collection('users');
 
-        const cursor = users.find({_id: uname.toUpperCase()});
-        console.log("async");
-        for await (const doc of cursor)
+        const query = {_id: uname.toUpperCase()};
+        const options = {
+            projection: {
+                otherProfiles: 1,
+                ownedGames: 1,
+                username: 1,
+                friends: 1,
+                firstName: 1,
+                lastName: 1
+            }
+        };
+        return new Promise((resolve, reject) =>
         {
-            console.log(doc);
-        }
-        await cursor.close();
+            try
+            {
+                users.findOne(query, options);
+            } catch (e)
+            {
+                return reject(e)
+            }
+        })
     } finally
     {
         await client.close();
     }
-
 }
+
+/*async function getUserByName(uname)
+ {
+ return MongoClient.connect('mongodb://localhost:27017/achievement-arena').then(function(db) {
+ const users = db.collection('users');
+
+ return users.find({_id: uname.toUpperCase()}).toArray();
+ }).then(function(items) {
+ return items;
+ });
+ }*/
 
 async function getGamesByName(gname)
 {
@@ -347,7 +371,7 @@ async function editPassword(uname, newpass)
     }
 }
 
-async function addFriend(uname,frienduname)
+async function addFriend(uname, frienduname)
 {
     const query = {_id: uname.toUpperCase()}
     const update = {$push: {friends: frienduname}};
@@ -365,7 +389,7 @@ async function addFriend(uname,frienduname)
     }
 }
 
-async function addOwnedGame(uname,game)
+async function addOwnedGame(uname, game)
 {
     const query = {_id: uname.toUpperCase()}
     const update = {$push: {ownedGames: game}};
@@ -382,6 +406,7 @@ async function addOwnedGame(uname,game)
         await client.close();
     }
 }
+
 async function addUserAchievement(uname, game, achievement)
 {
 
@@ -407,24 +432,4 @@ module.exports = {
     getAllLeaderboards
 };
 
-//Testing The Functions here.  Will delete.
-
-//getAllUsers().catch(console.dir);
-//getAllGames().catch(console.dir);
-//getAllAchievements().catch(console.dir);
-//getAllMessages().catch(console.dir);
-//getUserByName('melodyrose').catch(console.dir);
-//getGamesByName('Test Game').catch(console.dir);
-//getAchievementsByGame('World of Goo').catch(console.dir);
-//addUser('newerUser', 'newerunsecure').catch(console.dir);
-//getAllUsers().catch(console.dir);
-//addGame('Monster Hunter World', 'PS4').catch(console.dir);
-//getAllGames().catch(console.dir);
-//addAchievement('Monster Hunter World', [{
-//    humanID: "1",
-//    title: "Sapphire Star",
-//    description: "Beat the game"
-//}, {humanID: "2", title: "Test Cheevo", description: "Seriously just testing"}]).catch(console.dir);
-//getAllAchievements().catch(console.dir);
-//editFName("newuser", "Test").catch(console.dir);
-//addFriend("newuser","melodyrose").catch(console.dir);
+console.dir(getUserByName('melodyrose'));
