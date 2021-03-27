@@ -60,23 +60,27 @@ console.log("Leaderboard Schema Made");
 const message = mongoose.model('message', messageSchema);
 console.log("Message Schema Made");
 
-createUser = (req, res) => {
+addUser = (req, res) => {
+
+    const newUser = new user({
+        username: req.body.username,
+
+    })
+}
+
+addGame = (req, res) => {
 
 }
 
-createGame = (req, res) => {
+addGameAchievements = (req, res) => {
 
 }
 
-createGameAchievements = (req, res) => {
+addLeaderboard = (req, res) => {
 
 }
 
-createLeaderboard = (req, res) => {
-
-}
-
-createMessage = (req, res) => {
+addMessage = (req, res) => {
 
 }
 

@@ -409,16 +409,16 @@ module.exports = {
 
 //Testing The Functions here.  Will delete.
 
-//getAllUsers().catch(console.dir);
-//getAllGames().catch(console.dir);
-//getAllAchievements().catch(console.dir);
-//getAllMessages().catch(console.dir);
-//getUserByName('melodyrose').catch(console.dir);
-//getGamesByName('Test Game').catch(console.dir);
-//getAchievementsByGame('World of Goo').catch(console.dir);
+getAllUsers().catch(console.dir);
+getAllGames().catch(console.dir);
+getAllAchievements().catch(console.dir);
+getAllMessages().catch(console.dir);
+getUserByName('melodyrose').catch(console.dir);
+getGamesByName('Test Game').catch(console.dir);
+getAchievementsByGame('World of Goo').catch(console.dir);
 //addUser('newerUser', 'newerunsecure').catch(console.dir);
 //getAllUsers().catch(console.dir);
-//addGame('Monster Hunter World', 'PS4').catch(console.dir);
+addGame('IDK a game I guess', 'PC').catch(console.dir);
 //getAllGames().catch(console.dir);
 //addAchievement('Monster Hunter World', [{
 //    humanID: "1",
