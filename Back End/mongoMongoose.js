@@ -17,7 +17,12 @@ const userSchema = new mongoose.Schema({
             psn: String,
             xbox: String
         }
-    ]
+    ],
+    ownedGames: [{
+        steamNumber: String,
+
+    }]
+
 });
 
 userSchema.plugin(require('mongoose-autopopulate'));
@@ -26,7 +31,8 @@ const gameSchema = new mongoose.Schema({
     name: String,
     steamID: String,
     gogID: String,
-    system: String
+    system: String,
+    score: Number
 });
 
 const achievementSchema = new mongoose.Schema({
@@ -41,7 +47,13 @@ const achievementSchema = new mongoose.Schema({
 });
 
 const leaderboardSchema = new mongoose.Schema({
-
+    game: String,
+    places: [{
+        user: String,
+        place: Number,
+        score: Number
+    }
+    ]
 });
 
 const messageSchema = new mongoose.Schema({
