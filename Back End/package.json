@@ -1,7 +1,7 @@
 {
-  "name": "Achievement Arena",
+  "name": "Achievement-Arena",
   "version": "0.0.1",
-  "description" : "Achievement Arena Site: Senior Project 2021",
+  "description": "Achievement Arena Site: Senior Project 2021",
   "main": "index.js",
   "scripts": {
     "test": "Echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,7 @@
     "mongodb": "^3.6.4",
     "mongoose": "^5.12.2",
     "mongoose-autopopulate": "^0.12.3",
-    "search-index": "^2.2.0"
+    "search-index": "^2.2.0",
+    "yarn": "^1.22.10"
   }
 }

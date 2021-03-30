@@ -1,3 +1,5 @@
+const user = require('../models/user.model.js');
+
 exports.addUser = (req, res) =>
 {
 
