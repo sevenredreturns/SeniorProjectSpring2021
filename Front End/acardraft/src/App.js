@@ -7,6 +7,9 @@ import Leaderboards from "./Leaderboards";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
 
+const { Header, Footer, Content } = Layout;
+
+
 const Home = () => {
   const home = "homepage";
   return(
@@ -15,11 +18,11 @@ const Home = () => {
 
     <h2>Here is where the {home} is.</h2>
     <Divider plain>  Divider </Divider>
-    <Button type="primary">Button</Button>
+
 
   </Content>
-  <Footer>
-    Footer
+  <Footer style = {{position: "sticky", bottom: "0"}}>
+      <p style ={{fontSize: 'x-small',}}>Test</p>  <Button type="primary">Button</Button>
   </Footer>
   </Layout>
 )};
@@ -30,13 +33,13 @@ const Admin = () => (
   </div>
 );
 
-const { Header, Footer, Sider, Content } = Layout;
+
 
 export default function App() {
   return (
     <>
     <Layout>
-    <Header style={{ padding: '0 50px' }}>
+    <Header>
       <div>
       <Row gutter={16}>
         <Col className="gutter-row" span={6}>
@@ -52,6 +55,7 @@ export default function App() {
             <Link to="/admin"> Admin </Link>
         </Col>
         </Row>
+        </div>
 
      <Switch>
       <Route exact path="/"><Home /></Route>
@@ -59,10 +63,10 @@ export default function App() {
       <Route path="/leaderboards"><Leaderboards /></Route>
       <PrivateRoute path="/admin" component={Admin} />
     </Switch>
-   </div>
    </Header>
 
    </Layout>
+
    </>
  );
 }
