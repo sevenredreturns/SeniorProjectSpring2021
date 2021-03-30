@@ -386,7 +386,7 @@ async function addUserAchievement(uname, game, achievement)
 
 }
 
-module.exports = {
+/*module.exports = {
     getAllUsers,
     getAllGames,
     getAllAchievements,
@@ -404,7 +404,7 @@ module.exports = {
     addOwnedGame,
     addUserAchievement,
     getAllLeaderboards
-};
+};*/
 
 //Testing The Functions here.  Will delete.
 
