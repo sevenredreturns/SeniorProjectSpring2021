@@ -1,4 +1,11 @@
 {
+  "name": "Achievement Arena",
+  "version": "0.0.1",
+  "description" : "Achievement Arena Site: Senior Project 2021",
+  "main": "index.js",
+  "scripts": {
+    "test": "Echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
