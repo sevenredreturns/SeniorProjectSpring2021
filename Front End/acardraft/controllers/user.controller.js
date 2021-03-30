@@ -45,10 +45,9 @@ exports.getUserByID = (req, res) =>
 
 exports.getUserByName = (req, res) =>
 {
-    const query = user
-    where({username: req.params.username});
+    const query = user.where({username: req.params.username});
 
-    query.findOne.select('-__v'). then(user =>
+    query.findOne.select('-__v').then(user =>
     {
         res.status(200).json(user);
     }).catch(err =>
