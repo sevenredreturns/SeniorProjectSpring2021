@@ -52,7 +52,7 @@ exports.getUserByName = (req, res) =>
         res.status(200).json(user);
     }).catch(err =>
     {
-        if (err.kind === 'ObjectId')
+        if (err.kind === 'String')
         {
             return res.status(404).send(
                 {

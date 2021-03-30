@@ -1,6 +1,7 @@
 import React from "react";
 import {Link, Route, useParams, useRouteMatch } from "react-router-dom";
 import { Layout, Button, Divider, Row, Col } from 'antd';
+import * as UController from "controllers/user.controllers";
 
 const { Header, Footer, Content } = Layout;
 
@@ -17,10 +18,16 @@ const TrophyRoom = () => {
   );
 }
 
+async getUser(id){
+
+    const user = await (await fetch(`/api/${this.props.match.params.user}`)).json();
+    this.setState({item: user});
+}
 
 const Profile = () => {
   const { url, path } = useRouteMatch();
-  const userName = "Ian";
+  const {user} = this.state;
+
   const age = "27";
   const gender = "M";
   const location = "East Coast, US";
