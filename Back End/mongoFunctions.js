@@ -194,7 +194,6 @@ async function getAchievementsByGame(gname)
 async function addUser(uname, pword)
 {
     const newUser = {
-        _id: uname.toUpperCase(),
         username: uname,
         password: pword
     };
@@ -387,7 +386,7 @@ async function addUserAchievement(uname, game, achievement)
 
 }
 
-module.exports = {
+/*module.exports = {
     getAllUsers,
     getAllGames,
     getAllAchievements,
@@ -405,7 +404,7 @@ module.exports = {
     addOwnedGame,
     addUserAchievement,
     getAllLeaderboards
-};
+};*/
 
 //Testing The Functions here.  Will delete.
 
@@ -418,7 +417,8 @@ module.exports = {
 //getAchievementsByGame('World of Goo').catch(console.dir);
 //addUser('newerUser', 'newerunsecure').catch(console.dir);
 //getAllUsers().catch(console.dir);
-//addGame('Monster Hunter World', 'PS4').catch(console.dir);
+//addGame('IDK a game I guess', 'PC').catch(console.dir);
+addUser('IDTest2','IDTester').catch(console.dir);
 //getAllGames().catch(console.dir);
 //addAchievement('Monster Hunter World', [{
 //    humanID: "1",
