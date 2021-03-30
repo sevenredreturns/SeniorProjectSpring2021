@@ -15,28 +15,6 @@ mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true}
     .then(async () =>
     {
         console.log("Successfully connected to MongoDB.");
-        const users = [
-            {
-                username: 'test7'
-            },
-            {
-                username: 'test8'
-            },
-            {
-                username: 'test9'
-            }
-        ]
-
-        for (let i = 0; i < users.length; i++)
-        {
-            const newUser = new User({
-                username: users[i].username
-            });
-
-            //Save a user in the DB
-            await newUser.save();
-        }
-
 
     }).catch(err =>
 {
