@@ -10,7 +10,12 @@ const userSchema = new mongoose.Schema({
             psn: String,
             xbox: String
         }
-    ]
-});
+    ],
+    ownedGames: [{
+        steamNumber: String,
+        achievements: [Number]
+    }]
+
+})
 
 module.exports = mongoose.model('user', userSchema)

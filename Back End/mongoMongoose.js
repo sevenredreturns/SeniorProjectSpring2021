@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     ],
     ownedGames: [{
         steamNumber: String,
-
+        achievements: [Number]
     }]
 
 });
@@ -56,9 +56,7 @@ const leaderboardSchema = new mongoose.Schema({
     ]
 });
 
-const messageSchema = new mongoose.Schema({
-
-});
+const messageSchema = new mongoose.Schema({});
 
 console.log("Connected!");
 const user = mongoose.model('user', userSchema);
@@ -72,55 +70,116 @@ console.log("Leaderboard Schema Made");
 const message = mongoose.model('message', messageSchema);
 console.log("Message Schema Made");
 
-addUser = (req, res) => {
+addUser = (req, res) =>
+{
 
     const newUser = new user({
-        username: req.body.username,
-
+        username: req.body.username
     })
+
+    user.save().then(data =>
+    {
+        res.status(200).json(data);
+    }).catch(err =>
+    {
+        res.status(500).json({
+            message: "User failed to be added!",
+            error: err.message
+        });
+    });
 }
 
-addGame = (req, res) => {
-
+getUserByID = (req, res) =>
+{
+    user.findById(req.params.id).select('-__v')
+        .then(user =>
+        {
+            res.status(200).json(user);
+        }).catch(err =>
+    {
+        if (err.kind === 'ObjectId')
+        {
+            return res.status(404).send(
+                {
+                    message: "user not found with id " + req.params.id,
+                    error: err
+                });
+        }
+        return res.status(500).send(
+            {
+                message: "Error retrieving user with id " + req.params.id,
+                error: err
+            });
+    });
 }
 
-addGameAchievements = (req, res) => {
-
-}
-
-addLeaderboard = (req, res) => {
-
-}
-
-addMessage = (req, res) => {
-
-}
-
-getAllUsers = (req, res) => {
-
-}
-
-getAllGames = (req, res) => {
-
-}
-
-getAllAchievements = (req, res) => {
-
-}
-
-getAllLeaderboards = (req, res) => {
-
-}
-
-getAllMessages = (req, res) => {
-
-}
-
-getUserByName = (req, res) => {
-
-}
-
-getGameByName = (req, res) => {
+addGame = (req, res) =>
+{
 
 }
 
+addGameAchievements = (req, res) =>
+{
+
+}
+
+addLeaderboard = (req, res) =>
+{
+
+}
+
+addMessage = (req, res) =>
+{
+
+}
+
+getAllUsers = (req, res) =>
+{
+    user.find().select('-__v').then(userInfos => {
+        res.status(200).json(userInfos);
+    }).catch(error => {
+        console.log(error);
+
+        res.status(500).json({
+            message: "Error!",
+            error: error
+        });
+    });
+}
+
+getAllGames = (req, res) =>
+{
+
+}
+
+getAllAchievements = (req, res) =>
+{
+
+}
+
+getAllLeaderboards = (req, res) =>
+{
+
+}
+
+getAllMessages = (req, res) =>
+{
+
+}
+
+getUserByName = (req, res) =>
+{
+
+}
+
+getGameByName = (req, res) =>
+{
+
+}
+
+
+module.export = {}
+
+
+//Test Area:
+getAllUsers();
