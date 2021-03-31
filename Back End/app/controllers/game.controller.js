@@ -39,7 +39,7 @@ exports.getGameByID = (req, res) =>
         }
         return res.status(500).send(
             {
-                message: "Error retrieving user with id " + req.params.id,
+                message: "Error retrieving game with id " + req.params.id,
                 error: err
             });
     });
