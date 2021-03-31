@@ -5,7 +5,7 @@ const gameSchema = new mongoose.Schema({
     steamID: String,
     gogID: String,
     system: String,
-    score: Number
+    achievements: ObjectId
 });
 
 module.exports = mongoose.model('game', gameSchema)

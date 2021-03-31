@@ -1,9 +1,9 @@
 module.exports = function(app) {
-    var users = require('../controllers/user.controller.js');
+    var games = require('../controllers/game.controller.js');
 
-    app.post('/api/game', users.addUser);
-    app.get('/api/game/:id', users.getUserByID);
-    app.get('/api/game', users.getAllUsers);
-    app.put('/api/game', users.updateUser);
-    app.delete('/app/user/:id', users.deleteUser);
+    app.post('/api/game', games.addGame);
+    app.get('/api/game/:id', games.getGameByID);
+    app.get('/api/game', games.getAllGames);
+    app.put('/api/game', games.updateGame);
+    app.delete('/app/game/:id', games.deleteGame);
 }
