@@ -67,7 +67,7 @@ exports.getUserByName = (req, res) =>
             });
     });
 
-}
+};
 
 exports.getAllUsers = (req, res) =>
 {
