@@ -1,7 +1,7 @@
 import React from "react";
 import {Link, Route, useParams, useRouteMatch} from "react-router-dom";
 import {Layout, Button, Divider, Row, Col} from 'antd';
-import * as UController from "controllers/user.controllers.js";
+import * as UController from "../controllers/user.controller.js";
 
 const {Header, Footer, Content} = Layout;
 
