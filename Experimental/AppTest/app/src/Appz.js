@@ -6,6 +6,7 @@ import Playerpos from './Playerpos';
 import Leaderboard from './Leaderboard';
 import { Layout, Menu, Breadcrumb, Dropdown, Row, Col, Divider, Card, PageHeader } from 'antd';
 
+
 const { Header, Content, Footer } = Layout;
 
 const menu = (
