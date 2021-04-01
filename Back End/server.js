@@ -17,13 +17,13 @@ mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true}
         console.log("Successfully connected to MongoDB.");
         const users = [
             {
-                username: 'test7'
+                username: 'test11'
             },
             {
-                username: 'test8'
+                username: 'test12'
             },
             {
-                username: 'test9'
+                username: 'test13'
             }
         ]
 

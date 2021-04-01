@@ -1,12 +1,11 @@
 import React from "react";
 import {Link, Route, useParams, useRouteMatch} from "react-router-dom";
 import {Layout, Button, Divider, Row, Col} from 'antd';
-import * as UController from "controllers/user.controllers.js";
+//import * as UController from "../controllers/user.controller.js";
 
 const {Header, Footer, Content} = Layout;
 
-const TrophyRoom = () =>
-{
+const TrophyRoom = () => {
 
     return (
         <Layout>
@@ -19,15 +18,15 @@ const TrophyRoom = () =>
     );
 }
 
-async function getUser(id)
-{
+async function getUser(id) {
 
     const user = await (await fetch(`/api/user/${id}`)).json();
     this.setState({item: user});
 }
 
-const Profile = () =>
-{
+const Profile = () => {
+
+    getUser('60627f8adc5a882878a39bb8');
     const {url, path} = useRouteMatch();
     const {user} = this.state;
 
@@ -45,7 +44,7 @@ const Profile = () =>
                         <div class="container" name="Basics">
                             <Row gutter={16}>
                                 <Col className="gutter-row" span={6}>
-                                    <p>{userName}</p>
+                                    <p>{user.username}</p>
                                 </Col>
                                 <Col className="gutter-row" span={3}>
                                     <p>{age}, {gender}</p>
@@ -57,7 +56,7 @@ const Profile = () =>
                             <p>{desc}</p>
                         </div>
                         <div class="container" name="Games">
-                            <p>{games}</p>
+                            <p>{user.ownedGames}</p>
                         </div>
                         <div>
                             <li>

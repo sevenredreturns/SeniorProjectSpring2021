@@ -4,10 +4,10 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json())
 
 // Configuring the database
-const dbConfig = require('./app/config/mongodb.config.js');
+const dbConfig = require('./config/mongodb.config.js');
 const mongoose = require('mongoose');
 
-const User = require('./app/models/user.model.js');
+const User = require('./models/user.model.js');
 
 mongoose.Promise = global.Promise;
 
@@ -15,7 +15,27 @@ mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true}
     .then(async () =>
     {
         console.log("Successfully connected to MongoDB.");
+        const users = [
+            {
+                username: 'test11'
+            },
+            {
+                username: 'test12'
+            },
+            {
+                username: 'test13'
+            }
+        ]
 
+        for (let i = 0; i < users.length; i++)
+        {
+            const newUser = new User({
+                username: users[i].username
+            });
+
+            //Save a user in the DB
+            await newUser.save();
+        }
     }).catch(err =>
 {
     console.log('Could not connect to MongoDB');
