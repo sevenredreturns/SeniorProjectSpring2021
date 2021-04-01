@@ -1,25 +1,74 @@
-import logo from './logo.svg';
+import React from "react";
+import { Layout, Button, Divider, Row, Col } from 'antd';
 import './App.css';
+import { Link, Route, Switch } from "react-router-dom";
+import Profile from "./Profile";
+import Leaderboards from "./Leaderboards";
+import Login from "./Login";
+import PrivateRoute from "./PrivateRoute";
 
-function App() {
+
+
+const { Header, Footer, Content } = Layout;
+
+
+const Home = () => {
+  const home = "homepage";
+  return(
+  <Layout>
+  <Content>
+
+    <h2>Here is where the {home} is.</h2>
+    <Divider plain>  Divider </Divider>
+
+
+  </Content>
+  <Footer style = {{position: "sticky", bottom: "0"}}>
+      <p style ={{fontSize: 'x-small',}}>Test</p>  <Button type="primary">Button</Button>
+  </Footer>
+  </Layout>
+)};
+
+const Admin = () => (
+  <div>
+    <h2>Welcome admin!</h2>
+  </div>
+);
+
+
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+    <Layout>
+    <Header>
+      <div>
+      <Row gutter={16}>
+        <Col className="gutter-row" span={6}>
+            <Link to="/"> Home </Link>
+        </Col>
+        <Col className="gutter-row" span={6}>
+            <Link to="/profile"> Profile </Link>
+        </Col>
+        <Col className="gutter-row" span={6}>
+            <Link to="/leaderboards"> Leaderboards </Link>
+        </Col>
+        <Col className="gutter-row" span={6}>
+            <Link to="/admin"> Admin </Link>
+        </Col>
+        </Row>
+        </div>
 
-export default App;
+     <Switch>
+      <Route exact path="/"><Home /></Route>
+      <Route path="/profile"><Profile /></Route>
+      <Route path="/leaderboards"><Leaderboards /></Route>
+      <PrivateRoute path="/admin" component={Admin} />
+    </Switch>
+   </Header>
+
+   </Layout>
+
+   </>
+ );
+}
