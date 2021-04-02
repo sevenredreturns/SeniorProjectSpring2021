@@ -2,54 +2,36 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json())
+console.log("server.js load");
 
 // Configuring the database
 const dbConfig = require('./config/mongodb.config.js');
 const mongoose = require('mongoose');
 
-const User = require('./models/user.model.js');
-
 mongoose.Promise = global.Promise;
 
 mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(async () =>
-    {
-        console.log("Successfully connected to MongoDB.");
-        const users = [
-            {
-                username: 'test11'
-            },
-            {
-                username: 'test12'
-            },
-            {
-                username: 'test13'
-            }
-        ]
 
-        for (let i = 0; i < users.length; i++)
-        {
-            const newUser = new User({
-                username: users[i].username
-            });
+const conn = mongoose.connection;
 
-            //Save a user in the DB
-            await newUser.save();
-        }
-    }).catch(err =>
-{
-    console.log('Could not connect to MongoDB');
-    process.exit();
+conn.on('connected', function() {
+    console.log("MongoDB is connected successfully");
 });
 
-require('./app/routes/user.router.js')(app);
+conn.on('error', console.error.bind(console, 'mongodb connection error:'));
+
+require('./routes/user.router.js')(app);
+require('./routes/achievements.router.js')(app);
+require('./routes/game.router.js')(app);
+require('./routes/leaderboard.router.js')(app);
 
 // Create a Server
-var server = app.listen(8080, function ()
-{
-    var host = server.address().address
-    var port = server.address().port
+const server = app.listen(8080, function () {
+    const host = server.address().address;
+    const port = server.address().port;
 
     console.log("App listening at http://%s:%s", host, port)
-})
+});
+
+module.exports = conn;
 
