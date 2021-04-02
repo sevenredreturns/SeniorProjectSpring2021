@@ -49,10 +49,9 @@ class profileTry extends Component {
                                     </Row>
                                 </div>
                                 <div class="container" name="Description">
-
                                 </div>
                                 <div class="container" name="Games">
-                                    <p></p>
+                                    <p>{user.ownedGames.map(game => <div>{game.name}</div>)}</p>
                                 </div>
                                 <div>
                                     <li>
