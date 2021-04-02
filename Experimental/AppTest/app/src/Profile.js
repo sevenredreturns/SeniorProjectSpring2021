@@ -4,6 +4,11 @@ import {Layout, Button, Divider, Row, Col} from 'antd';
 
 const {Header, Footer, Content} = Layout;
 
+require('./routes/user.router.js');
+require('./routes/achievements.router.js');
+require('./routes/game.router.js');
+require('./routes/leaderboard.router.js');
+
 const TrophyRoom = () => {
 
     return (
