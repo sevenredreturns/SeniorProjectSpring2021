@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Button, Divider, Row, Col } from 'antd';
 import './App.css';
 import { Link, Route, Switch } from "react-router-dom";
-import Profile from "./Profile";
+import Profile from "./profileTry";
 import Leaderboards from "./Leaderboards";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";

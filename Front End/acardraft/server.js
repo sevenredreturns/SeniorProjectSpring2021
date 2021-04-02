@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json())
 console.log("server.js load");
+;
 
 // Configuring the database
 const dbConfig = require('./config/mongodb.config.js');

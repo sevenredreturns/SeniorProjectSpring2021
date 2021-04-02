@@ -21,6 +21,7 @@ exports.addUser = (req, res) =>
 
 exports.getUserByID = (req, res) =>
 {
+    console.log(req.params['id']);
     user.findById(req.params.id).select('-__v')
         .then(user =>
         {

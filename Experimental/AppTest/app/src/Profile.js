@@ -24,15 +24,41 @@ const TrophyRoom = () => {
 
 async function getUser(id) {
 
-    const user = await (await fetch(`/api/user/${id}`)).json();
-    this.setState({item: user});
+    let emptyUser = {
+        username: '',
+        firstName: '',
+        lastName: '',
+        otherProfiles: [
+            {
+                steam: '',
+                gog: '',
+                psn: '',
+                xbox: ''
+            }
+        ],
+        ownedGames: [
+            {
+                steamNumber: '',
+                achievements: [ '' ]
+            }
+        ]
+    }
+
+    this.state ={user: this.emptyUser};
+    
+    this.setState({isLoading: true});
+
+    fetch('/api/user/60627f8adc5a882878a39bb8').then(response => response.json())
+        .this(data => this.setState({user: data, isLoading : false}));
 }
 
 const Profile = () => {
 
-    getUser('60627f8adc5a882878a39bb8');
+    let user = getUser('60627f8adc5a882878a39bb8').then();
     const {url, path} = useRouteMatch();
-    const {user} = this.state;
+    //const {user} = this.state;
+
+    console.log(user);
 
     const age = "27";
     const gender = "M";
@@ -48,7 +74,7 @@ const Profile = () => {
                         <div class="container" name="Basics">
                             <Row gutter={16}>
                                 <Col className="gutter-row" span={6}>
-                                    <p>{user.username}</p>
+                                    <p></p>
                                 </Col>
                                 <Col className="gutter-row" span={3}>
                                     <p>{age}, {gender}</p>
@@ -60,7 +86,7 @@ const Profile = () => {
                             <p>{desc}</p>
                         </div>
                         <div class="container" name="Games">
-                            <p>{user.ownedGames}</p>
+                            <p></p>
                         </div>
                         <div>
                             <li>

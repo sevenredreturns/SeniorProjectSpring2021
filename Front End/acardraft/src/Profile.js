@@ -20,15 +20,18 @@ const TrophyRoom = () => {
 
 async function getUser(id) {
 
-    const user = await (await fetch(`/api/user/${id}`)).json();
-    this.setState({item: user});
+    const user = await (await fetch(`/api/user/${id}`));
+
+    console.log(user);
+    return;
+
 }
 
 const Profile = () => {
 
     getUser('60627f8adc5a882878a39bb8');
     const {url, path} = useRouteMatch();
-    const {user} = this.state;
+    //const {user} = this.state;
 
     const age = "27";
     const gender = "M";
