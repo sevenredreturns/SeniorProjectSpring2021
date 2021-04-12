@@ -1,0 +1,20 @@
+{
+  "name": "id_Stubborn",
+  "defaultvalue": 0,
+  "displayName": "Stubborn",
+  "hidden": 0,
+  "description": "Press the first nine switches in "
+  don
+  't click!" and finish the level","icon":"https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/38740/520dc8b7c19ce504553ca3703605751cabf3e2d9.jpg","icongray":"https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/38740/ca071db83a5b31f925e2cfc8dacca55fa16aacef.jpg"}
+
+
+
+{
+  "name": "id_Stubborn",
+  "defaultvalue": 0,
+  "displayName": "Stubborn",
+  "hidden": 0,
+  "description": "Press the first nine switches in 'don't click!' and finish the level",
+  "icon":"https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/38740/520dc8b7c19ce504553ca3703605751cabf3e2d9.jpg",
+  "icongray":"https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/38740/ca071db83a5b31f925e2cfc8dacca55fa16aacef.jpg"
+}
