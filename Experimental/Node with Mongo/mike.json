@@ -1,0 +1,123 @@
+[
+      {
+        "appid": 4000,
+        "name": "Garry's Mod",
+        "playtime_forever": 1600,
+        "img_icon_url": "4a6f25cfa2426445d0d9d6e233408de4d371ce8b",
+        "img_logo_url": "70ef9d2ec9f0f4560c3cb9fee6cc3665c93c8d0c",
+        "has_community_visible_stats": true,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      },
+      {
+        "appid": 212200,
+        "name": "Mabinogi",
+        "playtime_forever": 74,
+        "img_icon_url": "3c5bb76a73fcaa61fa2407134cca04f3d60574fa",
+        "img_logo_url": "799a333b7e8f1925d49ea51d83aa111ea70887c7",
+        "has_community_visible_stats": true,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      },
+      {
+        "appid": 49520,
+        "name": "Borderlands 2",
+        "playtime_forever": 18540,
+        "img_icon_url": "a3f4945226e69b6196074df4c776e342d3e5a3be",
+        "img_logo_url": "86b0fa5ddb41b4dfff7df194a017f3418130d668",
+        "has_community_visible_stats": true,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      },
+      {
+        "appid": 271590,
+        "name": "Grand Theft Auto V",
+        "playtime_forever": 21,
+        "img_icon_url": "1e72f87eb927fa1485e68aefaff23c7fd7178251",
+        "img_logo_url": "e447e82f8b0c67f9e001498503c62f2a187bc609",
+        "has_community_visible_stats": true,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      },
+      {
+        "appid": 251570,
+        "name": "7 Days to Die",
+        "playtime_forever": 0,
+        "img_icon_url": "f6515dd177b2992aebcb563151fbe836a600f364",
+        "img_logo_url": "31488b068ae8975a942c8c5170b3266c1bf9a526",
+        "has_community_visible_stats": true,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      },
+      {
+        "appid": 323470,
+        "name": "DRAGON BALL XENOVERSE",
+        "playtime_forever": 7511,
+        "img_icon_url": "810b2bab6e3197b5d63d3abffcebafaac8dc6312",
+        "img_logo_url": "f8724eeddf94534d66b8057cf770a9cd8318a14a",
+        "has_community_visible_stats": true,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      },
+      {
+        "appid": 334230,
+        "name": "Town of Salem",
+        "playtime_forever": 1154,
+        "img_icon_url": "fc48df91946a366ed3d9a065aef96b146f33ee76",
+        "img_logo_url": "b07be4a20b233fbcf6c67a04d860fe46b8bbcbe0",
+        "has_community_visible_stats": true,
+        "playtime_windows_forever": 46,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      },
+      {
+        "appid": 291550,
+        "name": "Brawlhalla",
+        "playtime_forever": 0,
+        "img_icon_url": "c43fac31b8bf8821764603a14d09412bc3d45f66",
+        "img_logo_url": "3859e079750d8ecdcdc31e6c4ef6fc87a8098c42",
+        "has_community_visible_stats": true,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      },
+      {
+        "appid": 667870,
+        "name": "MINDNIGHT",
+        "playtime_forever": 0,
+        "img_icon_url": "39a095dfe905bda9bf568f2e95f0bcaf0bd15816",
+        "img_logo_url": "8bc2fde4c33799a67517c7886d6dff44250dfcd3",
+        "has_community_visible_stats": true,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      },
+      {
+        "appid": 945360,
+        "name": "Among Us",
+        "playtime_2weeks": 16,
+        "playtime_forever": 762,
+        "img_icon_url": "c51d6a6a913c86e6b02042d34f205b5e0326fc29",
+        "img_logo_url": "a147961088c49cf44bf0aff61cef08fcec128ecc",
+        "playtime_windows_forever": 762,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      },
+      {
+        "appid": 408900,
+        "name": "Unfortunate Spacemen",
+        "playtime_forever": 0,
+        "img_icon_url": "0f12fdbb4c267f2ac3edc9e2dcc1cca2dad73b58",
+        "img_logo_url": "6b136a0d164a12f20dacba474aa435a45fe6dbed",
+        "has_community_visible_stats": true,
+        "playtime_windows_forever": 0,
+        "playtime_mac_forever": 0,
+        "playtime_linux_forever": 0
+      }
+    ]
