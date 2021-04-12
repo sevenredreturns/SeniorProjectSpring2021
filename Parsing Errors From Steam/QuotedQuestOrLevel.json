@@ -1,0 +1,26 @@
+//Busted
+
+{
+  "name": "id_Jumper",
+  "defaultvalue": 0,
+  "displayName": "Jumper",
+  "hidden": 0,
+  "description": "Jump on top of a car in "
+  peripherique
+  "",
+  "icon": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/38740/0dbee3404c4514a9f8f8a0691e095143dec6f034.jpg",
+  "icongray": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/38740/33ddd5d89de5c31c59f44cccb71fa2a7539d3029.jpg"
+}
+
+//fixed
+
+
+{
+  "name": "id_Jumper",
+  "defaultvalue": 0,
+  "displayName": "Jumper",
+  "hidden": 0,
+  "description": "Jump on top of a car in 'peripherique'",
+  "icon": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/38740/0dbee3404c4514a9f8f8a0691e095143dec6f034.jpg",
+  "icongray": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/38740/33ddd5d89de5c31c59f44cccb71fa2a7539d3029.jpg"
+},
