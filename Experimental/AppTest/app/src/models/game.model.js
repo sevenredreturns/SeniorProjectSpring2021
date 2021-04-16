@@ -3,10 +3,9 @@ const Schema = mongoose.Schema;
 
 const gameSchema = new mongoose.Schema({
     name: String,
-    steamID: String,
-    gogID: String,
-    system: String,
-    achievements: Schema.Types.ObjectId
+    appid: Number,
+    img_icon_url: String,
+    img_logo_url: String
 });
 
 module.exports = mongoose.model('game', gameSchema)
