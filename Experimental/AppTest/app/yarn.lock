@@ -11486,6 +11486,11 @@
   "resolved" "https://registry.npmjs.org/stealthy-require/-/stealthy-require-1.1.1.tgz"
   "version" "1.1.1"
 
+"steam-js-api@^1.0.0":
+  "integrity" "sha512-YP1PIJnQiAVghev/DI1hHSAe27QVmDGCagsJp6NiYEFoZEppoIr7BVu5/8oHFlR+3POHhVyf4yyPQzkhvduoxQ=="
+  "resolved" "https://registry.npmjs.org/steam-js-api/-/steam-js-api-1.0.0.tgz"
+  "version" "1.0.0"
+
 "stream-browserify@^2.0.1":
   "integrity" "sha512-nX6hmklHs/gr2FuxYDltq8fJA1GDlxKQCz8O/IM4atRqBH8OORmBNgfvW5gG10GT/qQ9u0CzIvr2X5Pkt6ntqg=="
   "resolved" "https://registry.npmjs.org/stream-browserify/-/stream-browserify-2.0.2.tgz"
