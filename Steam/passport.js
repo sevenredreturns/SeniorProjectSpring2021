@@ -2,7 +2,7 @@ npm install --save passport-steam
 passport.use(new SteamStrategy({
     returnURL: 'http://localhost:3000/auth/steam/return',
     realm: 'http://localhost:3000/',
-    apiKey: 'your steam API key'
+    apiKey: '6B328D41EE66949204BBCEBA81C3852A'
   },
   function(identifier, profile, done) {
     User.findByOpenID({ openId: identifier }, function (err, user) {
