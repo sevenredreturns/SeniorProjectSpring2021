@@ -151,3 +151,32 @@ exports.updateUser = (req, res) =>
                                                        });
                        });
 };
+
+exports.getUserByClientID = (req, res) =>
+{
+    const query = user.where({client_id: req.params.client_id});
+
+    query.findOne.select('-__v').then(user =>
+                                      {
+                                          res.status(200).json(user);
+                                      }).catch(err =>
+                                               {
+                                                   if (err.kind === 'String')
+                                                   {
+                                                       return res.status(404)
+                                                                 .send(
+                                                                     {
+                                                                         message: "user not found with id " +
+                                                                             req.params.client_id,
+                                                                         error  : err
+                                                                     });
+                                                   }
+                                                   return res.status(500).send(
+                                                       {
+                                                           message: "Error retrieving user with id " +
+                                                               req.params.client_id,
+                                                           error  : err
+                                                       });
+                                               });
+
+};
