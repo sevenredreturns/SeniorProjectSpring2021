@@ -1,6 +1,5 @@
 npm install steam-js-api
 const api = require('steam-js-api')
-const api = require('steam-js-api')
 
 api.setKey('6B328D41EE66949204BBCEBA81C3852A')
 
