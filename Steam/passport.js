@@ -1,4 +1,3 @@
-npm install --save passport-steam
 passport.use(new SteamStrategy({
     returnURL: 'http://localhost:3000/auth/steam/return',
     realm: 'http://localhost:3000/',
