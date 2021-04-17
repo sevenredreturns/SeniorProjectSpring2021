@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
                                            username     : String,
+                                           client_id    : String,
                                            firstName    : String,
                                            lastName     : String,
                                            otherProfiles: [
