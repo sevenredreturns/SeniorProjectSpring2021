@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
                                            client_id    : String,
                                            firstName    : String,
                                            lastName     : String,
+                                           bio          : String,
                                            otherProfiles: [
                                                {
                                                    steam: String,

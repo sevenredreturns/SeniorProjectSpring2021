@@ -125,6 +125,8 @@ exports.updateUser = (req, res) =>
         {
             firstName    : req.body.firstName,
             lastName     : req.body.lastName,
+            client_id    : req.body.client_id,
+            bio          : req.body.bio,
             otherProfiles: req.body.otherProfiles,
             ownedGames   : req.body.ownedGames
         },
