@@ -127,6 +127,8 @@ exports.updateUser = (req, res) =>
             lastName     : req.body.lastName,
             client_id    : req.body.client_id,
             bio          : req.body.bio,
+            avatarurl    : req.body.avatarurl,
+            friends      : req.body.friends,
             otherProfiles: req.body.otherProfiles,
             ownedGames   : req.body.ownedGames
         },

@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
                                            firstName    : String,
                                            lastName     : String,
                                            bio          : String,
+                                           avatarurl    : String,
                                            otherProfiles: [
                                                {
                                                    steam: String,
@@ -14,6 +15,10 @@ const userSchema = new mongoose.Schema({
                                                    xbox : String
                                                }
                                            ],
+                                           friends      : [{
+                                               userid: String,
+                                               name  : String
+                                           }],
                                            ownedGames   : [{
                                                appid       : Number,
                                                achievements: [
