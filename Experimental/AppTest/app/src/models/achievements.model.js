@@ -11,12 +11,14 @@ const subAchievementSchema = new mongoose.Schema(
     });
 
 const achievementSchema = new mongoose.Schema({
-                                                  appid       : Number,
+                                                  appid       : {type: Number, ref: 'games', autopopulate: {select: 'appid'}},
                                                   achievements:
                                                       [
                                                           subAchievementSchema
                                                       ]
                                               });
+
+achievementSchema.plugin(require('mongoose-autopopulate'));
 
 
 module.exports = mongoose.model('achievement', achievementSchema);
