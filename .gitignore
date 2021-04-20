@@ -218,3 +218,4 @@ tmp/
 temp/
 
 # End of https://www.toptal.com/developers/gitignore/api/jetbrains+all,node
+/achievement-arena/achieve-arena/src/controllers/userscratch.js

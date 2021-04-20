@@ -117,6 +117,7 @@ exports.deleteUser = (req, res) =>
                        });
 };
 
+
 exports.updateUser = (req, res) =>
 {
     let userID = req.body._id;
@@ -159,6 +160,50 @@ exports.updateUser = (req, res) =>
                        });
 };
 
+/*
+Old update method so I don't lose it.
+exports.updateUser = (req, res) =>
+{
+    let userID = req.body._id;
+
+    console.log(userID);
+    //find user and update it
+    user.findByIdAndUpdate(
+        userID.$oid,
+        {
+            firstName    : req.body.firstName,
+            lastName     : req.body.lastName,
+            client_id    : req.body.client_id,
+            bio          : req.body.bio,
+            avatarurl    : req.body.avatarurl,
+            friends      : req.body.friends,
+            otherProfiles: req.body.otherProfiles,
+            ownedGames   : req.body.ownedGames
+        },
+        {new: true}
+    ).select('-__v')
+        .then(user =>
+              {
+                  if (!user)
+                  {
+                      return res.status(404).send({
+                                                      message: "Error -> Can NOT update a user with ID = " +
+                                                          req.params.id,
+                                                      error  : "Not Found!"
+                                                  });
+                  }
+
+                  res.status(200).json(user);
+              }).catch(err =>
+                       {
+                           return res.status(500).send({
+                                                           message: "Error -> Can Not update a user with ID = " +
+                                                               req.params.id,
+                                                           error  : err.message
+                                                       });
+                       });
+};
+*/
 exports.getUserByClientID = (req, res) =>
 {
     const query = user.where({client_id: req.params.client_id});
