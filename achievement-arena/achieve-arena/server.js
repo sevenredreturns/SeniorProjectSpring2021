@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
 
 const conn = mongoose.connection;
 

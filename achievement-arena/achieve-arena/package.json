@@ -29,7 +29,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "concurrently --names 'SERVER,CLIENT' --prefix-colors 'yellow,blue' --kill-others \"node server.js\" \"react-scripts start\"",
+    "start": "concurrently --names 'DBSERVER,SITESERVER' --prefix-colors 'magenta,green' --kill-others \"node server.js\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
