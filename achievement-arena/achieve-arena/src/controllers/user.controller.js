@@ -121,6 +121,10 @@ exports.deleteUser = (req, res) =>
 exports.updateUser = (req, res) =>
 {
     let userID = req.body._id;
+    let userUpdate = new user();
+
+
+
 
     console.log(userID);
     //find user and update it
