@@ -1,4 +1,5 @@
 const user = require('../models/user.model.js');
+const mongoose = require('mongoose');
 
 exports.addUser = (req, res) =>
 {
@@ -118,29 +119,47 @@ exports.deleteUser = (req, res) =>
 };
 
 
+
 exports.updateUser = (req, res) =>
 {
     let userID = req.body._id;
-    let userUpdate = new user();
 
+    userUpdate = new user();
 
-
+    if (req.body.firstName != null)
+    {
+        userUpdate.firstName = req.body.firstName;
+    }
+    if (req.body.lastName != null)
+    {
+        userUpdate.lastName = req.body.lastName;
+    }
+    if (req.body.client_id != null)
+    {
+        userUpdate.client_id = req.body.client_id;
+    }
+    if (req.body.bio != null)
+    {
+        userUpdate.bio = req.body.bio;
+    }
+    if (req.body.avatarurl != null)
+    {
+        userUpdate.avatarurl = req.body.avatarurl;
+    }
+    console.log(userUpdate);
 
     console.log(userID);
     //find user and update it
     user.findByIdAndUpdate(
         userID.$oid,
         {
-            firstName    : req.body.firstName,
-            lastName     : req.body.lastName,
-            client_id    : req.body.client_id,
-            bio          : req.body.bio,
-            avatarurl    : req.body.avatarurl,
-            friends      : req.body.friends,
-            otherProfiles: req.body.otherProfiles,
-            ownedGames   : req.body.ownedGames
+            firstName    : userUpdate.firstName,
+            lastName     : userUpdate.lastName,
+            client_id    : userUpdate.client_id,
+            bio          : userUpdate.bio,
+            avatarurl    : userUpdate.avatarurl
         },
-        {new: true}
+        {new: true, omitUndefined: true}
     ).select('-__v')
         .then(user =>
               {
@@ -164,50 +183,10 @@ exports.updateUser = (req, res) =>
                        });
 };
 
-/*
-Old update method so I don't lose it.
-exports.updateUser = (req, res) =>
+exports.updateUserAchievements = (req, res) =>
 {
-    let userID = req.body._id;
 
-    console.log(userID);
-    //find user and update it
-    user.findByIdAndUpdate(
-        userID.$oid,
-        {
-            firstName    : req.body.firstName,
-            lastName     : req.body.lastName,
-            client_id    : req.body.client_id,
-            bio          : req.body.bio,
-            avatarurl    : req.body.avatarurl,
-            friends      : req.body.friends,
-            otherProfiles: req.body.otherProfiles,
-            ownedGames   : req.body.ownedGames
-        },
-        {new: true}
-    ).select('-__v')
-        .then(user =>
-              {
-                  if (!user)
-                  {
-                      return res.status(404).send({
-                                                      message: "Error -> Can NOT update a user with ID = " +
-                                                          req.params.id,
-                                                      error  : "Not Found!"
-                                                  });
-                  }
-
-                  res.status(200).json(user);
-              }).catch(err =>
-                       {
-                           return res.status(500).send({
-                                                           message: "Error -> Can Not update a user with ID = " +
-                                                               req.params.id,
-                                                           error  : err.message
-                                                       });
-                       });
-};
-*/
+}
 exports.getUserByClientID = (req, res) =>
 {
     const query = user.where({client_id: req.params.client_id});
