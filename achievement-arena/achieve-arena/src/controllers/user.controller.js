@@ -186,7 +186,13 @@ exports.updateUser = (req, res) =>
 exports.updateUserAchievements = (req, res) =>
 {
 
-}
+};
+
+exports.updateUserFriends = (req, res) =>
+{
+
+};
+
 exports.getUserByClientID = (req, res) =>
 {
     const query = user.where({client_id: req.params.client_id});
