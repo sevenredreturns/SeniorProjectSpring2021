@@ -1,18 +1,14 @@
 import React, {Component} from 'react';
 import {
-    Avatar, Breadcrumb, Button, Col, Divider, Dropdown, Input, Layout, Menu,
-    Modal,
-    PageHeader, Row, Upload
-} from 'antd';
+    Avatar, Breadcrumb, Col, Divider, Dropdown, Layout, Menu, PageHeader, Row
+}                         from 'antd';
 import "antd/dist/antd.css";
 import "./index.css";
-import {UploadOutlined}               from "@ant-design/icons";
-import ModalForm                      from "./ModalForm";
 
 const {Header, Footer, Content} = Layout;
 
-const pageUserID = "6079858623c4150084b79241"
-const userID = "6079858623c4150084b79241"
+const pageUserID = "6079858623c4150084b79241";
+const userID = "6079858623c4150084b79241";
 
 class profileTry extends Component
 {
@@ -87,42 +83,6 @@ class profileTry extends Component
                                 <Col flex={4}>{user.username}</Col>
                                 <Col flex={2}></Col>
                             </Row>
-                            <>
-                                <Button type="primary" onClick={showModal}>
-                                    Edit Profile
-                                </Button>
-                                <Modal
-                                    title="Edit Profile"
-                                    visible={isModalVisible}
-                                    onOk={handleOk}
-                                    onCancel={handleCancel}
-                                    footer={[
-                                        <Button key="back" onClick={handleCancel}>
-                                            Cancel
-                                        </Button>,
-                                        <Button
-                                            key="submit"
-                                            type="primary"
-                                            loading={state[0]}
-                                            onClick={handleOk}
-                                        >
-                                            Submit Changes
-                                        </Button>
-                                    ]}
-                                >
-                                    <p>Avatar Url</p>
-                                    <Upload {...props}>
-                                        <Button icon={<UploadOutlined/>}>Upload</Button>
-                                    </Upload>
-                                    <p></p>
-                                    <Input></Input>
-                                    <p>Username</p>
-                                    <Input></Input>
-                                    <p>Bio</p>
-                                    <Input></Input>
-                                </Modal>
-                            </>
-
                             <Divider orientation="left"></Divider>
                             <Row justify="space-around" align="middle">
                                 <Col span={8}>{user.bio}</Col>
