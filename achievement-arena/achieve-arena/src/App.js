@@ -58,7 +58,7 @@ export default function App()
                                 <Link to="/leaderboards"> Leaderboards </Link>
                             </Col>
                             <Col className="gutter-row" span={6}>
-                                <Link to="/login"> Login </Link>
+                                <Link to="/login"> Login</Link>
                             </Col>
                             <Col className="gutter-row" span={6}>
                             </Col>

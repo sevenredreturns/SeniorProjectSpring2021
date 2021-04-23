@@ -1,104 +1,28 @@
-import React from "react";
-require('cross-fetch/polyfill')
-import AmazonCognitoIdentity from 'amazon-cognito-identity-js';
+import React, { useState } from "react";
+import { Redirect, useLocation } from "react-router-dom";
 
-function signInButton() {
+export default function Login() {
+  const { state } = useLocation();
+  const { from } = state || { from: { pathname: "/" } };
+  const [redirectToReferrer, setRedirectToReferrer] = useState(false);
 
-  var authenticationData = {
-    Username : document.getElementById("inputUsername").value,
-    Password : document.getElementById("inputPassword").value,
+  const login = () => {
+    fakeAuth.authenticate(() => {
+      setRedirectToReferrer(true);
+    });
   };
 
-  var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
-
-  var poolData = {
-    UserPoolId : _config.cognito.userPoolId, // Your user pool id here
-    ClientId : _config.cognito.clientId, // Your client id here
-  };
-
-  var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-
-  var userData = {
-    Username : document.getElementById("inputUsername").value,
-    Pool : userPool,
-  };
-
-  var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-
-  cognitoUser.authenticateUser(authenticationDetails, {
-    onSuccess: function (result) {
-      var accessToken = result.getAccessToken().getJwtToken();
-      console.log(accessToken);
-      window.open("profile.html");
-    },
-
-    onFailure: function(err) {
-      alert(err.message || JSON.stringify(err));
-    },
-  });
-}
-
-function forgotpasswordbutton() {
-  window.location.replace("http://www.w3schools.com");
-
-}
-
-class Login extends React.Component {
-
-
-
-  render() {
-    return (
-      <div>
-        <img className="log" />
-        <div className="loginbox">
-          {}
-          <h1>ACHIEVEMENT HUNTER</h1>
-          <input
-            type="text"
-            id="inputUsername"
-            placeholder="Email address"
-            name="username"
-            required
-            autofocus
-          />
-          <input
-            type="password"
-            id="inputPassword"
-            placeholder="Password"
-            name="password"
-            required
-          />
-          {}
-          <button
-            className="btn btn-lg btn-primary btn-block"
-            type="button"
-            onClick={() => signInButton()}
-          >
-            Sign in
-          </button>
-          {}
-          {}
-          <button
-            className="btn btn-sm btn-primary btn-block"
-            onClick={() => window.location.href='forgotpassword.js'}
-          >
-            Forgot Password
-          </button>
-          {}
-          <button
-            className="btn btn-sm btn-primary btn-block"
-            onClick={() => window.location.href='register.js'}
-          >
-            Register
-          </button>
-        </div>
-      </div>
-    );
+  if (redirectToReferrer) {
+    return <Redirect to={from} />;
   }
-}
 
-export default Login;
+  return (
+    <div>
+      <p>You must log in to view the page at {from.pathname}</p>
+      <button onClick={login}>Log in</button>
+    </div>
+  );
+}
 
 /* A fake authentication function */
 export const fakeAuth = {
@@ -108,4 +32,3 @@ export const fakeAuth = {
     setTimeout(cb, 100);
   }
 };
-
