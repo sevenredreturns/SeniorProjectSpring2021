@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const leaderboardSchema = new mongoose.Schema({
-                                                  key    : Number,
-                                                  appid  : Number,
+                                                  key   : Number,
+                                                  appid : Number,
                                                   scores: [{
-                                                      key     : Number,
-                                                      username: String,
-                                                      rank    : Number,
-                                                      score   : Number
+                                                      key   : Number,
+                                                      userid: String,
+                                                      rank  : Number,
+                                                      score : Number
                                                   }
                                                   ]
                                               });

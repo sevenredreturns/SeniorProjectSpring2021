@@ -747,17 +747,17 @@ const games = [
 
 const {Option} = Select;
 
-function findGame(input)
-{
-    for (const element in games)
-    {
-        if (games[element].key == parseInt(input))
-        {
-            return games[element].scores;
-        }
-    }
-    return games[0].scores;
-}
+/*function findGame(input)
+ {
+ for (const element in games)
+ {
+ if (games[element].key == parseInt(input))
+ {
+ return games[element].scores;
+ }
+ }
+ return games[0].scores;
+ }*/
 
 class GameLeaderboard extends React.Component
 {
@@ -780,6 +780,22 @@ class GameLeaderboard extends React.Component
                                      {games: data, isLoading: false}));
     }
 
+    findGame = (input) =>
+    {
+        let copyGameDetails = this.state.games;
+
+        for (const element in copyGameDetails)
+        {
+            console.log(copyGameDetails[element]);
+            if (copyGameDetails[element].key === parseInt(input))
+            {
+                console.log(copyGameDetails[element]);
+                return copyGameDetails[element].scores;
+            }
+        }
+        return copyGameDetails[0].scores;
+    };
+
     render()
     {
         const {games, isLoading} = this.state;
@@ -788,8 +804,9 @@ class GameLeaderboard extends React.Component
         {
             return <p>Loading...</p>;
         }
+        console.log(games);
 
-        const {data, setData} = this.state;
+
         return (
             <Table title=
                        {
@@ -806,7 +823,8 @@ class GameLeaderboard extends React.Component
                                              .indexOf(input.toLowerCase()) >= 0
                                    }
                                    onChange={(input) => this.setState(
-                                       {data: findGame(input)})}
+                                       {data: this.findGame(input)})}
+
                                >
                                    <Option value="1803">Red Dead Redemption
                                        2</Option>

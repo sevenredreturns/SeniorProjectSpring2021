@@ -6,8 +6,8 @@ function Profile() {
       <head>
         <meta charset="utf-8">
     	 <!--Cognito JavaScript-->
-    	<script src="js/amazon-cognito-identity.min.js"></script>
-    	<script src="js/config.js"></script>
+    	<script src="../../../Login/js/amazon-cognito-identity.min.js"></script>
+    	<script src="../../../Login/js/config.js"></script>
       </head>
 
       <body>

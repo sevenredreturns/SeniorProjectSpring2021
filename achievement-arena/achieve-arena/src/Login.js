@@ -8,15 +8,15 @@ function Login() {
 
   	<!-- Javascript SDKs-->
   	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  	<script src="js/amazon-cognito-auth.min.js"></script>
+  	<script src="../../../Login/js/amazon-cognito-auth.min.js"></script>
   	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
-  	<script src="js/amazon-cognito-identity.min.js"></script>
-  	<script src="js/config.js"></script>
+  	<script src="../../../Login/js/amazon-cognito-identity.min.js"></script>
+  	<script src="../../../Login/js/config.js"></script>
 
 
           <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../../Login/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap.css">
         <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Proxima+Nova' rel=;'stylesheet' type='text/css'>

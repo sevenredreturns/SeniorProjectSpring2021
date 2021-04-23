@@ -1,22 +1,22 @@
 import React from 'react';
 
-function Forgotpassword() {
+function Register() {
   return (
     <html lang="en">
       <head>
         <meta charset="utf-8">
 
-    	<!-- Javascript SDKs-->
-    	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    	<script src="js/amazon-cognito-auth.min.js"></script>
-    	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
-    	<script src="js/amazon-cognito-identity.min.js"></script>
-    	<script src="js/config.js"></script>
+      <!-- Javascript SDKs-->
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script src="../../../Login/js/amazon-cognito-auth.min.js"></script>
+      <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+      <script src="../../../Login/js/amazon-cognito-identity.min.js"></script>
+      <script src="../../../Login/js/config.js"></script>
 
 
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
           <meta name="viewport" content="width=device-width, initial-scale=1">
-          <link rel="stylesheet" href="css/bootstrap.min.css">
+          <link rel="stylesheet" href="../../../Login/css/bootstrap.min.css">
           <link rel="stylesheet" href="css/bootstrap.css">
           <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
           <link href='https://fonts.googleapis.com/css?family=Proxima+Nova' rel=;'stylesheet' type='text/css'>
@@ -135,63 +135,86 @@ function Forgotpassword() {
             <img class="log">
             <div class="loginbox">
             <!-- <img src="avatar1.jpg" class="avatar"> -->
-            <h1>Reset Password</h1>
+            <h1>Register</h1>
 
 
 
 
-                <input type="text" id="inputUsername"  placeholder="Email address" name="username" required autofocus>
+                <input type="personalname" class="form-control" id="personalnameRegister" placeholder="Name" pattern=".*" required>
+                <input type="email" class="form-control" id="emailInputRegister" placeholder="Email" pattern=".*" required>
+                <input type="password" class="form-control" id="passwordInputRegister" placeholder="Password" pattern=".*" required>
+                <input type="password" class="form-control" id="confirmationpassword" placeholder="Confirm Password" pattern=".*" required>
+                <button id="mainbutton" class="btn btn-lg btn-primary btn-block" type="button" onclick="registerButton()" >Register</button>
 
 
-                <!-- <button class="button button4"onclick="signInButton()">Sign in</button> -->
-
-                <!-- <button class="button button4"onclick="forgotpasswordbutton()">Forgot Password?</button> -->
-                <button class="btn btn-lg btn-primary btn-block" type="text" onclick="forgotpasswordbutton()">Reset</button><br>
-                    </div>
-            <script src="js/jquery-2.1.4.min.js"></script>
-              <script src="js/bootstrap.min.js"></script>
-              <script src="js/ajax-utils.js"></script>
-              <script src="js/script.js"></script>
-
+            </div>
 
 
     <script>
 
-      function forgotpasswordbutton() {
-      var poolData = {
-            UserPoolId : _config.cognito.userPoolId, // Your user pool id here
-            ClientId : _config.cognito.clientId, // Your client id here
-        };
+        var username;
+        var password;
+        var personalname;
+        var poolData;
 
+        function registerButton() {
+
+        personalnamename =  document.getElementById("personalnameRegister").value;
+        username = document.getElementById("emailInputRegister").value;
+
+        if (document.getElementById("passwordInputRegister").value != document.getElementById("confirmationpassword").value) {
+          alert("Passwords Do Not Match!")
+          throw "Passwords Do Not Match!"
+        } else {
+          password =  document.getElementById("passwordInputRegister").value;
+        }
+
+        poolData = {
+            UserPoolId : _config.cognito.userPoolId, // Your user pool id here
+            ClientId : _config.cognito.clientId // Your client id here
+          };
         var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-        var userData = {
-            Username : document.getElementById("inputUsername").value,
-            Pool : userPool,
+        var attributeList = [];
+
+        var dataEmail = {
+          Name : 'email',
+          Value : username, //get from form field
         };
 
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+        var dataPersonalName = {
+          Name : 'name',
+          Value : personalname, //get from form field
+        };
 
-        cognitoUser.forgotPassword({
-            onSuccess: function (result) {
-                console.log('call result: ' + result);
-            },
-            onFailure: function(err) {
-                alert(err.message);
-          console.log(err);
-            },
-            inputVerificationCode() {
-                var verificationCode = prompt('Please input verification code ' ,'');
-                var newPassword = prompt('Enter new password ' ,'');
-                cognitoUser.confirmPassword(verificationCode, newPassword, this);
-            }
+        var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+        var attributePersonalName = new AmazonCognitoIdentity.CognitoUserAttribute(dataPersonalName);
+
+
+        attributeList.push(attributeEmail);
+        attributeList.push(attributePersonalName);
+
+        userPool.signUp(username, password, attributeList, null, function(err, result){
+        if (err) {
+          alert(err.message);
+          return;
+        }
+        else {
+          alert("Check your email for verification link");
+        }
+
+          cognitoUser = result.user;
+          console.log('user name is ' + cognitoUser.getUsername());
+          //change elements of page
+
+
         });
-      }
+        }
 
-    </script>
+      </script>
     </body>
     </html>
   );
 }
 
-export default Forgotpassword;  
+export default Register;

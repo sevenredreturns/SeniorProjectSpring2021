@@ -1,9 +1,9 @@
 import React                               from "react";
 import {Button, Col, Divider, Layout, Row} from 'antd';
 import './App.css';
-import {Link, Route, Switch}               from "react-router-dom";
-import Profile                             from "./profileTry";
-import Leaderboards                        from "./Leaderboard";
+import {Link, Route, Switch} from "react-router-dom";
+import Profile               from "./ProfileTry";
+import Leaderboards          from "./Leaderboard";
 import PrivateRoute                        from "./PrivateRoute";
 //import Steam from "./main";
 

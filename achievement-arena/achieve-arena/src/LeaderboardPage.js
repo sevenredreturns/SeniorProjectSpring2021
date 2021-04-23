@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import './index.css';
-import GameLeaderboard from './GameLeaderboard'
-import ProfileTry from './ProfileTry'
+import GameLeaderboard                                                             from './GameLeaderboard'
+import ProfileTry                                                                  from './ProfileTry'
 import { Layout, Menu, Breadcrumb, Dropdown, Row, Col, Divider, Card, PageHeader } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
