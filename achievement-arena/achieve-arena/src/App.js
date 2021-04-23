@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Button, Divider, Row, Col } from 'antd';
+import { Layout, Button, Divider, Row, Col, Card } from 'antd';
 import './App.css';
 import { Link, Route, Switch } from "react-router-dom";
 import Profile from "./profileTry";
@@ -18,8 +18,26 @@ const Home = () => {
   <Layout>
   <Content>
 
-    <h2>Here is where the {home} is.</h2>
-    <Divider plain>  Divider </Divider>
+
+
+    <Row gutter={[24,16]} >
+
+  <Col span={10}><Card title="News"><div><table>
+  <tr>
+    <td>This is a news post. This is a news post. This is a news post. </td>
+  </tr>
+  <tr>
+    <td>This is a news post. This is a news post. This is a news post. This is a news post. </td>
+  </tr>
+  <tr>
+    <td>This is a news post. This is a news post. </td>
+  </tr>
+</table></div></Card></Col>
+  <Col span={10}><Card title ="About"><div><p>Here is some example text! Here is some example text! Here is some example text! Here is some example text! Here is some example text! </p></div></Card></Col>
+
+
+</Row>
+
 
 
   </Content>
