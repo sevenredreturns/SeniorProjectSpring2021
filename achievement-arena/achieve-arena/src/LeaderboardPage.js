@@ -46,15 +46,6 @@ function Leaderboard() {
   )
 }
 
-function ProfilePage() {
-  return (
-    <div>
-    <ProfileTry />
-    </div>
-  )
-}
-
-
 function login() {
   userID = 1;
   console.log(userID);
@@ -107,7 +98,7 @@ function LeaderboardPage() {
             {Leaderboard()}
           </Route>
           <Route path="/ProfilePage">
-            {ProfilePage()}
+            <ProfileTry />
           </Route>
           <Route path="/">
             {Leaderboard()}
