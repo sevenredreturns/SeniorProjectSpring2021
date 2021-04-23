@@ -1,5 +1,5 @@
 const api = require('steam-js-api')
-const passport = require('passport-steam')
+const passport = require('passport')
 
 passport.use(new SteamStrategy({
     returnURL: 'http://localhost:3000/auth/steam/return',
