@@ -183,14 +183,31 @@ exports.updateUser = (req, res) =>
                        });
 };
 
+exports.searchForGameInArray = function (inputid, array)
+{
+    for (var i = 0; i < array.length; i++)
+    {
+        if (array[i].appid = inputid){
+            return i;
+        }
+    }
+};
+
 exports.updateUserAchievements = (req, res) =>
 {
+    let userID = req.body._id;
+};
+
+exports.addGamesToUser = (req, res) =>
+{
+    let userID = req.body._id;
+
 
 };
 
 exports.updateUserFriends = (req, res) =>
 {
-
+    let userID = req.body._id;
 };
 
 exports.getUserByClientID = (req, res) =>
