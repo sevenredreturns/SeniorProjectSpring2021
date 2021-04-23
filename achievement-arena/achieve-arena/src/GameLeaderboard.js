@@ -25,7 +25,6 @@ const games = [
   {
     key: 0,
     appID: 0,
-    name: "Overall Leaderboard",
     scores: [
       {
         key: '1',
@@ -206,7 +205,6 @@ const games = [
   {
     key: 1803,
     appID: 1803,
-    name: "Red Ded Redemption 2",
     scores: [
       {
         key: '1',
@@ -387,7 +385,6 @@ const games = [
   {
     key: 1901,
     appID: 1901,
-    name: "Grand Theft Auto V",
     scores: [
       {
         key: '1',
@@ -568,7 +565,6 @@ const games = [
   {
     key: 2230,
     appID: 2230,
-    name: "Minecraft",
     scores: [
       {
         key: '1',

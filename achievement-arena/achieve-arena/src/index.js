@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 import ProfilePage from './ProfilePage';
@@ -7,8 +8,9 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-
-    <LeaderboardPage />
+    <Router>
+      <LeaderboardPage />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

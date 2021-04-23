@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import './index.css';
-import Leaderboard from './Leaderboard';
 import GameLeaderboard from './GameLeaderboard'
 import { Layout, Menu, Breadcrumb, Dropdown, Row, Col, Divider, Card, PageHeader } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
