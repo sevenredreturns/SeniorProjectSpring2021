@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import './index.css';
 import GameLeaderboard from './GameLeaderboard'
+import ProfileTry from './ProfileTry'
 import { Layout, Menu, Breadcrumb, Dropdown, Row, Col, Divider, Card, PageHeader } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
@@ -46,35 +47,9 @@ function Leaderboard() {
 }
 
 function ProfilePage() {
-  if (userID != null) {
-    return (
-    <div>
-    <Divider orientation="left">Profile</Divider>
-    <Row justify="space-around" align="left">
-      <Col span={3}>
-        <div style={{ itemAlign: 'center' }}>
-          <Card title="Your Overall Rank" bordered={false}><UserOutlined />
-          <Divider type="vertical" />Player Name<Divider type="horizontal" />Rank
-          </Card>
-        </div>
-      </Col>
-      <Col span={5}>
-        <div><GameLeaderboard /></div>
-      </Col>
-      <Col />
-      <Col />
-    </Row>
-    </div>
-    );
-  }
   return (
     <div>
-    <Divider orientation="left">Profile</Divider>
-    <Row justify="space-around" align="center">
-      <Col span={6}>
-        <div><GameLeaderboard /></div>
-      </Col>
-    </Row>
+    <ProfileTry />
     </div>
   )
 }
@@ -96,8 +71,6 @@ function loggedin() {
     return (
       <Menu>
         <Menu.Item key="0"><a href="/ProfilePage">Profile Page</a></Menu.Item>
-        <Menu.Item key="1"><a>Friends</a></Menu.Item>
-        <Menu.Item key="2"><a>Settings</a></Menu.Item>
         <Menu.Divider />
         <Menu.Item key="3"><a onClick={() => {logout()}}>Logout</a></Menu.Item>
       </Menu>
