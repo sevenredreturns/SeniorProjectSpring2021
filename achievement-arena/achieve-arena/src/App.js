@@ -3,8 +3,10 @@ import {Button, Col, Divider, Layout, Row} from 'antd';
 import './App.css';
 import {Link, Route, Switch}               from "react-router-dom";
 import Profile                             from "./profileTry";
-import Leaderboards                        from "./Leaderboard";
+import Leaderboards                        from "./Leaderboards";
 import PrivateRoute                        from "./PrivateRoute";
+import ProfilePage 						   from "./ProfilePage";
+import NotFound 						   from "./NotFound";
 //import Steam from "./main";
 
 
@@ -40,6 +42,7 @@ const Admin = () => (
 
 export default function App()
 {
+	
     return (
         <>
             <Layout>
@@ -63,12 +66,12 @@ export default function App()
 
                     <Switch>
                         <Route exact path="/"><Home/></Route>
-                        <Route path="/profile"><Profile/></Route>
+                        <Route path="/profile"><ProfilePage/></Route>
                         <Route path="/leaderboards"><Leaderboards/></Route>
                         <PrivateRoute path="/admin" component={Admin}/>
+						<Route component={NotFound}/>
                     </Switch>
                 </Header>
-
             </Layout>
 
         </>
