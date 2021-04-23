@@ -17,6 +17,9 @@ passport.use(new SteamStrategy({
     });
   }
 ));
+
+var app = express();
+
 app.get('/auth/steam',
   passport.authenticate('steam'),
   function(req, res) {
