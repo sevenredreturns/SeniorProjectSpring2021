@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" 
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" 
+	href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+    
+    
+    
+
+    
+<div class = "container">
+		<div class="msg-header">
+			<div class="msg-header-img">
+				<img src="user2.png">
+			</div>
+			<div class="active">
+				<h4>User1</h4>
+				<h6> 30 Minutes ago..</h6>
+			</div>
+			<div class="header-icons">
+				<i class="fa fa-phone"></i>
+				<i class="fa fa-video-camera"></i>
+				<i class="fa fa-info-circle"></i>
+				
+			</div>
+		</div>
+	</div>	
+	<div class="chat-page">
+	<div class="msg-inbox">
+		<div class="chats">
+			<div class="msg-page">
+				
+				<div class="received-chats">
+				<div class="received-chats-img">
+				<img src="user2.png">
+				</div>
+				<div class="received-msg">
+				<div class="received-msg-inbox">
+				<p> This is a message from user 1</p>
+				<!--Need to find a way to print real time here, actual time not just a solid one.-->
+				<span id="date"></span>
+					var now = new Date();
+					dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+					$('#date').append(now);
+				
+				</div>
+				</div>
+				</div>
+				
+				<div class="outgoing-chats">
+				
+				<div class="outgoing-msg">
+				<div class="outgoing-msg-inbox">
+				<p> This is a message from me</p>
+				<!--Need to find a way to print real time here, actual time not just a solid one.-->
+				<span class="time"> 10:59 PM  | October 12</span>
+				</div>
+				<div class="outgoing-chats-img">
+				<img src="user1.png">
+				</div>
+				</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	</div>
+		
+	</div>
+    
+</body>
+    
+</html>
