@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { Table, Select } from 'antd';
 
 const columns = [
@@ -756,37 +756,42 @@ function findGame(input) {
   return games[0].scores;
 }
 
-function GameLeaderboard() {
-  const [data, setData] = useState(games[0].scores);
-  return(
-    <Table title=
-      {
-        () => <div>
-        <p><b>Global Leaderboard</b></p>
-        <Select
-          showSearch
-          allowClear
-          style={{ width: 200 }}
-          placeholder="Select a game"
-          optionFilterProp="children"
-          filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-          onChange={(input) => setData(findGame(input))}
-        >
-          <Option value="1803">Red Dead Redemption 2</Option>
-          <Option value="1901">Grand Theft Auto V</Option>
-          <Option value="2230">Minecraft</Option>
-        </Select>
-        </div>
-      }
-      pagination={{ pageSize: 20 }}
-      size='default'
-      scroll={{ y: 800, x: '1vw' }}
-      columns={columns}
-      dataSource={data}
-    />
-  );
+class GameLeaderboard extends React.Component {
+  state = {
+    data: games[0].scores
+  }
+
+  render() {
+    return(
+      <Table title=
+        {
+          () => <div>
+          <p><b>Global Leaderboard</b></p>
+          <Select
+            showSearch
+            allowClear
+            style={{ width: 200 }}
+            placeholder="Select a game"
+            optionFilterProp="children"
+            filterOption={(input, option) =>
+              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
+            onChange={(input) => this.setState({ data: findGame(input)})}
+          >
+            <Option value="1803">Red Dead Redemption 2</Option>
+            <Option value="1901">Grand Theft Auto V</Option>
+            <Option value="2230">Minecraft</Option>
+          </Select>
+          </div>
+        }
+        pagination={{ pageSize: 20 }}
+        size='default'
+        scroll={{ y: 800, x: '1vw' }}
+        columns={columns}
+        dataSource={this.state.data}
+      />
+    );
+  }
 }
 
 export default GameLeaderboard;
