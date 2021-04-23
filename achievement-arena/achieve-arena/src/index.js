@@ -1,15 +1,16 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
-import ProfileTry from './profileTry';
 import ProfilePage from './ProfilePage';
 import LeaderboardPage from './LeaderboardPage';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-
-    <ProfileTry />
+    <Router>
+      <LeaderboardPage />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
