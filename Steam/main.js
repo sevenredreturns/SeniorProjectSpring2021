@@ -17,14 +17,14 @@ passport.use(new SteamStrategy({
     });
   }
 ));
-main.get('/auth/steam',
+app.get('/auth/steam',
   passport.authenticate('steam'),
   function(req, res) {
     // The request will be redirected to Steam for authentication, so
     // this function will not be called.
   });
 
-main.get('/auth/steam/return',
+app.get('/auth/steam/return',
   passport.authenticate('steam', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
