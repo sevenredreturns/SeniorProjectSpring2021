@@ -26,16 +26,9 @@ const empty = [];
 const { Option } = Select;
 
 
-function findGame(input) {
-  for (const element in games) {
-    if (games[element].key === parseInt(input)) {
-      return games[element].scores;
-    }
-  }
-  return games[0].scores;
-}
 
-class GameLeaderboard extends Component
+
+class GameLeaderboard2 extends Component
 {
   constructor(props)
   {
@@ -62,6 +55,15 @@ class GameLeaderboard extends Component
     }
 
     const {data, setData} = this.state;
+
+    function findGame(input) {
+      for (const element in games) {
+        if (games[element].key === parseInt(input)) {
+          return games[element].scores;
+        }
+      }
+      return games[0].scores;
+    }
 
     return (
         <Table title=
@@ -96,4 +98,4 @@ class GameLeaderboard extends Component
   }
 }
 
-export default GameLeaderboard;
+export default GameLeaderboard2;

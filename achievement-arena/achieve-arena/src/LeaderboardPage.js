@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import './index.css';
-import Leaderboard from './Leaderboard';
-import GameLeaderboard from './GameLeaderboard'
+import Leaderboard                                                                 from './Leaderboard';
+import GameLeaderboard2                                                            from './GameLeaderboard2'
 import { Layout, Menu, Breadcrumb, Dropdown, Row, Col, Divider, Card, PageHeader } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
@@ -81,7 +81,7 @@ function LeaderboardPage() {
           </div>
         </Col>
         <Col span={5}>
-          <div><GameLeaderboard /></div>
+          <div><GameLeaderboard2 /></div>
         </Col>
         <Col />
         <Col />
@@ -115,7 +115,7 @@ function LeaderboardPage() {
     <Divider orientation="left">Leaderboards</Divider>
     <Row justify="space-around" align="center">
       <Col span={6}>
-        <div><GameLeaderboard /></div>
+        <div><GameLeaderboard2 /></div>
       </Col>
     </Row>
     </Content>

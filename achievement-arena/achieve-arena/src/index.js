@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import ProfileTry from './profileTry';
 import ProfilePage from './ProfilePage';
 import LeaderboardPage from './LeaderboardPage';
 import reportWebVitals from './reportWebVitals';
@@ -8,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
 
-    <LeaderboardPage />
+    <ProfileTry />
   </React.StrictMode>,
   document.getElementById('root')
 );
