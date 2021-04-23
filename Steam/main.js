@@ -4,7 +4,7 @@ var express = require('express')
   , util = require('util')
   , session = require('express-session')
   , SteamStrategy = require('./').Strategy
-  , authRoutes = require('./routes/auth');
+  , authRoutes = require('./examples/signon/routes/auth');
 
 passport.use(new SteamStrategy({
     returnURL: 'http://localhost:3000/auth/steam/return',
