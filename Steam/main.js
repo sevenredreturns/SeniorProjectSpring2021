@@ -3,7 +3,7 @@ var express = require('express')
   , passport = require('passport')
   , util = require('util')
   , session = require('express-session')
-  , SteamStrategy = require('./../').Strategy
+  , SteamStrategy = require('../../').Strategy
   , authRoutes = require('./routes/auth');
 
 passport.use(new SteamStrategy({
