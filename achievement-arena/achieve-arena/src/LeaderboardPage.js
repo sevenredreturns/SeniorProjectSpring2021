@@ -11,8 +11,6 @@ const { Header, Content, Footer } = Layout;
 
 var userID = 1;
 
-
-
 function Leaderboard() {
   if (userID != null) {
     return (

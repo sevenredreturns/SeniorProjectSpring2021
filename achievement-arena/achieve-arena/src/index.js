@@ -8,9 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
       <LeaderboardPage />
-    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
