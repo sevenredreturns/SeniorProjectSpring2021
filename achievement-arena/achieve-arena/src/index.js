@@ -5,10 +5,11 @@ import './index.css';
 import ProfilePage from './ProfilePage';
 import LeaderboardPage from './LeaderboardPage';
 import reportWebVitals from './reportWebVitals';
+import App from './App.js'
 
 ReactDOM.render(
   <React.StrictMode>
-      <LeaderboardPage />
+      <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

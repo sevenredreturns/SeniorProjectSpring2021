@@ -1,12 +1,13 @@
 import React                               from "react";
 import {Button, Col, Divider, Layout, Row} from 'antd';
 import './App.css';
-import {Link, Route, Switch}               from "react-router-dom";
-import Profile                             from "./profileTry";
-import Leaderboards                        from "./Leaderboards";
+import {BrowserRouter as Router, Link, Route, Switch}               from "react-router-dom";
+import ProfileTry                             from "./ProfileTry";
+import GameLeaderboard                        from "./GameLeaderboard";
 import PrivateRoute                        from "./PrivateRoute";
 import ProfilePage 						   from "./ProfilePage";
 import NotFound 						   from "./NotFound";
+import Login from "./Login";
 //import Steam from "./main";
 
 
@@ -15,19 +16,16 @@ const {Header, Footer, Content} = Layout;
 
 const Home = () =>
 {
-    const home = "homepage";
+    const home = "Welcome to Achievement Arena!  Come, Fight, Compete with your friends for the highest achievement scores!";
     return (
         <Layout>
             <Content>
 
-                <h2>Here is where the {home} is.</h2>
-                <Divider plain> Divider </Divider>
+                <h2>{home}</h2>
 
 
             </Content>
             <Footer style={{position: "sticky", bottom: "0"}}>
-                <p style={{fontSize: 'x-small',}}>Test</p>  <Button
-                type="primary">Button</Button>
             </Footer>
         </Layout>
     );
@@ -47,6 +45,7 @@ export default function App()
         <>
             <Layout>
                 <Header>
+                    <Router>
                     <div>
                         <Row gutter={16}>
                             <Col className="gutter-row" span={6}>
@@ -59,18 +58,22 @@ export default function App()
                                 <Link to="/leaderboards"> Leaderboards </Link>
                             </Col>
                             <Col className="gutter-row" span={6}>
-                                <Link to="/admin"> Admin </Link>
+                                <Link to="/login"> Login </Link>
+                            </Col>
+                            <Col className="gutter-row" span={6}>
                             </Col>
                         </Row>
                     </div>
 
                     <Switch>
                         <Route exact path="/"><Home/></Route>
-                        <Route path="/profile"><ProfilePage/></Route>
-                        <Route path="/leaderboards"><Leaderboards/></Route>
+                        <Route path="/profile"><ProfileTry/></Route>
+                        <Route path="/leaderboards"><GameLeaderboard/></Route>
+                        <Route path="/login"><Login/></Route>
                         <PrivateRoute path="/admin" component={Admin}/>
 						<Route component={NotFound}/>
                     </Switch>
+                    </Router>
                 </Header>
             </Layout>
 
