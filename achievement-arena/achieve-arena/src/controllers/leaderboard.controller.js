@@ -3,8 +3,9 @@ const leaderboard = require('../models/leaderboard.model.js');
 exports.addLeaderboard = (req, res) =>
 {
     const newLeaderboard = new leaderboard({
+        key:req.body.key,
                                                appid  : req.body.appid,
-                                               places: req.body.places
+                                               scores: req.body.scores
                                            });
 
     newLeaderboard.save().then(data =>
