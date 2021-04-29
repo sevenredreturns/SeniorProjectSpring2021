@@ -64,6 +64,9 @@ class ProfileTry extends Component
                         <Row justify="space-around" align="middle">
                             <Col span={8}>{user.bio}</Col>
                         </Row>
+                        <Row justify="space-around" align="middle">
+                            <Col span={8}>{user.ownedGames.map(game => <div>{game.appid}</div>)}</Col>
+                        </Row>
                     </Content>
                 </>
             );
