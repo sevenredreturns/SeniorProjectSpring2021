@@ -9,7 +9,7 @@ import App from './App.js'
 
 ReactDOM.render(
   <React.StrictMode>
-      <App />
+      <LeaderboardPage/>
   </React.StrictMode>,
   document.getElementById('root')
 );

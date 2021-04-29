@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import './index.css';
-import GameLeaderboard                                                             from './GameLeaderboard'
-import ProfileTry                                                                  from './ProfileTry'
+import GameLeaderboard from './GameLeaderboard'
+import ProfileTry from "./ProfileTry";
+import PrivateRoute from "./PrivateRoute";
 import { Layout, Menu, Breadcrumb, Dropdown, Row, Col, Divider, Card, PageHeader } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
 
 var userID = 1;
+
+function Home() {
+  return (<div><Divider orientation="left">Home</Divider><p/><h2>Welcome to Achievement Arena!  Come, Fight, Compete with your friends for the highest achievement scores!</h2></div>);
+}
 
 function Leaderboard() {
   if (userID != null) {
@@ -46,6 +51,7 @@ function Leaderboard() {
   )
 }
 
+
 function login() {
   userID = 1;
   console.log(userID);
@@ -67,7 +73,6 @@ function loggedin() {
       </Menu>
     );
   }
-
   return (
     <Menu>
       <Menu.Item key="4"><a onClick={() => {login()}}>Login</a></Menu.Item>
@@ -83,7 +88,9 @@ function LeaderboardPage() {
       <Header>
         <div className="logo" />
         <Menu theme="dark" mode="horizontal" style={{ alignContent: 'right' }}>
+          <Menu.Item key="5"><a href="/Home">Home</a></Menu.Item>
           <Menu.Item key="5"><a href="/Leaderboard">Leaderboards</a></Menu.Item>
+
           <Menu.Item key="6">
             <Dropdown overlay={loggedin()} trigger={['click']}>
             <a onClick={e => e.preventDefault()}>Profile</a>
@@ -94,6 +101,9 @@ function LeaderboardPage() {
       <Content mode="horizontal" style={{ padding: '0 50px', minHeight: '1000px' }}>
       <BrowserRouter>
         <Switch>
+          <Route path="/Home">
+            {Home()}
+          </Route>
           <Route path="/Leaderboard">
             {Leaderboard()}
           </Route>

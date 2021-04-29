@@ -8,7 +8,7 @@ import "./index.css";
 const {Header, Footer, Content} = Layout;
 
 const pageUserID = "6079858623c4150084b79241";
-const userID = "6079858623c4150084b79241";
+const userID = "6079858623c4150084b79242";
 
 class ProfileTry extends Component
 {
@@ -103,7 +103,7 @@ class ProfileTry extends Component
                         </Row>
                         <Row justify="space-around" align="middle">
                             <Col span={8}>{user.ownedGames.map(game => <div>{game.appid}</div>)}</Col>
-                            <Col span={8}>{user.ownedGames.appid.achievements.map(game => <li> {game}</li>)}</Col>
+                            {/*<Col span={8}>{user.ownedGames.appid.achievements.map(game => <li> {game}</li>)}</Col>*/}
                         </Row>
                     </Content>
                 </>
