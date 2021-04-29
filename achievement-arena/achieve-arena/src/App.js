@@ -18,16 +18,7 @@ const Home = () =>
 {
     const home = "Welcome to Achievement Arena!  Come, Fight, Compete with your friends for the highest achievement scores!";
     return (
-        <Layout>
-            <Content>
-
                 <h2>{home}</h2>
-
-
-            </Content>
-            <Footer style={{position: "sticky", bottom: "0"}}>
-            </Footer>
-        </Layout>
     );
 };
 
@@ -40,7 +31,6 @@ const Admin = () => (
 
 export default function App()
 {
-	
     return (
         <>
             <Layout>
@@ -71,12 +61,11 @@ export default function App()
                         <Route path="/leaderboards"><GameLeaderboard/></Route>
                         <Route path="/login"><Login/></Route>
                         <PrivateRoute path="/admin" component={Admin}/>
-						<Route component={NotFound}/>
+						            <Route component={NotFound}/>
                     </Switch>
                     </Router>
                 </Header>
             </Layout>
-
         </>
     );
 }
