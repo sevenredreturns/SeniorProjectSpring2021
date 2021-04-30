@@ -5,7 +5,6 @@ exports.addAchievement = (req, res) =>
     const newCheevo = new achievement({
                                           appid       : req.body.appid,
                                           achievements: req.body.achievements
-
                                       });
 
     console.log(newCheevo);

@@ -4,11 +4,16 @@ import {
 }                         from 'antd';
 import "antd/dist/antd.css";
 import "./index.css";
+import achievementHelpers from "./js/achievementHelpers";
 
 const {Header, Footer, Content} = Layout;
 
 const pageUserID = "6079858623c4150084b79241";
-const userID = "6079858623c4150084b79242";
+const userID = "6079858623c4150084b792421";
+
+let gamelist = achievementHelpers.getAchievementsFromSteam('76561198006215063');
+
+console.log(gamelist)
 
 class ProfileTry extends Component
 {
@@ -36,6 +41,7 @@ class ProfileTry extends Component
         {
             return <p>Loading...</p>;
         }
+
         if (userID === pageUserID)
         {
             return (
@@ -66,6 +72,7 @@ class ProfileTry extends Component
                         </Row>
                         <Row justify="space-around" align="middle">
                             <Col span={8}>{user.ownedGames.map(game => <div>{game.appid}</div>)}</Col>
+
                         </Row>
                     </Content>
                 </>

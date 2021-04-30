@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const userSchema = new mongoose.Schema({
                                            username     : String,
                                            client_id    : String,
@@ -32,5 +33,4 @@ const userSchema = new mongoose.Schema({
                                            }],
                                            profileTotal : Number
                                        });
-
 module.exports = mongoose.model('user', userSchema);
