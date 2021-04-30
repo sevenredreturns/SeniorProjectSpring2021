@@ -71,7 +71,6 @@ class GameLeaderboard extends React.Component
     {
         const {games, data} = this.state;
 
-
         return (
             <Table title=
                        {
@@ -81,7 +80,7 @@ class GameLeaderboard extends React.Component
                                    showSearch
                                    allowClear
                                    style={{width: 200}}
-                                   placeholder="Select a game"
+                                   placeholder="Pick a Leaderboard"
                                    optionFilterProp="children"
                                    filterOption={(input, option) =>
                                        option.children.toLowerCase()
@@ -91,6 +90,7 @@ class GameLeaderboard extends React.Component
                                        {data: this.findGame(input)})}
 
                                >
+                                   <Option value="0">Overall</Option>
                                    <Option value="1803">Red Dead Redemption
                                        2</Option>
                                    <Option value="1901">Grand Theft Auto
