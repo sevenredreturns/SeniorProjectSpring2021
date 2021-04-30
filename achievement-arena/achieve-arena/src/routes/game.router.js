@@ -1,6 +1,7 @@
 module.exports = function (app)
 {
     var games = require('../controllers/game.controller.js');
+    var steamgames = require('../js/achievementHelpers.js')
 
     app.post('/api/game', games.addGame);
     app.get('/api/gamebyid/:id', games.getGameByID);
@@ -9,4 +10,5 @@ module.exports = function (app)
     app.get('/api/game', games.getAllGames);
     app.put('/api/game', games.updateGame);
     app.delete('/app/game/:id', games.deleteGame);
+    app.get('/api/steamgamesbyuid/:id', steamgames.getGamesFromSteam)
 };

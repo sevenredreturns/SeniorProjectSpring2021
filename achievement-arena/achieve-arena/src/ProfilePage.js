@@ -44,11 +44,11 @@ function fetchJSONFile(path, callback) {
 
 // this requests the file and executes a callback with the parsed result once
 //   it is available
-fetchJSONFile('users.json', function(data){
+//fetchJSONFile('users.json', function(data){
     // do something with your data
-	data = this.data;
-    console.log(data);
-});
+//	data = this.data;
+//    console.log(data);
+//});
 
 const App = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);

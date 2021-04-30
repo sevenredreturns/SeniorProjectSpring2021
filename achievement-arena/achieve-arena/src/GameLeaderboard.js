@@ -90,7 +90,7 @@ class GameLeaderboard extends React.Component
                                        {data: this.findGame(input)})}
 
                                >
-                                   <Option value="0">Overall</Option>
+                                   <Option value="0" selected>Overall</Option>
                                    <Option value="1803">Red Dead Redemption
                                        2</Option>
                                    <Option value="1901">Grand Theft Auto
