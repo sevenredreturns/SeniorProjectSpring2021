@@ -22,11 +22,15 @@ const userSchema = new mongoose.Schema({
                                            }],
                                            ownedGames   : [{
                                                appid       : Number,
+                                               name : String,
                                                achievements: [
                                                    {
-                                                       apiname   : String,
-                                                       achieved  : Number,
-                                                       unlocktime: Number
+                                                       api   : String,
+                                                       name : String,
+                                                       description: String,
+                                                       achieved  : Boolean,
+                                                       unlocktime: Number,
+                                                       points: Number
                                                    }],
                                                visible     : String,
                                                earnedPoints: Number

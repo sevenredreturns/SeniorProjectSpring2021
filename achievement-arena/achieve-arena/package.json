@@ -41,6 +41,7 @@
     "search-index": "^2.2.1",
     "steam-js-api": "^1.0.0",
     "steam-web": "^0.4.0",
+    "steamapi": "^2.1.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
