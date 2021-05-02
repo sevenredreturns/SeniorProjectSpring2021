@@ -3,8 +3,8 @@ const leaderboard = require('../models/leaderboard.model.js');
 exports.addLeaderboard = (req, res) =>
 {
     const newLeaderboard = new leaderboard({
-        key:req.body.key,
-                                               appid  : req.body.appid,
+                                               key   : req.body.key,
+                                               appid : req.body.appid,
                                                scores: req.body.scores
                                            });
 
@@ -72,6 +72,8 @@ exports.getLeaderboardByName = (req, res) =>
                                                });
 };
 
+
+
 exports.getAllLeaderboards = (req, res) =>
 {
     leaderboard.find().select('-__v').then(leaderboardInfos =>
@@ -122,11 +124,14 @@ exports.updateLeaderboard = (req, res) =>
     leaderboard.findByIdAndUpdate(
         req.body._id,
         {
-            appid  : req.body.appid,
-            places: [{
-                user : req.body.user,
-                place: req.body.place,
-                score: req.body.score
+            key   : req.body.key,
+            appid : req.body.appid,
+            scores: [{
+                key     : req.body.key,
+                userid  : req.body.userid,
+                username: req.body.username,
+                rank    : req.body.rank,
+                score   : req.body.score
             }]
         },
         {new: true}

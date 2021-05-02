@@ -70,12 +70,12 @@ async function gamesArray()
     const sendOptions =
               {
                   method: 'PUT',
-                  body  : {
-                      "_id"       : {
-                          "$oid": userID
-                      },
-                      "ownedGames": ownedGames
-                  }
+                  body  : JSON.stringify({
+                                             "_id"       : {
+                                                 "$oid": userID
+                                             },
+                                             "ownedGames": ownedGames
+                                         })
               };
 
     console.log(sendOptions);
