@@ -7,6 +7,7 @@ const leaderboardSchema = new mongoose.Schema({
                                                   scores: [{
                                                       key   : Number,
                                                       userid: String,
+                                                      username: String,
                                                       rank  : Number,
                                                       score : Number
                                                   }
