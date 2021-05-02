@@ -5,6 +5,7 @@ import 'antd/dist/antd.css';
 import './index.css';
 import GameLeaderboard from './GameLeaderboard'
 import ProfileTry from "./ProfileTry";
+import ProfilePage from "./ProfilePage";
 import PrivateRoute from "./PrivateRoute";
 import Home from "./Home";
 import Leaderboard from "./Leaderboard"
@@ -71,7 +72,7 @@ function App() {
             {Leaderboard(userID)}
           </Route>
           <Route path="/ProfilePage">
-            <ProfileTry />
+            <ProfilePage />
           </Route>
           <Route path = "/UpdateUserGames">
             <UpdateUserGames />

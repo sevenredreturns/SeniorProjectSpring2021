@@ -39,7 +39,7 @@ function fetchJSONFile(path, callback) {
         }
     };
     httpRequest.open('GET', path);
-    httpRequest.send(); 
+    httpRequest.send();
 }
 
 // this requests the file and executes a callback with the parsed result once
@@ -80,7 +80,7 @@ const App = () => {
     visible: false
   };
 
-	
+
   return (
     <>
       <Button type="primary" onClick={showModal}>
@@ -176,15 +176,15 @@ const ModalForm = ({ visible, onCancel, onCreate, form }) => {
 const App2 = () => {
   const [visible, setVisible] = useState(false);
   const [formRef, setFormRef] = useState(true);
-	
 
-	
+
+
 
   const handleCreate = () => {
 	  //UserName = usernameToBeChanged;
 	  //Bio = bioToBeChanged;
 	  //AvatarImage = avatar_srcToBeChanged;
-	  
+
 	  //Data to be added to the JSON file
        setVisible(false);
 	   refreshPage();
@@ -206,169 +206,120 @@ const App2 = () => {
         visible={visible}
         onCancel={() => setVisible(false)}
         onCreate={() => handleCreate()}
-		
+
       />
     </>
   );
 };
 
-const ProfilePage = () => 
+const ProfilePage = () =>
 {
-	
+  function login() {
+    userID = "6079858623c4150084b79241";
+    refreshPage();
+    console.log(userID);
+  }
 
+  function logout() {
+    userID = null;
+    refreshPage();
+    console.log(userID);
+  }
 
-function login() {
-  userID = "6079858623c4150084b79241";
-  refreshPage();
-  console.log(userID);
-}
-
-function logout() {
-  userID = null;
-  refreshPage();
-  console.log(userID);
-}
-
-function loggedin() {
-  if (userID != null) {
+  function loggedin() {
+    if (userID != null) {
+      return (
+        <Menu>
+          <Menu.Item key="0">
+            <a>Profile Page</a>
+          </Menu.Item>
+          <Menu.Item key="2">
+            <a>Settings</a>
+          </Menu.Item>
+          <Menu.Divider />
+          <Menu.Item key="3">
+            <a
+              onClick={() => {
+                logout();
+              }}
+            >
+              Logout
+            </a>
+          </Menu.Item>
+        </Menu>
+      );
+    }
     return (
       <Menu>
-        <Menu.Item key="0">
-          <a>Profile Page</a>
-        </Menu.Item>
-        <Menu.Item key="2">
-          <a>Settings</a>
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="3">
+        <Menu.Item key="4">
           <a
             onClick={() => {
-              logout();
+              login();
             }}
           >
-            Logout
+            Login
           </a>
         </Menu.Item>
       </Menu>
     );
   }
-  return (
-    <Menu>
-      <Menu.Item key="4">
-        <a
-          onClick={() => {
-            login();
-          }}
-        >
-          Login
-        </a>
-      </Menu.Item>
-    </Menu>
-  );
-}
 
-if (userID === pageUserID) {
-  return(
-	<>
-      <PageHeader title="Achievement Arena" />
-      <Layout className="header">
-        <Header>
-          <div className="logo" />
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            style={{ alignContent: "right" }}
-          >
-            <Menu.Item key="5">Leaderboards</Menu.Item>
-            <Menu.Item key="6">
-              <Dropdown overlay={loggedin()} trigger={["click"]}>
-                <a onClick={(e) => e.preventDefault()}>Profile</a>
-              </Dropdown>
-            </Menu.Item>
-          </Menu>
-        </Header>
-        <Content
-          mode="horizontal"
-          style={{ padding: "0 50px", minHeight: "1000px" }}
-        >
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Achievement Arena</Breadcrumb.Item>
-            <Breadcrumb.Item>Profile</Breadcrumb.Item>
-          </Breadcrumb>
-          <Divider orientation="left">Profile</Divider>
-          <Row justify="center" align="middle">
-            <Col flex={4}></Col>
-            <Col span={2}>
-              <Avatar
-                size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
-                src={AvatarImage}
-              />
-            </Col>
-            <Col flex={4}>{UserName}</Col>
-            <App2/>
-            <Col flex={2}></Col>
-          </Row>
+  if (userID === pageUserID) {
+    return(
+  	<>
+            <Breadcrumb style={{ margin: "16px 0" }}>
+              <Breadcrumb.Item>Achievement Arena</Breadcrumb.Item>
+              <Breadcrumb.Item>Profile</Breadcrumb.Item>
+            </Breadcrumb>
+            <Divider orientation="left">Profile</Divider>
+            <Row justify="center" align="middle">
+              <Col flex={4}></Col>
+              <Col span={2}>
+                <Avatar
+                  size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
+                  src={AvatarImage}
+                />
+              </Col>
+              <Col flex={4}>{UserName}</Col>
+              <App2/>
+              <Col flex={2}></Col>
+            </Row>
 
-          <Divider orientation="left"></Divider>
-          <Row justify="space-around" align="middle">
-            <Col span={8}>{Bio}</Col>
-          </Row>
-        </Content>
-      </Layout>
-	  </>
-  );
-  console.log("This is you");
-} else {
-  return(
-  <>
-      <PageHeader title="Achievement Arena" />
-      <Layout className="header">
-        <Header>
-          <div className="logo" />
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            style={{ alignContent: "right" }}
-          >
-            <Menu.Item key="5">Leaderboards</Menu.Item>
-            <Menu.Item key="6">
-              <Dropdown overlay={loggedin()} trigger={["click"]}>
-                <a onClick={(e) => e.preventDefault()}>Profile</a>
-              </Dropdown>
-            </Menu.Item>
-          </Menu>
-        </Header>
-        <Content
-          mode="horizontal"
-          style={{ padding: "0 50px", minHeight: "1000px" }}
-        >
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Achievement Arena</Breadcrumb.Item>
-            <Breadcrumb.Item>Profile</Breadcrumb.Item>
-          </Breadcrumb>
-          <Divider orientation="left">Profile</Divider>
-          <Row justify="center" align="middle">
-            <Col flex={4}></Col>
-            <Col span={2}>
-              <Avatar
-                size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
-                src={AvatarImage}
-              />
-            </Col>
-            <Col flex={4}>{UserName}</Col>
-            <Col flex={2}></Col>
-          </Row>
+            <Divider orientation="left"></Divider>
+            <Row justify="space-around" align="middle">
+              <Col span={8}>{Bio}</Col>
+            </Row>
+            </>
+    );
+    console.log("This is you");
+  } else {
+    return(
+    <>
+            <Breadcrumb style={{ margin: "16px 0" }}>
+              <Breadcrumb.Item>Achievement Arena</Breadcrumb.Item>
+              <Breadcrumb.Item>Profile</Breadcrumb.Item>
+            </Breadcrumb>
+            <Divider orientation="left">Profile</Divider>
+            <Row justify="center" align="middle">
+              <Col flex={4}></Col>
+              <Col span={2}>
+                <Avatar
+                  size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
+                  src={AvatarImage}
+                />
+              </Col>
+              <Col flex={4}>{UserName}</Col>
+              <Col flex={2}></Col>
+            </Row>
 
-          <Divider orientation="left"></Divider>
-          <Row justify="space-around" align="middle">
-            <Col span={8}>{Bio}</Col>
-          </Row>
-        </Content>
-      </Layout>
-	  </>
-  );
-  console.log("This isn't you");
-}
+            <Divider orientation="left"></Divider>
+            <Row justify="space-around" align="middle">
+              <Col span={8}>{Bio}</Col>
+            </Row>
+  	  </>
+    );
+    console.log("This isn't you");
+  }
 }
 
 export default ProfilePage
