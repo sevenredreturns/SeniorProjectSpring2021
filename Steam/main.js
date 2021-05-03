@@ -39,4 +39,7 @@ app.get('/auth/steam/return',
 
 
 steamID = User.findByOpenID
-moreInfo = true // Provide more info (name, links)
+
+SteamAPI.getUserOwnedGames(steamID).then(result => {
+    console.log(result)
+}).catch(console.error)
