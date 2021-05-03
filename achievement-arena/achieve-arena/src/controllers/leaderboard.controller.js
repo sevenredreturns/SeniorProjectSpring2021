@@ -44,34 +44,33 @@ exports.getLeaderboardByID = (req, res) =>
                               });
 };
 
-exports.getLeaderboardByName = (req, res) =>
+exports.getLeaderboardByAppid = (req, res) =>
 {
-    const query = leaderboard.where({game: req.params.game});
+    const query = leaderboard.where({appid: req.params.appid});
 
-    query.findOne.select('-__v').then(leaderboard =>
-                                      {
-                                          res.status(200).json(leaderboard);
-                                      }).catch(err =>
-                                               {
-                                                   if (err.kind === "String")
-                                                   {
-                                                       return res.status(404)
-                                                                 .send(
-                                                                     {
-                                                                         message: "leaderboard not found with name " +
-                                                                             req.params.game,
-                                                                         error  : err
-                                                                     });
-                                                   }
-                                                   return res.status(500).send(
-                                                       {
-                                                           message: "Error retrieving leaderboard with name " +
-                                                               req.params.game,
-                                                           error  : err
-                                                       });
-                                               });
+    query.find().then(leaderboard =>
+                      {
+                          res.status(200).json(leaderboard);
+                      }).catch(err =>
+                               {
+                                   if (err.kind === "String")
+                                   {
+                                       return res.status(404)
+                                                 .send(
+                                                     {
+                                                         message: "leaderboard not found with name " +
+                                                             req.params.appid,
+                                                         error  : err
+                                                     });
+                                   }
+                                   return res.status(500).send(
+                                       {
+                                           message: "Error retrieving leaderboard with name " +
+                                               req.params.appid,
+                                           error  : err
+                                       });
+                               });
 };
-
 
 
 exports.getAllLeaderboards = (req, res) =>
@@ -156,4 +155,32 @@ exports.updateLeaderboard = (req, res) =>
                                                                   error  : err.message
                                                               });
                               });
+};
+
+exports.getPlacesByUserID = (req, res) =>
+{
+    const query = leaderboard.where({scores: {userid: req.params.uid}});
+
+    query.find().then(leaderboard =>
+                      {
+                          res.status(200).json(leaderboard);
+                      }).catch(err =>
+                               {
+                                   if (err.kind === "String")
+                                   {
+                                       return res.status(404)
+                                                 .send(
+                                                     {
+                                                         message: "leaderboard not found with name " +
+                                                             req.params.uid,
+                                                         error  : err
+                                                     });
+                                   }
+                                   return res.status(500).send(
+                                       {
+                                           message: "Error retrieving leaderboard with name " +
+                                               req.params.uid,
+                                           error  : err
+                                       });
+                               });
 };

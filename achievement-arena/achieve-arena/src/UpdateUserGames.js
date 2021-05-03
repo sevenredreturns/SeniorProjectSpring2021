@@ -67,20 +67,26 @@ async function gamesArray()
 
     console.log(ownedGames);
 
+    const toSend = {
+        "_id"       : {
+            "$oid": userID
+        },
+        "ownedGames": ownedGames
+    }
+    console.log(toSend)
+
+
     const sendOptions =
               {
                   method: 'PUT',
-                  body  : JSON.stringify({
-                                             "_id"       : {
-                                                 "$oid": userID
-                                             },
-                                             "ownedGames": ownedGames
-                                         })
+                  headers: { 'Content-Type': 'application/json' },
+                  body  : JSON.stringify(toSend)
               };
 
     console.log(sendOptions);
 
-    let updated = await fetch('/api/updateUsersGames/', sendOptions);
+
+    let updated = await fetch('/api/updateUsersGames/', sendOptions)
     let fullupdate = await updated.json();
     console.log(fullupdate);
 

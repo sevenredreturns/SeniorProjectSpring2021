@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
                                                        name : String,
                                                        description: String,
                                                        achieved  : Boolean,
-                                                       unlocktime: Number,
+                                                       unlockTime: Number,
                                                        points: Number
                                                    }],
                                                visible     : String,

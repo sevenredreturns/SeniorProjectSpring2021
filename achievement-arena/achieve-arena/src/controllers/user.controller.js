@@ -196,7 +196,6 @@ exports.searchForGameInArray = function (inputid, array)
 exports.updateUserAchievements = (req, res) =>
 {
     let userID = req.body._id;
-    console.log(userID);
 
     user.findByIdAndUpdate(
         userID.$oid,

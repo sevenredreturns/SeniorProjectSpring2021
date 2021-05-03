@@ -6,10 +6,10 @@ import './index.css';
 import GameLeaderboard from './GameLeaderboard'
 import ProfileTry from "./ProfileTry";
 import ProfilePage from "./ProfilePage";
-import PrivateRoute from "./PrivateRoute";
-import Home from "./Home";
+import PrivateRoute    from "./PrivateRoute";
+import UpdateUserGames from "./UpdateUserGames";
+import Home            from "./Home";
 import Leaderboard from "./Leaderboard"
-import UpdateUserGames from "./UpdateUserGames"
 import { Layout, Menu, Breadcrumb, Dropdown, Row, Col, Divider, Card, PageHeader } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
@@ -61,7 +61,6 @@ function App() {
             <a onClick={e => e.preventDefault()}>Profile</a>
             </Dropdown>
           </Menu.Item>
-          <Menu.Item key="7"><a href="/UpdateUserGames">Update User Games Tester</a></Menu.Item>
         </Menu>
       </Header>
 
@@ -73,9 +72,6 @@ function App() {
           </Route>
           <Route path="/ProfilePage">
             <ProfilePage />
-          </Route>
-          <Route path = "/UpdateUserGames">
-            <UpdateUserGames />
           </Route>
           <Route path="/">
             <Home/>
