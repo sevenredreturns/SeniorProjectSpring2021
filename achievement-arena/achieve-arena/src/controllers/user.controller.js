@@ -196,12 +196,35 @@ exports.searchForGameInArray = function (inputid, array)
 exports.updateUserAchievements = (req, res) =>
 {
     let userID = req.body._id;
-};
+    console.log(userID);
 
-exports.addGamesToUser = (req, res) =>
-{
-    let userID = req.body._id;
+    user.findByIdAndUpdate(
+        userID.$oid,
+        {
+            ownedGames : req.body.ownedGames
+        },
+        {new: true, omitUndefined: true}
+    ).select('-__v')
+        .then(user =>
+              {
+                  if (!user)
+                  {
+                      return res.status(404).send({
+                                                      message: "Error -> Can NOT update a user with ID = " +
+                                                          req.params.id,
+                                                      error  : "Not Found!"
+                                                  });
+                  }
 
+                  res.status(200).json(user);
+              }).catch(err =>
+                       {
+                           return res.status(500).send({
+                                                           message: "Error -> Can Not update a user with ID = " +
+                                                               req.params.id,
+                                                           error  : err.message
+                                                       });
+                       });
 
 };
 

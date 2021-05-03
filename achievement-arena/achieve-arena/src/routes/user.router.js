@@ -9,4 +9,5 @@ module.exports = function (app)
     app.get('/api/userbyname/:username', users.getUserByName);
     app.put('/api/user', users.updateUser);
     app.delete('/app/user/:id', users.deleteUser);
+    app.put('/api/updateUsersGames/', users.updateUserAchievements);
 };

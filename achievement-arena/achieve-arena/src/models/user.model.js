@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const userSchema = new mongoose.Schema({
                                            username     : String,
                                            client_id    : String,
@@ -21,16 +22,19 @@ const userSchema = new mongoose.Schema({
                                            }],
                                            ownedGames   : [{
                                                appid       : Number,
+                                               name : String,
                                                achievements: [
                                                    {
-                                                       apiname   : String,
-                                                       achieved  : Number,
-                                                       unlocktime: Number
+                                                       api   : String,
+                                                       name : String,
+                                                       description: String,
+                                                       achieved  : Boolean,
+                                                       unlocktime: Number,
+                                                       points: Number
                                                    }],
                                                visible     : String,
                                                earnedPoints: Number
                                            }],
                                            profileTotal : Number
                                        });
-
 module.exports = mongoose.model('user', userSchema);

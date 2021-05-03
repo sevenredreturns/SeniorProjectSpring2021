@@ -1,76 +1,92 @@
-import React                               from "react";
-import {Button, Col, Divider, Layout, Row} from 'antd';
-import './App.css';
-import {Link, Route, Switch}               from "react-router-dom";
-import Profile                             from "./profileTry";
-import Leaderboards                        from "./Leaderboards";
-import PrivateRoute                        from "./PrivateRoute";
-//import Steam from "./main";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import 'antd/dist/antd.css';
+import './index.css';
+import GameLeaderboard from './GameLeaderboard'
+import ProfileTry from "./ProfileTry";
+import ProfilePage from "./ProfilePage";
+import PrivateRoute from "./PrivateRoute";
+import Home from "./Home";
+import Leaderboard from "./Leaderboard"
+import UpdateUserGames from "./UpdateUserGames"
+import { Layout, Menu, Breadcrumb, Dropdown, Row, Col, Divider, Card, PageHeader } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
+const { Header, Content, Footer } = Layout;
 
-const {Header, Footer, Content} = Layout;
+var userID = 1;
 
+function login() {
+  userID = 1;
+  console.log(userID);
+}
 
-const Home = () =>
-{
-    const home = "homepage";
+function logout() {
+  userID = null;
+  console.log(userID);
+}
+
+function loggedin() {
+
+  if (userID != null) {
     return (
-        <Layout>
-            <Content>
-
-                <h2>Here is where the {home} is.</h2>
-                <Divider plain> Divider </Divider>
-
-
-            </Content>
-            <Footer style={{position: "sticky", bottom: "0"}}>
-                <p style={{fontSize: 'x-small',}}>Test</p>  <Button
-                type="primary">Button</Button>
-            </Footer>
-        </Layout>
+      <Menu>
+        <Menu.Item key="0"><a href="/ProfilePage">Profile Page</a></Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="3"><a onClick={() => {logout()}}>Logout</a></Menu.Item>
+      </Menu>
     );
-};
+  }
+  return (
+    <Menu>
+      <Menu.Item key="4"><a onClick={() => {login()}}>Login</a></Menu.Item>
+    </Menu>
+  );
+}
 
-const Admin = () => (
-    <div>
-        <h2>Welcome admin!</h2>
-    </div>
-);
-
-
-export default function App()
-{
+function App() {
     return (
-        <>
-            <Layout>
-                <Header>
-                    <div>
-                        <Row gutter={16}>
-                            <Col className="gutter-row" span={6}>
-                                <Link to="/"> Home </Link>
-                            </Col>
-                            <Col className="gutter-row" span={6}>
-                                <Link to="/profile"> Profile </Link>
-                            </Col>
-                            <Col className="gutter-row" span={6}>
-                                <Link to="/leaderboards"> Leaderboards </Link>
-                            </Col>
-                            <Col className="gutter-row" span={6}>
-                                <Link to="/admin"> Admin </Link>
-                            </Col>
-                        </Row>
-                    </div>
+      <div>
+      <PageHeader title="Achievement Arena" />
+      <Layout className="header">
+      <Header>
+        <div className="logo" />
+        <Menu theme="dark" mode="horizontal" style={{ alignContent: 'right' }}>
+          <Menu.Item key="5"><a href="/">Home</a></Menu.Item>
+          <Menu.Item key="5"><a href="/Leaderboard">Leaderboards</a></Menu.Item>
 
-                    <Switch>
-                        <Route exact path="/"><Home/></Route>
-                        <Route path="/profile"><Profile/></Route>
-                        <Route path="/leaderboards"><Leaderboards/></Route>
-                        <PrivateRoute path="/admin" component={Admin}/>
-                    </Switch>
-                </Header>
+          <Menu.Item key="6">
+            <Dropdown overlay={loggedin()} trigger={['click']}>
+            <a onClick={e => e.preventDefault()}>Profile</a>
+            </Dropdown>
+          </Menu.Item>
+          <Menu.Item key="7"><a href="/UpdateUserGames">Update User Games Tester</a></Menu.Item>
+        </Menu>
+      </Header>
 
-            </Layout>
-
-        </>
+      <Content style={{ padding: '0 50px', minHeight: '1000px' }}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/Leaderboard">
+            {Leaderboard(userID)}
+          </Route>
+          <Route path="/ProfilePage">
+            <ProfilePage />
+          </Route>
+          <Route path = "/UpdateUserGames">
+            <UpdateUserGames />
+          </Route>
+          <Route path="/">
+            <Home/>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+      </Content>
+      <Footer style={{ textAlign: 'center' }}>Achievement Arena ©2021</Footer>
+    </Layout>
+    </div>
     );
 }
+
+export default App;
