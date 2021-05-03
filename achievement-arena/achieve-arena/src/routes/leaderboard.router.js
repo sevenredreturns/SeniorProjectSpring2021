@@ -8,5 +8,5 @@ module.exports = function (app)
     app.get('/api/leaderboard', leaderboard.getAllLeaderboards);
     app.put('/api/leaderboard', leaderboard.updateLeaderboard);
     app.get('/api/leaderboarduid/:uid', leaderboard.getPlacesByUserID);
-    app.delete('/app/leaderboard/:id', leaderboard.deleteLeaderboard);
+    app.delete('/api/leaderboard/:id', leaderboard.deleteLeaderboard);
 };
