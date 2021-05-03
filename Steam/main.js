@@ -3,8 +3,11 @@ var express = require('express')
   , util = require('util')
   , session = require('express-session')
   , SteamStrategy = require('./').Strategy
-  , authRoutes = require('./examples/signon/routes/auth')
-  , api = require('steam-js-api');
+  , authRoutes = require('./examples/signon/routes/auth');
+const SteamAPI = require('steamapi');
+const steam = new SteamAPI('6B328D41EE66949204BBCEBA81C3852A');
+
+var User = express();
 
 passport.use(new SteamStrategy({
     returnURL: 'http://localhost:3000/auth/steam/return',
