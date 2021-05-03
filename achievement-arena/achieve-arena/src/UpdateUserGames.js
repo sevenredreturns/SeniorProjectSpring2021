@@ -5,9 +5,9 @@ import "./index.css";
 
 const {Header, Footer, Content} = Layout;
 const
-    userID = "6079858623c4150084b79243";
+    userID = "6079858623c4150084b79241";
 const
-    steamID = "76561198107606725";
+    steamID = "76561198006215063";
 
 async function gamesArray()
 {

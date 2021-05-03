@@ -7,7 +7,7 @@ import GameLeaderboard from './GameLeaderboard'
 import ProfileTry from "./ProfileTry";
 import ProfilePage from "./ProfilePage";
 import PrivateRoute    from "./PrivateRoute";
-import UpdateUserGames from "./UpdateUserGames";
+//import UpdateUserGames from "./UpdateUserGames";
 import Home            from "./Home";
 import Leaderboard from "./Leaderboard"
 import { Layout, Menu, Breadcrumb, Dropdown, Row, Col, Divider, Card, PageHeader } from 'antd';

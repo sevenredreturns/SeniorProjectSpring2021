@@ -159,7 +159,7 @@ exports.updateLeaderboard = (req, res) =>
 
 exports.getPlacesByUserID = (req, res) =>
 {
-    const query = leaderboard.where({scores: {userid: req.params.uid}});
+    const query = leaderboard.where({scores: {$elemMatch: { userid: req.params.uid}}});
 
     query.find().then(leaderboard =>
                       {
