@@ -9,6 +9,14 @@ const steam = new SteamAPI('6B328D41EE66949204BBCEBA81C3852A');
 
 var User = express();
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
 passport.use(new SteamStrategy({
     returnURL: 'http://localhost:3000/auth/steam/return',
     realm: 'http://localhost:3000/',
@@ -22,6 +30,35 @@ passport.use(new SteamStrategy({
 ));
 
 var app = express();
+
+// configure Express
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.use(session({
+    secret: 'your secret',
+    name: 'name of session id',
+    resave: true,
+    saveUninitialized: true}));
+
+// Initialize Passport!  Also use passport.session() middleware, to support
+// persistent login sessions (recommended).
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(__dirname + '/../../public'));
+
+app.get('/', function(req, res){
+  res.render('index', { user: req.user });
+});
+
+app.get('/account', ensureAuthenticated, function(req, res){
+  res.render('account', { user: req.user });
+});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 app.get('/auth/steam',
   passport.authenticate('steam'),
@@ -37,7 +74,12 @@ app.get('/auth/steam/return',
     res.redirect('/');
   });
 
-
+  app.listen(3000);
+  function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) { return next(); }
+    res.redirect('/');
+  }
+  
 steamID = User.findByOpenID
 
 steam.getUserOwnedGames(steamID).then(result => {
