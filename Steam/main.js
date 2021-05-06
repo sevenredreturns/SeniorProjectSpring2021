@@ -23,8 +23,16 @@ passport.use(new SteamStrategy({
     apiKey: '6B328D41EE66949204BBCEBA81C3852A'
   },
   function(identifier, profile, done) {
-    User.findByOpenID({ openId: identifier }, function (err, user) {
-      return done(err, user);
+    //User.findByOpenID({ openId: identifier }, function (err, user) {
+      //return done(err, user);
+    process.nextTick(function () {
+
+    // To keep the example simple, the user's Steam profile is returned to
+    // represent the logged-in user.  In a typical application, you would want
+    // to associate the Steam account with a user record in your database,
+    // and return that user instead.
+    profile.identifier = identifier;
+    return done(null, profile);
     });
   }
 ));
@@ -79,8 +87,8 @@ app.get('/auth/steam/return',
     if (req.isAuthenticated()) { return next(); }
     res.redirect('/');
   }
-//steamID = User.findByOpenID
+steamID = User.findByOpenID
 
-//steam.getUserOwnedGames(steamID).then(result => {
-    //console.log(result)
-//}).catch(console.error)
+steam.getUserOwnedGames(steamID).then(result => {
+    console.log(result)
+}).catch(console.error)
