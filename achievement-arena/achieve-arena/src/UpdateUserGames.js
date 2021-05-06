@@ -1,15 +1,4 @@
-import React    from 'react';
-import {Layout} from 'antd';
-import "antd/dist/antd.css";
-import "./index.css";
-
-const {Header, Footer, Content} = Layout;
-const
-    userID = "6079858623c4150084b79241";
-const
-    steamID = "76561198006215063";
-
-async function gamesArray()
+async function gamesArray(userID, steamID)
 {
     let response = await fetch('/api/steamgamesbyuid/' + steamID);
     let data = await response.json();
@@ -78,33 +67,25 @@ async function gamesArray()
             "$oid": userID
         },
         "ownedGames": ownedGames
-    }
-    console.log(toSend)
+    };
+    console.log(toSend);
 
 
     const sendOptions =
               {
-                  method: 'PUT',
-                  headers: { 'Content-Type': 'application/json' },
-                  body  : JSON.stringify(toSend)
+                  method : 'PUT',
+                  headers: {'Content-Type': 'application/json'},
+                  body   : JSON.stringify(toSend)
               };
 
     console.log(sendOptions);
 
 
-    let updated = await fetch('/api/updateUsersGames/', sendOptions)
+    let updated = await fetch('/api/updateUsersGames/', sendOptions);
     let fullupdate = await updated.json();
     console.log(fullupdate);
 
 
 }
 
-console.log(gamesArray());
-
-class UpdateUserGames extends React.Component
-{
-
-
-}
-
-export default UpdateUserGames;
+module.exports = gamesArray;

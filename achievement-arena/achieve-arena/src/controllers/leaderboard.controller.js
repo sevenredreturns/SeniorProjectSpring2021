@@ -191,38 +191,39 @@ exports.getGlobalRank = (req, res) =>
     const query = leaderboard.where(
         {key: 0, scores: {$elemMatch: {userid: req.params.uid}}});
 
-    query.findOne().then(scoreslist => {
-        let scoresarray = scoreslist.scores;
-        console.log(scoresarray)
-        let i = 0;
-        while (i < scoresarray.length)
-        {
-            console.log(scoresarray[i])
-            if (scoresarray[i].userid === req.params.uid)
-            {
-                return scoresarray[i]
-            }
-        }
-    }).then(leaderboard =>
+    query.findOne().then(scoreslist =>
                          {
-                             res.status(200).json(leaderboard);
-                         }).catch(err =>
-                                  {
-                                      if (err.kind === "String")
-                                      {
-                                          return res.status(404)
-                                                    .send(
-                                                        {
-                                                            message: "leaderboard not found with name " +
-                                                                req.params.uid,
-                                                            error  : err
-                                                        });
-                                      }
-                                      return res.status(500).send(
+                             let scoresarray = scoreslist.scores;
+                             console.log(scoresarray);
+                             let i = 0;
+                             while (i < scoresarray.length)
+                             {
+                                 console.log(scoresarray[i]);
+                                 if (scoresarray[i].userid === req.params.uid)
+                                 {
+                                     return scoresarray[i];
+                                 }
+                             }
+                         }).then(leaderboard =>
+                                 {
+                                     res.status(200).json(leaderboard);
+                                 }).catch(err =>
                                           {
-                                              message: "Error retrieving leaderboard with name " +
-                                                  req.params.uid,
-                                              error  : err
+                                              if (err.kind === "String")
+                                              {
+                                                  return res.status(404)
+                                                            .send(
+                                                                {
+                                                                    message: "leaderboard not found with name " +
+                                                                        req.params.uid,
+                                                                    error  : err
+                                                                });
+                                              }
+                                              return res.status(500).send(
+                                                  {
+                                                      message: "Error retrieving leaderboard with name " +
+                                                          req.params.uid,
+                                                      error  : err
+                                                  });
                                           });
-                                  });
 };
