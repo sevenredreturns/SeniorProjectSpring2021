@@ -46,7 +46,7 @@ passport.use(new SteamStrategy({
       return done(null, profile);
     });
   },
-  steamID = process.nextTick
+  steamID = process.nextTick,
   steam.getUserOwnedGames(steamID).then(result => {
       console.log(result)
   }).catch(console.error)
