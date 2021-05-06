@@ -60,7 +60,7 @@ class ProfilePage extends React.Component
     this.setState({visible: false});
   }
 
-  App2() {
+  App() {
     return (
       <>
         <Button type="primary" onClick={() => {this.setState({visible: true})}}>
@@ -72,7 +72,7 @@ class ProfilePage extends React.Component
           onCancel={() => this.setState({visible: false})}
           footer={null}
         >
-          <Form layout="vertical" onFinish = {(changes) => this.updateValues(changes)}>
+          <Form layout="vertical" colon={true} onFinish = {(changes) => this.updateValues(changes)}>
             <Form.Item label="Username" name = "username">
     			     <Input/>
             </Form.Item>
@@ -108,7 +108,7 @@ class ProfilePage extends React.Component
                   />
                 </Col>
                 <Col flex={4}>{this.state.username}</Col>
-                {this.App2()}
+                {this.App()}
                 <Col flex={2}></Col>
               </Row>
               <Divider orientation="left"></Divider>
