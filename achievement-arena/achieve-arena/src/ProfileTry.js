@@ -22,8 +22,6 @@ class ProfileTry extends Component
         fetch('/api/user/' + pageUserID)
             .then(response => response.json())
             .then(data => this.setState({user: data, loading: false}));
-
-
     }
 
 
@@ -41,10 +39,6 @@ class ProfileTry extends Component
 
             return (
                 <>
-                    <Content
-                        mode="horizontal"
-                        style={{padding: "0 50px", minHeight: "1000px"}}
-                    >
                         <Divider orientation="left">Profile</Divider>
                         <Row justify="center" align="middle">
                             <Col flex={4}></Col>
@@ -71,7 +65,6 @@ class ProfileTry extends Component
 
 
                         </Row>
-                    </Content>
                 </>
             );
         }
@@ -79,10 +72,6 @@ class ProfileTry extends Component
         {
             return (
                 <>
-                    <Content
-                        mode="horizontal"
-                        style={{padding: "0 50px", minHeight: "1000px"}}
-                    >
                         <Divider orientation="left">Profile</Divider>
                         <Row justify="center" align="middle">
                             <Col flex={4}></Col>
@@ -111,7 +100,6 @@ class ProfileTry extends Component
 
                             {/*<Col span={8}>{user.ownedGames.appid.achievements.map(game => <li> {game}</li>)}</Col>*/}
                         </Row>
-                    </Content>
                 </>
             )
                 ;

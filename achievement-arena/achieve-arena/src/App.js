@@ -61,6 +61,7 @@ function App() {
             <a onClick={e => e.preventDefault()}>Profile</a>
             </Dropdown>
           </Menu.Item>
+          {/*<Menu.Item key="7"><a href="/UpdateUserGames">Update User Games Tester</a></Menu.Item>*/}
         </Menu>
       </Header>
 
@@ -73,6 +74,9 @@ function App() {
           <Route path="/ProfilePage">
             <ProfilePage />
           </Route>
+          {/*<Route path = "/UpdateUserGames">
+            <UpdateUserGames />
+          </Route>*/}
           <Route path="/">
             <Home/>
           </Route>

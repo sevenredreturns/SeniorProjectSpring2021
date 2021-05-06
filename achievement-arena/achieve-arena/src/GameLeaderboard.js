@@ -54,7 +54,6 @@ class GameLeaderboard extends React.Component
     {
         let copyGameDetails = this.state.games;
 
-
         for (const element in copyGameDetails)
         {
             //console.log(copyGameDetails[element]);
@@ -69,7 +68,6 @@ class GameLeaderboard extends React.Component
 
     render()
     {
-        const {games, data} = this.state;
 
         return (
             <Table title=
