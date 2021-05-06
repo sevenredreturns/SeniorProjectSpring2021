@@ -119,13 +119,15 @@ exports.deleteUser = (req, res) =>
 };
 
 
-
 exports.updateUser = (req, res) =>
 {
     let userID = req.body._id;
 
     userUpdate = new user();
-
+    if (req.body.username != null)
+    {
+        userUpdate.username = req.body.username;
+    }
     if (req.body.firstName != null)
     {
         userUpdate.firstName = req.body.firstName;
@@ -153,11 +155,12 @@ exports.updateUser = (req, res) =>
     user.findByIdAndUpdate(
         userID.$oid,
         {
-            firstName    : userUpdate.firstName,
-            lastName     : userUpdate.lastName,
-            client_id    : userUpdate.client_id,
-            bio          : userUpdate.bio,
-            avatarurl    : userUpdate.avatarurl
+            username : userUpdate.username,
+            firstName: userUpdate.firstName,
+            lastName : userUpdate.lastName,
+            client_id: userUpdate.client_id,
+            bio      : userUpdate.bio,
+            avatarurl: userUpdate.avatarurl
         },
         {new: true, omitUndefined: true}
     ).select('-__v')
@@ -187,7 +190,8 @@ exports.searchForGameInArray = function (inputid, array)
 {
     for (var i = 0; i < array.length; i++)
     {
-        if (array[i].appid = inputid){
+        if (array[i].appid = inputid)
+        {
             return i;
         }
     }
@@ -200,7 +204,7 @@ exports.updateUserAchievements = (req, res) =>
     user.findByIdAndUpdate(
         userID.$oid,
         {
-            ownedGames : req.body.ownedGames
+            ownedGames: req.body.ownedGames
         },
         {new: true, omitUndefined: true}
     ).select('-__v')
