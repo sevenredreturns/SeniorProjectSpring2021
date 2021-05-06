@@ -79,9 +79,8 @@ app.get('/auth/steam/return',
     if (req.isAuthenticated()) { return next(); }
     res.redirect('/');
   }
-  
-steamID = User.findByOpenID
+//steamID = User.findByOpenID
 
-steam.getUserOwnedGames(steamID).then(result => {
-    console.log(result)
-}).catch(console.error)
+//steam.getUserOwnedGames(steamID).then(result => {
+    //console.log(result)
+//}).catch(console.error)
