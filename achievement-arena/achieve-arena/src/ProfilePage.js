@@ -48,13 +48,13 @@ class ProfilePage extends React.Component
   }
 
   updateValues(changes) {
-    if(changes.username != null) {
+    if(changes.username != null && changes.username != "") {
       this.setState({username: changes.username});
     }
-    if(changes.bio != null) {
+    if(changes.bio != null && changes.bio != "") {
       this.setState({bio: changes.bio});
     }
-    if(changes.avatar_src != null) {
+    if(changes.avatar_src != null && changes.avatar_src != "") {
       this.setState({avatarurl: changes.avatar_src});
     }
     this.setState({visible: false});
