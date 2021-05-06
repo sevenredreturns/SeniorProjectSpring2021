@@ -69,7 +69,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/Leaderboard">
-            {Leaderboard(userID)}
+            <Leaderboard />
           </Route>
           <Route path="/ProfilePage">
             <ProfilePage />
