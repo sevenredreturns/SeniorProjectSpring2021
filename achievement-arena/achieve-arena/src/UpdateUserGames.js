@@ -48,6 +48,7 @@ async function gamesArray()
             {
                 cheevo2.achievements[j].points = 100;
             }
+
             console.log(cheevo2);
             cheevoList.push(cheevo2);
         }

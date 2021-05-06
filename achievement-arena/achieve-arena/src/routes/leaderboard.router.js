@@ -8,5 +8,6 @@ module.exports = function (app)
     app.get('/api/leaderboard', leaderboard.getAllLeaderboards);
     app.put('/api/leaderboard', leaderboard.updateLeaderboard);
     app.get('/api/leaderboarduid/:uid', leaderboard.getPlacesByUserID);
+    app.get('/api/leaderboardglobaluid/:uid', leaderboard.getGlobalRank);
     app.delete('/api/leaderboard/:id', leaderboard.deleteLeaderboard);
 };

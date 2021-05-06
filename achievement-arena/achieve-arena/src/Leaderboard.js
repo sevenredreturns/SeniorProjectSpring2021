@@ -17,7 +17,8 @@ class Leaderboard extends React.Component {
       this.setState({loading: true});
       fetch('/api/leaderboarduid/' + userID)
           .then(response => response.json())
-          .then(data => this.setState({username: data.username, place: data.place}));
+          .then(data => this.setState({username: data.username, place: data.place}))
+      ;
   }
 
 
