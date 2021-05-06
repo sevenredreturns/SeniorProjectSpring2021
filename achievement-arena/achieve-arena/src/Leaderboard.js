@@ -30,7 +30,7 @@ class Leaderboard extends React.Component {
         <Col span={3}>
           <div style={{ itemAlign: 'center' }}>
             <Card title="Your Overall Rank" bordered={false}><UserOutlined />
-            <Divider type="vertical" />{console.log(this.state.username)}<Divider type="horizontal" />Rank: {this.state.place}
+            <Divider type="vertical" />{this.state.username}<Divider type="horizontal" />Rank: {this.state.place}
             </Card>
           </div>
         </Col>
