@@ -15,7 +15,9 @@ async function gamesArray()
     let data = await response.json();
 
     let gameList = [];
-    for (let i = 0; i < data.length; i++)
+
+    var i = 0;
+    while (i < data.length)
     {
         let entry = {
             "appid"  : data[i].appID,
@@ -27,11 +29,13 @@ async function gamesArray()
         {
             gameList.push(entry);
         }
+        i++;
     }
     console.log(gameList);
     let cheevoList = [];
 
-    for (var i = 0; i < gameList.length; i++)
+    i = 0;
+    while (i < gameList.length)
     {
 
         let cheevo1 = await fetch(
@@ -44,17 +48,18 @@ async function gamesArray()
             {
                 cheevo2.achievements[j].points = 100;
             }
+
             console.log(cheevo2);
             cheevoList.push(cheevo2);
         }
-
+        i++;
     }
 
     console.log(cheevoList);
 
     let ownedGames = [];
-
-    for (var k = 0; k < cheevoList.length; k++)
+    var k = 0;
+    while (k < cheevoList.length)
     {
         let newentry = {
             "appid"       : cheevoList[k].appid,
@@ -63,6 +68,7 @@ async function gamesArray()
         };
         console.log(newentry);
         ownedGames.push(newentry);
+        k++;
     }
 
     console.log(ownedGames);

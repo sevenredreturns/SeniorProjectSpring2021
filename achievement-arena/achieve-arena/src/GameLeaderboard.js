@@ -45,7 +45,7 @@ class GameLeaderboard extends React.Component
     {
 
         fetch('/api/leaderboard').then(response => response.json())
-                                 .then(jsonin => this.setState({games: jsonin}));
+                                 .then(jsonin => this.setState({games: jsonin, data: jsonin[0].scores}));
         //let startstate = this.state.games;
         //this.setState({data: startstate[0].scores})
     }
@@ -53,7 +53,6 @@ class GameLeaderboard extends React.Component
     findGame = (input) =>
     {
         let copyGameDetails = this.state.games;
-
 
         for (const element in copyGameDetails)
         {
@@ -69,18 +68,18 @@ class GameLeaderboard extends React.Component
 
     render()
     {
-        const {games, data} = this.state;
 
         return (
             <Table title=
                        {
                            () => <div>
-                               <p><b>Global Leaderboard</b></p>
+                               <p><b>Global Leaderboards</b></p>
                                <Select
                                    showSearch
                                    allowClear
                                    style={{width: 200}}
                                    placeholder="Pick a Leaderboard"
+                                   defaultValue="0"
                                    optionFilterProp="children"
                                    filterOption={(input, option) =>
                                        option.children.toLowerCase()
