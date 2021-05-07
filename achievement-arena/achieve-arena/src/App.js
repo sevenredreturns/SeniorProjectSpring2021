@@ -8,7 +8,7 @@ import ConfirmAccount                       from "./ConfirmAccount";
 import LoginPage                            from "./LoginPage";
 import Home                                 from "./Home";
 import Leaderboard                          from "./Leaderboard";
-import {Dropdown, Layout, Menu, PageHeader} from 'antd';
+import {Button, Dropdown, Layout, Menu, PageHeader} from 'antd';
 import Amplify, {Auth}                      from 'aws-amplify';
 import awsconfig                            from './aws-exports';
 
@@ -32,7 +32,6 @@ async function signOut()
         console.log('error signing out: ', error);
     }
 }
-
 function loggedin()
 {
 
@@ -76,7 +75,6 @@ function App()
                                 <a onClick={e => e.preventDefault()}>Profile</a>
                             </Dropdown>
                         </Menu.Item>
-                        {/*<Menu.Item key="7"><a href="/UpdateUserGames">Update User Games Tester</a></Menu.Item>*/}
                     </Menu>
                 </Header>
 
@@ -101,9 +99,6 @@ function App()
                             <Route path="/ConfirmAccount">
                                 <ConfirmAccount/>
                             </Route>
-                            {/*<Route path = "/UpdateUserGames">
-                             <UpdateUserGames />
-                             </Route>*/}
                             <Route path="/">
                                 <Home/>
                             </Route>
