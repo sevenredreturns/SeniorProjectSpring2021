@@ -187,16 +187,8 @@ class MakeProfile extends React.Component
                     <Divider orientation="left">Steam Profile</Divider>
                     {"To sync games you need to go to edit your (profile > privacy settings) and change all the drop downs there to public before pressing sync. You can change them back after sync is complete."}
                     <p/>
-                    <Form.Item label="Enter Your Steam ID" name="steamID"
-                               rules={[{
-                                   required: false,
-                                   message : 'Please input a steamID!'
-                               }]}>
-                        <Row>
-                            <Col span={4}>
-                                <Input/>
-                            </Col>
-                        </Row>
+                    <Form.Item label="" name="connectSteam">
+                        <Button><a href="auth/steam">Connect to Steam</a></Button>
                     </Form.Item>
                     <Divider orientation="left">Submit Before Finish</Divider>
                     <Form.Item>
