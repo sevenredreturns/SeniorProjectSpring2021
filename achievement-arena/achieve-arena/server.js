@@ -25,6 +25,7 @@ require('./src/routes/user.router.js')(app);
 require('./src/routes/achievements.router.js')(app);
 require('./src/routes/game.router.js')(app);
 require('./src/routes/leaderboard.router.js')(app);
+require('./src/routes/auth.js')(app);
 
 // Create a Server
 const server = app.listen(8080, function () {

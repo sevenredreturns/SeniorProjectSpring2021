@@ -148,6 +148,10 @@ exports.updateUser = (req, res) =>
     {
         userUpdate.avatarurl = req.body.avatarurl;
     }
+    if(req.body.otherProfiles != null)
+    {
+        userUpdate.otherProfiles = req.body.otherProfiles;
+    }
     console.log(userUpdate);
 
     console.log(userID);
@@ -160,7 +164,8 @@ exports.updateUser = (req, res) =>
             lastName : userUpdate.lastName,
             email    : userUpdate.email,
             bio      : userUpdate.bio,
-            avatarurl: userUpdate.avatarurl
+            avatarurl: userUpdate.avatarurl,
+            otherProfiles:userUpdate.otherProfiles
         },
         {new: true, omitUndefined: true}
     ).select('-__v')

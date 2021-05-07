@@ -3,6 +3,7 @@ import {
     Avatar, Button, Col, Divider, Form, Input, Modal, Row, Table
 }                        from "antd";
 import {LoadingOutlined} from '@ant-design/icons';
+import UpdateUserGames from './UpdateUserGames';
 
 
 const userID = localStorage.getItem('userid');
@@ -17,9 +18,12 @@ async function sendEdits(changes)
         "_id"    : {
             "$oid": userID
         },
-        username : changes.username,
-        bio      : changes.bio,
-        avatarurl: changes.avatar_src
+        username     : changes.username,
+        bio          : changes.bio,
+        avatarurl    : changes.avatar_src,
+        otherProfiles: [
+            {steam: changes.steamid}
+        ]
     };
 
     const sendOptions =
@@ -46,6 +50,7 @@ class ProfilePage extends React.Component
             bio       : "",
             avatarurl : "",
             email     : "",
+            steamid   : "",
             ownedGames: [],
             loading   : true,
             visible   : false,
@@ -63,6 +68,7 @@ class ProfilePage extends React.Component
                                             bio       : data.bio,
                                             avatarurl : data.avatarurl,
                                             ownedGames: data.ownedGames,
+                                            otherProfiles  : data.otherProfiles,
                                             loading   : false
                                         }));
     }
@@ -117,10 +123,14 @@ class ProfilePage extends React.Component
 
     }
 
+
+
     App()
     {
+        const asteamid = this.state.otherProfiles.steam;
         return (
             <>
+
                 <Button type="primary" onClick={() =>
                 {
                     this.setState({visible: true});
@@ -144,13 +154,17 @@ class ProfilePage extends React.Component
                         <Form.Item label="Avatar" name="avatar_src">
                             <Input/>
                         </Form.Item>
+                        <Form.Item label="SteamID" name="steamid">
+                            <Input/>
+                        </Form.Item>
                         <Form.Item>
                             <Button type="primary" htmlType="submit">
                                 Submit
                             </Button>
                         </Form.Item>
                     </Form>
-                    <div><Button>Sync Steam Profile</Button></div>
+                    <div><Button onClick={() => UpdateUserGames(userID, asteamid )}>Sync
+                        Steam Profile</Button></div>
                 </Modal>
             </>
         );
@@ -166,7 +180,9 @@ class ProfilePage extends React.Component
         }
         if (userID != 0)
         {
+            const asteamid = this.state.otherProfiles.steam;
             return (
+
                 <>
                     <Divider orientation="left">Profile</Divider>
                     <Row justify="center" align="middle">
@@ -187,6 +203,9 @@ class ProfilePage extends React.Component
                     <Divider orientation="left"></Divider>
                     <Row justify="space-around" align="middle">
                         <Col span={8}>{this.state.bio}</Col>
+                    </Row>
+                    <Row justify="space-around" align="middle">
+                        <Col span={8}>{asteamid}</Col>
                     </Row>
                     <p/><p/><p/><p/>
                     <Row>
