@@ -1,8 +1,21 @@
 import React from "react";
 import {Avatar, Button, Col, Divider, Form, Input, Modal, Row} from "antd";
+import { Auth } from 'aws-amplify';
 
 async function setupProfile(changes) {
 
+}
+
+async function signIn(changes) {
+
+    let username = changes.username;
+    let password = changes.password;
+    try {
+        const user = await Auth.signIn(username, password);
+        console.log(user);
+    } catch (error) {
+        console.log('error signing in', error);
+    }
 }
 
 class LoginPage extends React.Component {
@@ -17,8 +30,9 @@ class LoginPage extends React.Component {
 
   setValues(changes)
   {
-      let updated = setupProfile(changes);
-      window.location.reload();
+      let signedin = signIn(changes);
+      console.log(signedin);
+      //window.location.reload();
       return (<a href="/Leaderboard" />)
   }
 
@@ -28,7 +42,7 @@ class LoginPage extends React.Component {
       <p />
           <Form layout="vertical" colon={true}
                 onFinish={(changes) => this.setValues(changes)}>
-              <Form.Item label="Username" name="username" rules={[{ required: true, message: 'Please input your username!' }]}>
+              <Form.Item label="E-mail address" name="username" rules={[{ required: true, message: 'Please input your e-mail address!' }]}>
                 <Row>
                   <Col span={4}>
                     <Input/>
@@ -51,6 +65,7 @@ class LoginPage extends React.Component {
 
           <p /><p />
           <Button><a href="/MakeProfile">Make Account</a></Button>
+          <button><a href="/ConfirmAccount">Confirm Account</a></button>
 
       </div>
 

@@ -4,10 +4,15 @@ import 'antd/dist/antd.css';
 import './index.css';
 import ProfilePage                          from "./ProfilePage";
 import MakeProfile                          from "./MakeProfile";
+import ConfirmAccount                       from "./ConfirmAccount";
 import LoginPage                            from "./LoginPage";
 import Home                                 from "./Home";
 import Leaderboard                          from "./Leaderboard";
 import {Dropdown, Layout, Menu, PageHeader} from 'antd';
+import Amplify                              from 'aws-amplify';
+import awsconfig                            from './aws-exports';
+
+Amplify.configure(awsconfig);
 
 const {Header, Content, Footer} = Layout;
 
@@ -86,6 +91,9 @@ function App()
                             </Route>
                             <Route path="/MakeProfile">
                                 <MakeProfile/>
+                            </Route>
+                            <Route path="/ConfirmAccount">
+                                <ConfirmAccount/>
                             </Route>
                             {/*<Route path = "/UpdateUserGames">
                              <UpdateUserGames />

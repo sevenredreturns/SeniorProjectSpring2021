@@ -73,7 +73,7 @@ class ProfilePage extends React.Component
 
 	ListOfGames()
 	{
-		if (this.state.ownedGames[0] != undefined)
+		if (this.state.ownedGames[0] !== undefined)
 		{
 			var keyNum = 1;
 			const columns = [
@@ -107,6 +107,7 @@ class ProfilePage extends React.Component
 							data.push({key: keyNum, gameName: games.name, achievements: achievements.name, description: achievements.description})
 						}
 						keyNum++;
+						console.log(keyNum);
 					}
 					
 				})

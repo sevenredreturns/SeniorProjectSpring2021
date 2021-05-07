@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
                                            username     : String,
-                                           client_id    : String,
+                                           email        : String,
                                            firstName    : String,
                                            lastName     : String,
                                            bio          : String,
@@ -22,15 +22,15 @@ const userSchema = new mongoose.Schema({
                                            }],
                                            ownedGames   : [{
                                                appid       : Number,
-                                               name : String,
+                                               name        : String,
                                                achievements: [
                                                    {
-                                                       api   : String,
-                                                       name : String,
+                                                       api        : String,
+                                                       name       : String,
                                                        description: String,
-                                                       achieved  : Boolean,
-                                                       unlockTime: Number,
-                                                       points: Number
+                                                       achieved   : Boolean,
+                                                       unlockTime : Number,
+                                                       points     : Number
                                                    }],
                                                visible     : String,
                                                earnedPoints: Number

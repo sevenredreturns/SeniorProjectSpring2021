@@ -136,9 +136,9 @@ exports.updateUser = (req, res) =>
     {
         userUpdate.lastName = req.body.lastName;
     }
-    if (req.body.client_id != null)
+    if (req.body.email != null)
     {
-        userUpdate.client_id = req.body.client_id;
+        userUpdate.email = req.body.email;
     }
     if (req.body.bio != null)
     {
@@ -158,7 +158,7 @@ exports.updateUser = (req, res) =>
             username : userUpdate.username,
             firstName: userUpdate.firstName,
             lastName : userUpdate.lastName,
-            client_id: userUpdate.client_id,
+            email: userUpdate.email,
             bio      : userUpdate.bio,
             avatarurl: userUpdate.avatarurl
         },
