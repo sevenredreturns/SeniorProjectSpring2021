@@ -5,7 +5,7 @@ import {
 import {LoadingOutlined} from '@ant-design/icons';
 
 
-const pageUserID = "6079858623c4150084b79241";
+const pageUserID = "6094e8e4d3cc2264602b5d68";
 const userID = localStorage.getItem('userid');
 console.log(userID);
 
@@ -151,6 +151,7 @@ class ProfilePage extends React.Component
                             </Button>
                         </Form.Item>
                     </Form>
+                    <div><Button>Sync Steam Profile</Button></div>
                 </Modal>
             </>
         );

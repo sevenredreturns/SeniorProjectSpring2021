@@ -2,6 +2,8 @@ import React                                                   from "react";
 import {Avatar, Button, Col, Divider, Form, Input, Modal, Row} from "antd";
 import { Auth }                                                from 'aws-amplify';
 
+let userID = localStorage.getItem('userid');
+
 async function signIn(changes) {
 
     let username = changes.username;
@@ -32,10 +34,19 @@ class LoginPage extends React.Component {
       let signedin = signIn(changes);
       console.log(signedin);
       //window.location.reload();
-      return (<a href="/Leaderboard" />)
   }
 
   render() {
+    if(userID != 0) {
+      return (
+        <div>
+        {console.log(userID)}
+        Logged in!
+
+        </div>
+
+      );
+    }
     return (
       <div>
       <p />
@@ -65,6 +76,13 @@ class LoginPage extends React.Component {
           <p /><p />
           <Button><a href="/MakeProfile">Make Account</a></Button>
           <Button><a href="/ConfirmAccount">Confirm Account</a></Button>
+
+      </div>
+      );
+    return (
+      <div>
+      {console.log(userID)}
+      Logged in!
 
       </div>
 
