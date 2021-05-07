@@ -90,7 +90,7 @@ function App()
                             <Route path="/LoginPage">
                                 <LoginPage/>
                             </Route>
-                            <Route path="/ProfilePage">
+                            <Route path="/ProfilePage/">
                                 <ProfilePage/>
                             </Route>
                             <Route path="/MakeProfile">
