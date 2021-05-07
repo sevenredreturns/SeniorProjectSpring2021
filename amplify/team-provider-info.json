@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-seniordesignwebsite-dev-223056-authRole",
+      "UnauthRoleArn": "arn:aws:iam::932195654746:role/amplify-seniordesignwebsite-dev-223056-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::932195654746:role/amplify-seniordesignwebsite-dev-223056-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-seniordesignwebsite-dev-223056-deployment",
+      "UnauthRoleName": "amplify-seniordesignwebsite-dev-223056-unauthRole",
+      "StackName": "amplify-seniordesignwebsite-dev-223056",
+      "StackId": "arn:aws:cloudformation:us-east-1:932195654746:stack/amplify-seniordesignwebsite-dev-223056/41881e90-aedc-11eb-97e9-12d806c7dd7d",
+      "AmplifyAppId": "d2kabcgen2m8jo"
+    },
+    "categories": {
+      "auth": {
+        "seniordesignwebsite1f176f3e": {}
+      }
+    }
+  }
+}

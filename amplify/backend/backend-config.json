@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "seniordesignwebsite1f176f3e": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
