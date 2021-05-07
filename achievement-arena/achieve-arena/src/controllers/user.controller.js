@@ -240,27 +240,27 @@ exports.getUserByEmail = (req, res) =>
 {
     const query = user.where({email: req.params.email});
 
-    query.findOne.then(user =>
-                       {
-                           res.status(200).json(user);
-                       }).catch(err =>
-                                {
-                                    if (err.kind === 'String')
-                                    {
-                                        return res.status(404)
-                                                  .send(
-                                                      {
-                                                          message: "user not found with email " +
-                                                              req.params.email,
-                                                          error  : err
-                                                      });
-                                    }
-                                    return res.status(500).send(
-                                        {
-                                            message: "Error retrieving user with email " +
-                                                req.params.email,
-                                            error  : err
-                                        });
-                                });
+    query.findOne().then(user =>
+                         {
+                             res.status(200).json(user);
+                         }).catch(err =>
+                                  {
+                                      if (err.kind === 'String')
+                                      {
+                                          return res.status(404)
+                                                    .send(
+                                                        {
+                                                            message: "user not found with email " +
+                                                                req.params.email,
+                                                            error  : err
+                                                        });
+                                      }
+                                      return res.status(500).send(
+                                          {
+                                              message: "Error retrieving user with email " +
+                                                  req.params.email,
+                                              error  : err
+                                          });
+                                  });
 
 };

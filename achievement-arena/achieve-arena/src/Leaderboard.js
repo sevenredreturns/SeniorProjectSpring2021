@@ -3,7 +3,7 @@ import GameLeaderboard from './GameLeaderboard'
 import { Avatar, Row, Col, Divider, Card } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
-var userID = null;
+const userID = localStorage.getItem('userid');
 
 class Leaderboard extends React.Component {
   constructor(props)

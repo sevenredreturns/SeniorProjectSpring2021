@@ -11,24 +11,22 @@ import Leaderboard                          from "./Leaderboard";
 import {Dropdown, Layout, Menu, PageHeader} from 'antd';
 import Amplify                              from 'aws-amplify';
 import awsconfig                            from './aws-exports';
-import LoggedIn from './LoggedIn';
+import { Auth } from 'aws-amplify';
 
 Amplify.configure(awsconfig);
 
 const {Header, Content, Footer} = Layout;
 
-var userID = null;
+let userID = localStorage.getItem('userid');
 
-function login()
-{
-    userID = 1;
-    console.log(userID);
-}
-
-function logout()
-{
-    userID = null;
-    console.log(userID);
+async function signOut() {
+    try {
+        await Auth.signOut();
+        localStorage.setItem('userid', null);
+        userID = localStorage.getItem('userid');
+    } catch (error) {
+        console.log('error signing out: ', error);
+    }
 }
 
 function loggedin()
@@ -43,7 +41,7 @@ function loggedin()
                 <Menu.Divider/>
                 <Menu.Item key="3"><a onClick={() =>
                 {
-                    logout();
+                    signOut();
                 }}>Logout</a></Menu.Item>
             </Menu>
         );

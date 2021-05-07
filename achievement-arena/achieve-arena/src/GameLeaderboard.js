@@ -1,5 +1,6 @@
 import React           from 'react';
 import {Select, Table} from 'antd';
+const userID = localStorage.getItem('userid');
 
 const columns = [
     {

@@ -1,8 +1,6 @@
 import React                                                   from "react";
 import {Avatar, Button, Col, Divider, Form, Input, Modal, Row} from "antd";
 import { Auth }                                                from 'aws-amplify';
-import LoggedIn
-                                                               from "./LoggedIn";
 
 async function signIn(changes) {
 
@@ -13,7 +11,7 @@ async function signIn(changes) {
         const getUser = await fetch('/api/useremail/' + username );
         const profile = await getUser.json();
         console.log(profile);
-        //LoggedIn.setUserID(profile._id)
+        localStorage.setItem('userid', profile._id);
     } catch (error) {
         console.log('error signing in', error);
     }
