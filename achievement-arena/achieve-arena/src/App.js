@@ -7,6 +7,7 @@ import GameLeaderboard from './GameLeaderboard'
 import ProfileTry from "./ProfileTry";
 import ProfilePage from "./ProfilePage";
 import PrivateRoute    from "./PrivateRoute";
+import MakeProfile from "./MakeProfile";
 //import UpdateUserGames from "./UpdateUserGames";
 import Home            from "./Home";
 import Leaderboard from "./Leaderboard"
@@ -15,7 +16,7 @@ import { UserOutlined } from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
 
-var userID = 1;
+var userID = null;
 
 function login() {
   userID = 1;
@@ -40,7 +41,7 @@ function loggedin() {
   }
   return (
     <Menu>
-      <Menu.Item key="4"><a onClick={() => {login()}}>Login</a></Menu.Item>
+      <Menu.Item key="4"><a href="/LoginPage">Login</a></Menu.Item>
     </Menu>
   );
 }
@@ -53,7 +54,7 @@ function App() {
       <Header>
         <div className="logo" />
         <Menu theme="dark" mode="horizontal" style={{ alignContent: 'right' }}>
-          <Menu.Item key="5"><a href="/">Home</a></Menu.Item>
+          <Menu.Item key="4"><a href="/">Home</a></Menu.Item>
           <Menu.Item key="5"><a href="/Leaderboard">Leaderboards</a></Menu.Item>
 
           <Menu.Item key="6">
@@ -70,6 +71,9 @@ function App() {
         <Switch>
           <Route path="/Leaderboard">
             <Leaderboard />
+          </Route>
+          <Route path="/LoginPage">
+            <MakeProfile />
           </Route>
           <Route path="/ProfilePage">
             <ProfilePage />
