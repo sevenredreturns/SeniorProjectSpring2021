@@ -33,13 +33,25 @@ async function gamesArray(userID, steamID)
         cheevo2.appid = gameList[i].appid;
         if (cheevo2.achievements)
         {
+            for(let k = 0; k < cheevo2.achievements.length; k++)
+            {
+                if(cheevo2.achievements[k].achieved === false)
+                {
+                    cheevo2.achievements.splice(k, 1);
+                    k--;
+                }
+            }
             for (let j = 0; j < cheevo2.achievements.length; j++)
             {
                 cheevo2.achievements[j].points = 100;
             }
 
+
             console.log(cheevo2);
-            cheevoList.push(cheevo2);
+            if(cheevo2.achievements.length > 0)
+            {
+                cheevoList.push(cheevo2);
+            }
         }
         i++;
     }
