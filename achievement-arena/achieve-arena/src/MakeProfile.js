@@ -1,6 +1,8 @@
 import React from "react";
 import {Avatar, Button, Col, Divider, Form, Input, Modal, Row} from "antd";
 
+const { TextArea } = Input
+
 async function setupProfile(changes) {
 
 }
@@ -34,22 +36,42 @@ class MakeProfile extends React.Component {
           <Form layout="vertical" colon={true}
                 onFinish={(changes) => this.setValues(changes)}>
               <Form.Item label="First Name" name="firstname">
-                  <Input/>
+                <Row>
+                  <Col span={4}>
+                    <Input/>
+                  </Col>
+                </Row>
               </Form.Item>
               <Form.Item label="Last Name" name="lastname">
-                  <Input/>
+                <Row>
+                  <Col span={4}>
+                    <Input/>
+                  </Col>
+                </Row>
               </Form.Item>
               <Form.Item label="Username" name="username">
-                  <Input/>
+                <Row>
+                  <Col span={4}>
+                    <Input/>
+                  </Col>
+                </Row>
               </Form.Item>
               <Form.Item label="Password" name="password">
-                  <Input/>
+                <Row>
+                  <Col span={4}>
+                    <Input/>
+                  </Col>
+                </Row>
               </Form.Item>
-              <Form.Item label="Avatar" name="avatar_src">
-                  <Input/>
+              <Form.Item label="Avatar URL" name="avatar_src">
+                <Row>
+                  <Col span={8}>
+                    <Input/>
+                  </Col>
+                </Row>
               </Form.Item>
               <Form.Item label="Bio" name="bio">
-                  <Input/>
+                  <TextArea autoSize={{ minRows: 3, maxRows: 5 }}/>
               </Form.Item>
               <Form.Item label="" name="sync">
               {"To sync games you need to go to edit your profile > privacy settings and change all the drop downs there to public before pressing sync. You can change them back after sync is complete."}<p/>
