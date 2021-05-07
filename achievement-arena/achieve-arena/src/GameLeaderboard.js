@@ -78,7 +78,7 @@ class GameLeaderboard extends React.Component
                                        {data: this.findGame(input)})}
                                >
                                {this.state.games.map(game => (
-                                 <Option key={game.appid}>{game.appid}</Option>
+                                 <Option key={game.appid}>{game.name}</Option>
                                ))}
                                </Select>
                            </div>
