@@ -1,6 +1,8 @@
 import React from "react";
 import {Avatar, Button, Col, Divider, Form, Input, Modal, Row} from "antd";
 
+import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+
 const { TextArea } = Input
 
 async function setupProfile(changes) {
@@ -12,6 +14,7 @@ class MakeProfile extends React.Component {
   {
       super(props);
       this.state = {
+        submitted: false,
         otherProfiles: [],
         steamID: "",
         username: "",
@@ -23,10 +26,17 @@ class MakeProfile extends React.Component {
       };
   }
 
+  isSubmitted() {
+    if(this.state.submitted === true) {
+      return (<CheckOutlined />);
+    }
+    return(<CloseOutlined />);
+  }
+
   setValues(changes)
   {
       let updated = setupProfile(changes);
-      window.location.reload();
+      this.setState({submitted: true});
   }
 
   render() {
@@ -34,7 +44,9 @@ class MakeProfile extends React.Component {
       <div>
       <p />
           <Form layout="vertical" colon={true}
-                onFinish={(changes) => this.setValues(changes)}>
+                onFinish={(changes) => this.setValues(changes)}
+
+                >
               <Form.Item label="First Name" name="firstname" rules={[{ required: true, message: 'Please input your first name!' }]}>
                 <Row>
                   <Col span={4}>
@@ -82,11 +94,12 @@ class MakeProfile extends React.Component {
                   </Col>
                 </Row>
               </Form.Item>
-              <Divider orientation="left">Online Submit when complete</Divider>
+              <Divider orientation="left">Submit Before Finish</Divider>
               <Form.Item>
                   <Button type="primary" htmlType="submit">
                       Submit
                   </Button>
+                  {this.isSubmitted()}
               </Form.Item>
           </Form>
           <Button><a href="/Leaderboard">Finish</a></Button>
