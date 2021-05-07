@@ -21,18 +21,6 @@ const columns = [
 
 const {Option} = Select;
 
-/*function findGame(input)
- {
- for (const element in games)
- {
- if (games[element].key == parseInt(input))
- {
- return games[element].scores;
- }
- }
- return games[0].scores;
- }*/
-
 class GameLeaderboard extends React.Component
 {
     constructor(props)
@@ -87,14 +75,10 @@ class GameLeaderboard extends React.Component
                                    }
                                    onChange={(input) => this.setState(
                                        {data: this.findGame(input)})}
-
                                >
-                                   <Option value="0" selected>Overall</Option>
-                                   <Option value="1803">Red Dead Redemption
-                                       2</Option>
-                                   <Option value="1901">Grand Theft Auto
-                                       V</Option>
-                                   <Option value="2230">Minecraft</Option>
+                               {this.state.games.map(game => (
+                                 <Option key={game.appid}>{game.appid}</Option>
+                               ))}
                                </Select>
                            </div>
                        }
