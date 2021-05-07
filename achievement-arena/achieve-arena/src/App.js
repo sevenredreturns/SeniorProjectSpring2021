@@ -11,7 +11,7 @@ import {Dropdown, Layout, Menu, PageHeader} from 'antd';
 
 const {Header, Content, Footer} = Layout;
 
-var userID = null;
+var userID = 1;
 
 function login()
 {
