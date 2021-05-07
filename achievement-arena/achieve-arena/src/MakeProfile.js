@@ -13,7 +13,7 @@ class MakeProfile extends React.Component {
       super(props);
       this.state = {
         otherProfiles: [],
-        ownedGames: [],
+        steamID: "",
         username: "",
         password: "",
         firstname: "",
@@ -35,28 +35,28 @@ class MakeProfile extends React.Component {
       <p />
           <Form layout="vertical" colon={true}
                 onFinish={(changes) => this.setValues(changes)}>
-              <Form.Item label="First Name" name="firstname">
+              <Form.Item label="First Name" name="firstname" rules={[{ required: true, message: 'Please input your first name!' }]}>
                 <Row>
                   <Col span={4}>
                     <Input/>
                   </Col>
                 </Row>
               </Form.Item>
-              <Form.Item label="Last Name" name="lastname">
+              <Form.Item label="Last Name" name="lastname" rules={[{ required: true, message: 'Please input your last name!' }]}>
                 <Row>
                   <Col span={4}>
                     <Input/>
                   </Col>
                 </Row>
               </Form.Item>
-              <Form.Item label="Username" name="username">
+              <Form.Item label="Username" name="username" rules={[{ required: true, message: 'Please input a username!' }]}>
                 <Row>
                   <Col span={4}>
                     <Input/>
                   </Col>
                 </Row>
               </Form.Item>
-              <Form.Item label="Password" name="password">
+              <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Please input a password!' }]}>
                 <Row>
                   <Col span={4}>
                     <Input/>
@@ -73,16 +73,23 @@ class MakeProfile extends React.Component {
               <Form.Item label="Bio" name="bio">
                   <TextArea autoSize={{ minRows: 3, maxRows: 5 }}/>
               </Form.Item>
-              <Form.Item label="" name="sync">
-              {"To sync games you need to go to edit your profile > privacy settings and change all the drop downs there to public before pressing sync. You can change them back after sync is complete."}<p/>
-                  <Button type="primary">Sync</Button>
+              <Divider orientation="left">Steam Profile</Divider>
+              {"To sync games you need to go to edit your (profile > privacy settings) and change all the drop downs there to public before pressing sync. You can change them back after sync is complete."}<p/>
+              <Form.Item label="Enter Your Steam ID" name="steamID" rules={[{ required: true, message: 'Please input a steamID!' }]}>
+                <Row>
+                  <Col span={4}>
+                    <Input/>
+                  </Col>
+                </Row>
               </Form.Item>
+              <Divider orientation="left">Online Submit when complete</Divider>
               <Form.Item>
                   <Button type="primary" htmlType="submit">
-                      <a href="/Leaderboard">Submit</a>
+                      Submit
                   </Button>
               </Form.Item>
           </Form>
+          <Button><a href="/Leaderboard">Finish</a></Button>
       </div>
 
     );
