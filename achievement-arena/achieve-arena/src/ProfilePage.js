@@ -1,5 +1,7 @@
 import React                                                   from "react";
-import {Avatar, Button, Col, Divider, Form, Input, Modal, Row} from "antd";
+import "antd/dist/antd.css";
+import "./index.css";
+import {Avatar, Button, Col, Divider, Form, Input, Modal, Row, Table} from "antd";
 
 const pageUserID = "6079858623c4150084b79241";
 const userID = "6079858623c4150084b79241";
@@ -41,6 +43,7 @@ class ProfilePage extends React.Component
             username : "",
             bio      : "",
             avatarurl: "",
+			ownedGames: [],
             loading  : true,
             visible  : false,
             formRef  : true
@@ -56,6 +59,7 @@ class ProfilePage extends React.Component
                                             username : data.username,
                                             bio      : data.bio,
                                             avatarurl: data.avatarurl,
+											ownedGames	 : data.ownedGames,
                                             loading  : false
                                         }));
     }
@@ -66,6 +70,56 @@ class ProfilePage extends React.Component
         window.location.reload();
     }
 
+
+	ListOfGames()
+	{
+		if (this.state.ownedGames[0] != undefined)
+		{
+			var keyNum = 1;
+			const columns = [
+				{
+					title: 'Game Name',
+					dataIndex: 'gameName',
+					key: 'gameName',
+				},
+				{
+					title: 'Achievements',
+					dataIndex: 'achievements',
+					key: 'achievements',
+				},
+				{
+					title: 'Description',
+					dataIndex: 'description',
+					key: 'description',
+				}
+			];
+			var data = [];
+			this.state.ownedGames.forEach(function(games){
+				games.achievements.forEach(function(achievements) {
+					if(achievements.achieved === 1)
+					{
+						if(achievements.name === "")
+						{
+							data.push({key: keyNum, gameName: games.name, achievements: achievements.api, description: achievements.description})
+						}
+						else
+						{
+							data.push({key: keyNum, gameName: games.name, achievements: achievements.name, description: achievements.description})
+						}
+						keyNum++;
+					}
+					
+				})
+				
+			})
+			return( 
+			<> 
+				<Table columns = {columns} dataSource = {data}/>
+			</>
+			)
+		}
+
+	}
 
     App()
     {
@@ -131,6 +185,7 @@ class ProfilePage extends React.Component
                     <Row justify="space-around" align="middle">
                         <Col span={8}>{this.state.bio}</Col>
                     </Row>
+					{this.ListOfGames()}
                 </>
             );
             console.log("This is you");
@@ -158,6 +213,7 @@ class ProfilePage extends React.Component
                     <Row justify="space-around" align="middle">
                         <Col span={8}>{this.state.bio}</Col>
                     </Row>
+					{this.ListOfGames()}
                     {console.log("This isn't you")}
                 </>
             );
