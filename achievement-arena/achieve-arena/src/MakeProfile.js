@@ -33,6 +33,13 @@ class MakeProfile extends React.Component {
     return(<CloseOutlined />);
   }
 
+  letFinish() {
+    if(this.state.submitted === true) {
+      return (<Button><a href="/Leaderboard">Finish</a></Button>);
+    }
+    return(null);
+  }
+
   setValues(changes)
   {
       let updated = setupProfile(changes);
@@ -102,7 +109,7 @@ class MakeProfile extends React.Component {
                   {this.isSubmitted()}
               </Form.Item>
           </Form>
-          <Button><a href="/Leaderboard">Finish</a></Button>
+          {this.letFinish()}
       </div>
 
     );
