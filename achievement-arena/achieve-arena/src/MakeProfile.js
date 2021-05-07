@@ -3,7 +3,7 @@ import {Button, Col, Divider, Form, Input, Row} from "antd";
 import {Auth}                                   from 'aws-amplify';
 
 
-import {CheckOutlined} from '@ant-design/icons';
+import {CheckOutlined, CloseOutlined} from '@ant-design/icons';
 
 const {TextArea} = Input;
 
@@ -96,16 +96,26 @@ class MakeProfile extends React.Component
         };
     }
 
+    submit(changes) {
+      setValues(changes);
+      this.setState({submitted: true});
+    }
+
     isSubmitted()
     {
-
+      if(this.state.submitted === true) {
         return (<CheckOutlined/>);
+      }
+      return (<CloseOutlined />);
 
     }
 
     letFinish()
     {
+      if(this.state.submitted === true) {
         return (<Button><a href="/Leaderboard">Finish</a></Button>);
+      }
+      return (null);
     }
 
 
