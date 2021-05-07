@@ -77,7 +77,7 @@ function App()
                     </Menu>
                 </Header>
 
-                <Content style={{padding: '0 50px', minHeight: '1000px'}}>
+                <Content style={{alignContent: 'center', padding: '0 50px', minHeight: '1000px'}}>
                     <BrowserRouter>
                         <Switch>
                             <Route path="/Leaderboard">

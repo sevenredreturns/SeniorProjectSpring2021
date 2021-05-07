@@ -1,10 +1,10 @@
 import React                                                   from "react";
-import "antd/dist/antd.css";
-import "./index.css";
-import {Avatar, Button, Col, Divider, Form, Input, Modal, Row, Table} from "antd";
+import {Avatar, Button, Col, Divider, Form, Input, Modal, Row, Table, Space} from "antd";
+
+import { LoadingOutlined } from '@ant-design/icons';
 
 const pageUserID = "6079858623c4150084b79241";
-const userID = "6079858623c4150084b79241";
+const userID = "6079858623c4150084b79242";
 
 //const fs = require('fs');
 
@@ -43,7 +43,7 @@ class ProfilePage extends React.Component
             username : "",
             bio      : "",
             avatarurl: "",
-			ownedGames: [],
+			      ownedGames: [],
             loading  : true,
             visible  : false,
             formRef  : true
@@ -59,7 +59,7 @@ class ProfilePage extends React.Component
                                             username : data.username,
                                             bio      : data.bio,
                                             avatarurl: data.avatarurl,
-											ownedGames	 : data.ownedGames,
+											                      ownedGames	 : data.ownedGames,
                                             loading  : false
                                         }));
     }
@@ -78,26 +78,18 @@ class ProfilePage extends React.Component
 			var keyNum = 1;
 			const columns = [
 				{
-					title: 'Game Name',
-					dataIndex: 'gameName',
-					key: 'gameName',
-				},
-				{
-					title: 'Achievements',
-					dataIndex: 'achievements',
-					key: 'achievements',
-				},
-				{
-					title: 'Description',
-					dataIndex: 'description',
-					key: 'description',
+					title: 'Users Owned Games',
+					dataIndex: 'name',
+					key: 'name',
 				}
 			];
-			var data = [];
-			this.state.ownedGames.forEach(function(games){
+			//var data = [];
+      console.log("here");
+			/*this.state.ownedGames.forEach(function(games){
 				games.achievements.forEach(function(achievements) {
 					if(achievements.achieved === 1)
 					{
+            console.log(keyNum);
 						if(achievements.name === "")
 						{
 							data.push({key: keyNum, gameName: games.name, achievements: achievements.api, description: achievements.description})
@@ -109,13 +101,12 @@ class ProfilePage extends React.Component
 						keyNum++;
 						console.log(keyNum);
 					}
-					
 				})
-				
-			})
-			return( 
-			<> 
-				<Table columns = {columns} dataSource = {data}/>
+			})*/
+
+			return(
+			<>
+				<Table columns = {columns} dataSource = {this.state.ownedGames}/>
 			</>
 			)
 		}
@@ -162,6 +153,9 @@ class ProfilePage extends React.Component
 
     render()
     {
+        if(this.state.loading) {
+          return(<div><p /><Row justify="space-around" align="middle"><LoadingOutlined /></Row></div>);
+        }
         if (userID === pageUserID)
         {
             return (
@@ -186,10 +180,14 @@ class ProfilePage extends React.Component
                     <Row justify="space-around" align="middle">
                         <Col span={8}>{this.state.bio}</Col>
                     </Row>
-					{this.ListOfGames()}
+                    <p/><p/><p/><p/>
+                    <Row>
+                      <Col span={4}>
+  					             {this.ListOfGames()}
+                      </Col>
+                    </Row>
                 </>
             );
-            console.log("This is you");
         }
         else
         {
@@ -214,8 +212,11 @@ class ProfilePage extends React.Component
                     <Row justify="space-around" align="middle">
                         <Col span={8}>{this.state.bio}</Col>
                     </Row>
-					{this.ListOfGames()}
-                    {console.log("This isn't you")}
+                    <Row>
+                      <Col span={4}>
+  					             {this.ListOfGames()}
+                      </Col>
+                    </Row>
                 </>
             );
         }
