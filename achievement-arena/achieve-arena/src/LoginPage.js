@@ -29,10 +29,18 @@ class LoginPage extends React.Component {
           <Form layout="vertical" colon={true}
                 onFinish={(changes) => this.setValues(changes)}>
               <Form.Item label="Username" name="username">
-                  <Input/>
+                <Row>
+                  <Col span={4}>
+                    <Input/>
+                  </Col>
+                </Row>
               </Form.Item>
               <Form.Item label="Password" name="password">
-                  <Input/>
+                <Row>
+                  <Col span={4}>
+                    <Input/>
+                  </Col>
+                </Row>
               </Form.Item>
               <Form.Item>
                   <Button type="primary" htmlType="submit">
