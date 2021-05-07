@@ -4,6 +4,7 @@ exports.addLeaderboard = (req, res) =>
 {
     const newLeaderboard = new leaderboard({
                                                key   : req.body.key,
+                                               name  : req.body.name,
                                                appid : req.body.appid,
                                                scores: req.body.scores
                                            });
@@ -67,6 +68,33 @@ exports.getLeaderboardByAppid = (req, res) =>
                                        {
                                            message: "Error retrieving leaderboard with name " +
                                                req.params.appid,
+                                           error  : err
+                                       });
+                               });
+};
+exports.getLeaderboardByName = (req, res) =>
+{
+    const query = leaderboard.where({name: req.params.name});
+
+    query.find().then(leaderboard =>
+                      {
+                          res.status(200).json(leaderboard);
+                      }).catch(err =>
+                               {
+                                   if (err.kind === "String")
+                                   {
+                                       return res.status(404)
+                                                 .send(
+                                                     {
+                                                         message: "leaderboard not found with name " +
+                                                             req.params.name,
+                                                         error  : err
+                                                     });
+                                   }
+                                   return res.status(500).send(
+                                       {
+                                           message: "Error retrieving leaderboard with name " +
+                                               req.params.name,
                                            error  : err
                                        });
                                });

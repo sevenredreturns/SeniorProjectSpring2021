@@ -12,7 +12,6 @@ import {Dropdown, Layout, Menu, PageHeader} from 'antd';
 import Amplify, {Auth}                      from 'aws-amplify';
 import awsconfig                            from './aws-exports';
 
-
 Amplify.configure(awsconfig);
 
 const {Header, Content, Footer} = Layout;
