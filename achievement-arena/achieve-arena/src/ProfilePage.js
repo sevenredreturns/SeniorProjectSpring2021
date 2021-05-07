@@ -4,7 +4,7 @@ import {Avatar, Button, Col, Divider, Form, Input, Modal, Row, Table, Space} fro
 import { LoadingOutlined } from '@ant-design/icons';
 
 const pageUserID = "6079858623c4150084b79241";
-const userID = "6079858623c4150084b79241";
+const userID = "6079858623c4150084b79242";
 
 //const fs = require('fs');
 
@@ -211,7 +211,11 @@ class ProfilePage extends React.Component
                     <Row justify="space-around" align="middle">
                         <Col span={8}>{this.state.bio}</Col>
                     </Row>
-					          {this.ListOfGames()}
+                    <Row>
+                      <Col span={4}>
+  					             {this.ListOfGames()}
+                      </Col>
+                    </Row>
                 </>
             );
         }
