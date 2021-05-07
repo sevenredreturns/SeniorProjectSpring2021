@@ -125,7 +125,7 @@ class MakeProfile extends React.Component
             <div>
                 <p/>
                 <Form layout="vertical" colon={true}
-                      onFinish={(changes) => .this.submit(changes)}
+                      onFinish={(changes) => this.submit(changes)}
 
                 >
                     <Form.Item label="First Name" name="firstname" rules={[{
