@@ -1,5 +1,7 @@
 import React                                                   from "react";
-import {Avatar, Button, Col, Divider, Form, Input, Modal, Row, Table} from "antd";
+import {Avatar, Button, Col, Divider, Form, Input, Modal, Row, Table, Space} from "antd";
+
+import { LoadingOutlined } from '@ant-design/icons';
 
 const pageUserID = "6079858623c4150084b79241";
 const userID = "6079858623c4150084b79241";
@@ -150,6 +152,9 @@ class ProfilePage extends React.Component
 
     render()
     {
+        if(this.state.loading) {
+          return(<div><p /><Row justify="space-around" align="middle"><LoadingOutlined /></Row></div>);
+        }
         if (userID === pageUserID)
         {
             return (
