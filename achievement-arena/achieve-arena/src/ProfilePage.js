@@ -8,7 +8,8 @@ const userID = "6079858623c4150084b79241";
 
 //const fs = require('fs');
 
-async function sendEdits(changes) {
+async function sendEdits(changes)
+{
 
     const toSend = {
         "_id"    : {
@@ -28,7 +29,7 @@ async function sendEdits(changes) {
 
     let updated = await fetch('/api/user', sendOptions);
     let fullupdate = await updated.json();
-    console.log(fullupdate)
+    console.log(fullupdate);
 }
 
 class ProfilePage extends React.Component
@@ -61,19 +62,22 @@ class ProfilePage extends React.Component
                                         }));
     }
 
-  updateValues(changes) {
-    if(changes.username != null && changes.username != "") {
-      this.setState({username: changes.username});
+    updateValues(changes)
+    {
+        if (changes.username !== null && changes.username !== "")
+        {
+            this.setState({username: changes.username});
+        }
+        if (changes.bio !== null && changes.bio !== "")
+        {
+            this.setState({bio: changes.bio});
+        }
+        if (changes.avatar_src !== null && changes.avatar_src !== "")
+        {
+            this.setState({avatarurl: changes.avatar_src});
+        }
+        this.setState({visible: false});
     }
-    if(changes.bio != null && changes.bio != "") {
-      this.setState({bio: changes.bio});
-    }
-    if(changes.avatar_src != null && changes.avatar_src != "") {
-      this.setState({avatarurl: changes.avatar_src});
-    }
-    this.setState({visible: false});
-  }
-
 
 
     App()

@@ -189,7 +189,7 @@ exports.getPlacesByUserID = (req, res) =>
 exports.getGlobalRank = (req, res) =>
 {
     const query = leaderboard.where(
-        {key: 0, scores: {$elemMatch: {userid: req.params.uid}}});
+        {appid: 0, scores: {$elemMatch: {userid: req.params.uid}}});
 
     query.findOne().then(scoreslist =>
                          {
