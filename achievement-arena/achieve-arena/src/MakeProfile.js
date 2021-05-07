@@ -51,15 +51,16 @@ class MakeProfile extends React.Component {
               <Form.Item label="Bio" name="bio">
                   <Input/>
               </Form.Item>
+              <Form.Item label="" name="sync">
+              {"To sync games you need to go to edit your profile > privacy settings and change all the drop downs there to public before pressing sync. You can change them back after sync is complete."}<p/>
+                  <Button type="primary">Sync</Button>
+              </Form.Item>
               <Form.Item>
                   <Button type="primary" htmlType="submit">
-                      Submit
+                      <a href="/Leaderboard">Submit</a>
                   </Button>
               </Form.Item>
           </Form>
-      <p>{"To sync games you need to go to edit your profile > privacy settings and change all the drop downs there to public before pressing sync. You can change them back after sync is complete."}</p>
-      <Button type="primary">Sync</Button>
-      <p/><p/><p/><Button type="primary"><a>Continue</a></Button>
       </div>
 
     );

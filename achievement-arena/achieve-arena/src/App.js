@@ -8,6 +8,7 @@ import ProfileTry from "./ProfileTry";
 import ProfilePage from "./ProfilePage";
 import PrivateRoute    from "./PrivateRoute";
 import MakeProfile from "./MakeProfile";
+import LoginPage from "./LoginPage";
 //import UpdateUserGames from "./UpdateUserGames";
 import Home            from "./Home";
 import Leaderboard from "./Leaderboard"
@@ -73,10 +74,13 @@ function App() {
             <Leaderboard />
           </Route>
           <Route path="/LoginPage">
-            <MakeProfile />
+            <LoginPage />
           </Route>
           <Route path="/ProfilePage">
             <ProfilePage />
+          </Route>
+          <Route path="/MakeProfile">
+            <MakeProfile />
           </Route>
           {/*<Route path = "/UpdateUserGames">
             <UpdateUserGames />
