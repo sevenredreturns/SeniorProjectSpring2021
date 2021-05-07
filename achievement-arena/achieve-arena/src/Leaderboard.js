@@ -21,7 +21,7 @@ class Leaderboard extends React.Component {
       this.setState({loading: true});
       fetch('/api/leaderboardglobaluid/' + userID)
           .then(response => response.json())
-          .then(data => {console.log(data); this.setState({username: data.username, rank: data.rank, }); return null;})
+          .then(data => this.setState({username: data.username, rank: data.rank, }))
       ;
   }
 
