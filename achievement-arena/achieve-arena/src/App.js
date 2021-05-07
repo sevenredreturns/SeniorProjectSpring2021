@@ -9,9 +9,9 @@ import LoginPage                            from "./LoginPage";
 import Home                                 from "./Home";
 import Leaderboard                          from "./Leaderboard";
 import {Dropdown, Layout, Menu, PageHeader} from 'antd';
-import Amplify                              from 'aws-amplify';
+import Amplify, {Auth}                      from 'aws-amplify';
 import awsconfig                            from './aws-exports';
-import { Auth } from 'aws-amplify';
+
 
 Amplify.configure(awsconfig);
 
@@ -19,14 +19,17 @@ const {Header, Content, Footer} = Layout;
 
 let userID = localStorage.getItem('userid');
 
-async function signOut() {
-    try {
+async function signOut()
+{
+    try
+    {
         await Auth.signOut();
         localStorage.setItem('userid', 0);
         userID = localStorage.getItem('userid');
         window.location.reload();
         console.log(userID);
-    } catch (error) {
+    } catch (error)
+    {
         console.log('error signing out: ', error);
     }
 }
@@ -78,7 +81,10 @@ function App()
                     </Menu>
                 </Header>
 
-                <Content style={{alignContent: 'center', padding: '0 50px', minHeight: '1000px'}}>
+                <Content style={{
+                    alignContent: 'center', padding: '0 50px',
+                    minHeight   : '1000px'
+                }}>
                     <BrowserRouter>
                         <Switch>
                             <Route path="/Leaderboard">
