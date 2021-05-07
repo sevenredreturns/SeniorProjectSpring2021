@@ -1,6 +1,8 @@
-import React                                                   from "react";
-import {Avatar, Button, Col, Divider, Form, Input, Modal, Row, Table, Space} from "antd";
-import { LoadingOutlined } from '@ant-design/icons';
+import React             from "react";
+import {
+    Avatar, Button, Col, Divider, Form, Input, Modal, Row, Table
+}                        from "antd";
+import {LoadingOutlined} from '@ant-design/icons';
 
 
 const pageUserID = "6079858623c4150084b79241";
@@ -40,15 +42,15 @@ class ProfilePage extends React.Component
     {
         super(props);
         this.state = {
-            user     : [],
-            username : "",
-            bio      : "",
-            avatarurl: "",
-            email:"",
-			      ownedGames: [],
-            loading  : true,
-            visible  : false,
-            formRef  : true
+            user      : [],
+            username  : "",
+            bio       : "",
+            avatarurl : "",
+            email     : "",
+            ownedGames: [],
+            loading   : true,
+            visible   : false,
+            formRef   : true
         };
     }
 
@@ -58,11 +60,11 @@ class ProfilePage extends React.Component
         fetch('/api/user/' + pageUserID)
             .then(response => response.json())
             .then(data => this.setState({
-                                            username : data.username,
-                                            bio      : data.bio,
-                                            avatarurl: data.avatarurl,
-											                      ownedGames	 : data.ownedGames,
-                                            loading  : false
+                                            username  : data.username,
+                                            bio       : data.bio,
+                                            avatarurl : data.avatarurl,
+                                            ownedGames: data.ownedGames,
+                                            loading   : false
                                         }));
     }
 
@@ -73,47 +75,48 @@ class ProfilePage extends React.Component
     }
 
 
-	ListOfGames()
-	{
-		if (this.state.ownedGames[0] !== undefined)
-		{
-			var keyNum = 1;
-			const columns = [
-				{
-					title: 'Users Owned Games',
-					dataIndex: 'name',
-					key: 'name',
-				}
-			];
-			//var data = [];
-      console.log("here");
-			/*this.state.ownedGames.forEach(function(games){
-				games.achievements.forEach(function(achievements) {
-					if(achievements.achieved === 1)
-					{
-            console.log(keyNum);
-						if(achievements.name === "")
-						{
-							data.push({key: keyNum, gameName: games.name, achievements: achievements.api, description: achievements.description})
-						}
-						else
-						{
-							data.push({key: keyNum, gameName: games.name, achievements: achievements.name, description: achievements.description})
-						}
-						keyNum++;
-						console.log(keyNum);
-					}
-				})
-			})*/
+    ListOfGames()
+    {
+        if (this.state.ownedGames[0] !== undefined)
+        {
+            var keyNum = 1;
+            const columns = [
+                {
+                    title    : 'Users Owned Games',
+                    dataIndex: 'name',
+                    key      : 'name',
+                }
+            ];
+            //var data = [];
+            console.log("here");
+            /*this.state.ownedGames.forEach(function(games){
+             games.achievements.forEach(function(achievements) {
+             if(achievements.achieved === 1)
+             {
+             console.log(keyNum);
+             if(achievements.name === "")
+             {
+             data.push({key: keyNum, gameName: games.name, achievements: achievements.api, description: achievements.description})
+             }
+             else
+             {
+             data.push({key: keyNum, gameName: games.name, achievements: achievements.name, description: achievements.description})
+             }
+             keyNum++;
+             console.log(keyNum);
+             }
+             })
+             })*/
 
-			return(
-			<>
-				<Table columns = {columns} dataSource = {this.state.ownedGames}/>
-			</>
-			)
-		}
+            return (
+                <>
+                    <Table columns={columns}
+                           dataSource={this.state.ownedGames}/>
+                </>
+            );
+        }
 
-	}
+    }
 
     App()
     {
@@ -155,8 +158,11 @@ class ProfilePage extends React.Component
 
     render()
     {
-        if(this.state.loading) {
-          return(<div><p /><Row justify="space-around" align="middle"><LoadingOutlined /></Row></div>);
+        if (this.state.loading)
+        {
+            return (<div><p/><Row justify="space-around"
+                                  align="middle"><LoadingOutlined/></Row>
+            </div>);
         }
         if (userID === pageUserID)
         {
@@ -184,9 +190,9 @@ class ProfilePage extends React.Component
                     </Row>
                     <p/><p/><p/><p/>
                     <Row>
-                      <Col span={4}>
-  					             {this.ListOfGames()}
-                      </Col>
+                        <Col span={4}>
+                            {this.ListOfGames()}
+                        </Col>
                     </Row>
                 </>
             );
@@ -215,9 +221,9 @@ class ProfilePage extends React.Component
                         <Col span={8}>{this.state.bio}</Col>
                     </Row>
                     <Row>
-                      <Col span={4}>
-  					             {this.ListOfGames()}
-                      </Col>
+                        <Col span={4}>
+                            {this.ListOfGames()}
+                        </Col>
                     </Row>
                 </>
             );
