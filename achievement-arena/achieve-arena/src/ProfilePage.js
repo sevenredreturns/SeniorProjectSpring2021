@@ -58,6 +58,7 @@ class ProfilePage extends React.Component
 
     componentDidMount()
     {
+      if(userID != 0) {
         this.setState({loading: true});
         fetch('/api/user/' + userID)
             .then(response => response.json())
@@ -69,6 +70,7 @@ class ProfilePage extends React.Component
                                             steamid  : data.otherProfiles.steam,
                                             loading   : false
                                         }));
+      }
     }
 
     updateValues(changes)
