@@ -32,6 +32,7 @@
   "main": "./lib/passport-steam",
   "dependencies": {
     "@passport-next/passport-openid": "^1.0.0",
+    "mongoose": "^5.12.7",
     "passport-steam": "^1.0.15",
     "steam-web": "0.4.0",
     "steamapi": "^2.1.3"
@@ -44,6 +45,7 @@
     "passport": "^0.3.2"
   },
   "scripts": {
+    "start": "main.js",
     "test": "ava test/*.test.js",
     "example": "node examples/signon/app.js",
     "example-router": "node examples/signon/app-router.js"
