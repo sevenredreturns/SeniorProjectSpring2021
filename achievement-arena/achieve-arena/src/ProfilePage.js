@@ -78,7 +78,7 @@ class ProfilePage extends React.Component
 			var keyNum = 1;
 			const columns = [
 				{
-					title: 'Games',
+					title: 'Users Owned Games',
 					dataIndex: 'name',
 					key: 'name',
 				}
