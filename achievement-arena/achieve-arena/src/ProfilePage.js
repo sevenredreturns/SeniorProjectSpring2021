@@ -1,6 +1,4 @@
 import React                                                   from "react";
-import "antd/dist/antd.css";
-import "./index.css";
 import {Avatar, Button, Col, Divider, Form, Input, Modal, Row, Table} from "antd";
 
 const pageUserID = "6079858623c4150084b79241";
