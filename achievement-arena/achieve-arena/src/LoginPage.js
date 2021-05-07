@@ -1,18 +1,19 @@
-import React from "react";
+import React                                                   from "react";
 import {Avatar, Button, Col, Divider, Form, Input, Modal, Row} from "antd";
-import { Auth } from 'aws-amplify';
-
-async function setupProfile(changes) {
-
-}
+import { Auth }                                                from 'aws-amplify';
+import LoggedIn
+                                                               from "./LoggedIn";
 
 async function signIn(changes) {
 
     let username = changes.username;
     let password = changes.password;
     try {
-        const user = await Auth.signIn(username, password);
-        console.log(user);
+        const liuser = await Auth.signIn(username, password);
+        const getUser = await fetch('/api/useremail/' + username );
+        const profile = await getUser.json();
+        console.log(profile);
+        //LoggedIn.setUserID(profile._id)
     } catch (error) {
         console.log('error signing in', error);
     }
@@ -65,7 +66,7 @@ class LoginPage extends React.Component {
 
           <p /><p />
           <Button><a href="/MakeProfile">Make Account</a></Button>
-          <button><a href="/ConfirmAccount">Confirm Account</a></button>
+          <Button><a href="/ConfirmAccount">Confirm Account</a></Button>
 
       </div>
 

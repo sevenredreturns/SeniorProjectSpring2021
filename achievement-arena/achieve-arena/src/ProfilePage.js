@@ -43,6 +43,7 @@ class ProfilePage extends React.Component
             username : "",
             bio      : "",
             avatarurl: "",
+            email:"",
 			      ownedGames: [],
             loading  : true,
             visible  : false,

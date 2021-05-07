@@ -11,6 +11,7 @@ import Leaderboard                          from "./Leaderboard";
 import {Dropdown, Layout, Menu, PageHeader} from 'antd';
 import Amplify                              from 'aws-amplify';
 import awsconfig                            from './aws-exports';
+import LoggedIn from './LoggedIn';
 
 Amplify.configure(awsconfig);
 

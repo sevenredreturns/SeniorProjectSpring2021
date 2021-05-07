@@ -158,7 +158,7 @@ exports.updateUser = (req, res) =>
             username : userUpdate.username,
             firstName: userUpdate.firstName,
             lastName : userUpdate.lastName,
-            email: userUpdate.email,
+            email    : userUpdate.email,
             bio      : userUpdate.bio,
             avatarurl: userUpdate.avatarurl
         },
@@ -236,31 +236,31 @@ exports.updateUserFriends = (req, res) =>
     let userID = req.body._id;
 };
 
-exports.getUserByClientID = (req, res) =>
+exports.getUserByEmail = (req, res) =>
 {
-    const query = user.where({client_id: req.params.client_id});
+    const query = user.where({email: req.params.email});
 
-    query.findOne.select('-__v').then(user =>
-                                      {
-                                          res.status(200).json(user);
-                                      }).catch(err =>
-                                               {
-                                                   if (err.kind === 'String')
-                                                   {
-                                                       return res.status(404)
-                                                                 .send(
-                                                                     {
-                                                                         message: "user not found with id " +
-                                                                             req.params.client_id,
-                                                                         error  : err
-                                                                     });
-                                                   }
-                                                   return res.status(500).send(
-                                                       {
-                                                           message: "Error retrieving user with id " +
-                                                               req.params.client_id,
-                                                           error  : err
-                                                       });
-                                               });
+    query.findOne.then(user =>
+                       {
+                           res.status(200).json(user);
+                       }).catch(err =>
+                                {
+                                    if (err.kind === 'String')
+                                    {
+                                        return res.status(404)
+                                                  .send(
+                                                      {
+                                                          message: "user not found with email " +
+                                                              req.params.email,
+                                                          error  : err
+                                                      });
+                                    }
+                                    return res.status(500).send(
+                                        {
+                                            message: "Error retrieving user with email " +
+                                                req.params.email,
+                                            error  : err
+                                        });
+                                });
 
 };

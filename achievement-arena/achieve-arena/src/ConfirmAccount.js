@@ -2,10 +2,6 @@ import React from "react";
 import {Avatar, Button, Col, Divider, Form, Input, Modal, Row} from "antd";
 import { Auth } from 'aws-amplify';
 
-async function setupProfile(changes) {
-
-}
-
 async function confirmSignUp(changes) {
     let username = changes.username;
     let code = changes.code;
@@ -58,7 +54,7 @@ class ConfirmAccount extends React.Component {
                     </Form.Item>
                     <Form.Item>
                         <Button type="primary" htmlType="submit">
-                            Login
+                            Confirm
                         </Button>
                     </Form.Item>
                 </Form>
