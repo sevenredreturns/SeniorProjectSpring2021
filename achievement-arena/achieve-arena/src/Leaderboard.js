@@ -18,16 +18,18 @@ class Leaderboard extends React.Component {
 
   componentDidMount()
   {
+    if(userID != 0) {
       this.setState({loading: true});
       fetch('/api/leaderboardglobaluid/' + userID)
           .then(response => response.json())
           .then(data => this.setState({username: data.username, rank: data.rank, }))
       ;
+    }
   }
 
 
   render() {
-    if (userID != null) {
+    if (userID != 0) {
       return (
       <div>
       <Divider orientation="left">Leaderboards</Divider>

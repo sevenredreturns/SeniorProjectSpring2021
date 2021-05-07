@@ -22,8 +22,10 @@ let userID = localStorage.getItem('userid');
 async function signOut() {
     try {
         await Auth.signOut();
-        localStorage.setItem('userid', null);
+        localStorage.setItem('userid', 0);
         userID = localStorage.getItem('userid');
+        window.location.reload();
+        console.log(userID);
     } catch (error) {
         console.log('error signing out: ', error);
     }
@@ -32,7 +34,7 @@ async function signOut() {
 function loggedin()
 {
 
-    if (userID != null)
+    if (userID != 0)
     {
         return (
             <Menu>
