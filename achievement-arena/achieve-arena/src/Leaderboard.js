@@ -55,7 +55,7 @@ class Leaderboard extends React.Component {
       <div>
       <Divider orientation="left">Leaderboards</Divider>
       <Row justify="space-around" align="center">
-        <Col span={6}>
+        <Col span={8}>
           <div><GameLeaderboard /></div>
         </Col>
       </Row>
