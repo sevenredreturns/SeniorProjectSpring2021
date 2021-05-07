@@ -21,9 +21,7 @@ async function sendEdits(changes)
         username     : changes.username,
         bio          : changes.bio,
         avatarurl    : changes.avatar_src,
-        otherProfiles: [
-            {steam: changes.steamid}
-        ]
+        steam: changes.steamid
     };
 
     const sendOptions =
@@ -68,7 +66,7 @@ class ProfilePage extends React.Component
                                             bio       : data.bio,
                                             avatarurl : data.avatarurl,
                                             ownedGames: data.ownedGames,
-                                            otherProfiles  : data.otherProfiles,
+                                            steamid  : data.otherProfiles.steam,
                                             loading   : false
                                         }));
     }
@@ -127,7 +125,6 @@ class ProfilePage extends React.Component
 
     App()
     {
-        const asteamid = this.state.otherProfiles.steam;
         return (
             <>
 
@@ -163,7 +160,7 @@ class ProfilePage extends React.Component
                             </Button>
                         </Form.Item>
                     </Form>
-                    <div><Button onClick={() => UpdateUserGames(userID, asteamid )}>Sync
+                    <div><Button onClick={() => UpdateUserGames(userID, this.state.steamid )}>Sync
                         Steam Profile</Button></div>
                 </Modal>
             </>
@@ -180,7 +177,6 @@ class ProfilePage extends React.Component
         }
         if (userID != 0)
         {
-            const asteamid = this.state.otherProfiles.steam;
             return (
 
                 <>
@@ -205,7 +201,7 @@ class ProfilePage extends React.Component
                         <Col span={8}>{this.state.bio}</Col>
                     </Row>
                     <Row justify="space-around" align="middle">
-                        <Col span={8}>{asteamid}</Col>
+                        <Col span={8}>{this.state.steamid}</Col>
                     </Row>
                     <p/><p/><p/><p/>
                     <Row>
